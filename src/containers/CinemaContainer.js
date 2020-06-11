@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Route } from 'react-router-dom';
 
 import Homepage from '../components/Homepage/Homepage';
 import Menu from '../components/Menu/Menu';
@@ -14,8 +15,11 @@ class CinemaContainer extends Component {
         <React.Fragment>
             <div class="full">
                 <Menu />
-
-                <Trailers />
+                <Route path ="/" exact component={Homepage} />
+                <Route path ="/trailers" component={Trailers} />
+                <Route path ="/booking" component={Booking} />
+                <Route path ="/contact" component={Contact} />
+                <Route render={() => <h1>404: Page not found</h1>} />
             </div>
         </React.Fragment>
         );

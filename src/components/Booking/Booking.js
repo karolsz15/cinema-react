@@ -1,7 +1,7 @@
 import React from 'react';
 
 const booking = props => (
-<div class="full">
+
     <div class="main">
 		<div class="error-content">
 			<div class="top-header span_top">
@@ -117,7 +117,7 @@ const booking = props => (
             </div>
         </div>
     </div>    
-</div>
+
 );
 
 export default booking;
