@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Route, Link, Switch, Redirect } from 'react-router-dom';
+import CinemaContainer from './containers/CinemaContainer';
+// import { BrowserRouter, Route, Link, Switch, Redirect } from 'react-router-dom';
 
 // import Courses from './containers/Courses/Courses';
 // import Users from './containers/Users/Users';
@@ -7,8 +8,9 @@ import { BrowserRouter, Route, Link, Switch, Redirect } from 'react-router-dom';
 class App extends Component {
   render () {
     return (
+        
     //   <BrowserRouter>
-        <div>test test</div>
+        <CinemaContainer />
     //   </BrowserRouter>
     );
   }
