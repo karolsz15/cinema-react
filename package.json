@@ -1,0 +1,19 @@
+{
+  "name": "cinemareact",
+  "version": "1.0.0",
+  "description": "Cinema booking React app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/karolsz15/cinema-react.git"
+  },
+  "author": "Karol",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/karolsz15/cinema-react/issues"
+  },
+  "homepage": "https://github.com/karolsz15/cinema-react#readme"
+}
