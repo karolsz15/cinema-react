@@ -1,9 +1,9 @@
 import React from 'react';
-// import $ from 'jquery';
 
-// import classes from '../../css/style.module.css';
+import MyModal from '../UI/MyModal/MyModal';
 
 const trailers = () => (
+    <React.Fragment>
     
     <div className="main">
 		<div className="video-content">
@@ -20,25 +20,7 @@ const trailers = () => (
 						<h3 className="head">Trailers of latest movies</h3>
 					</div>
 				</div>
-				{/* <!-- pop-up-box -->  */}
-		{/* <link href="/css/popuo-box.css" rel="stylesheet" type="text/css" media="all" />
-		<script src="/js/jquery.magnific-popup.js" type="text/javascript"></script> */}
-        
-				{/* {$(document).ready(function() {
-				$('.popup-with-zoom-anim').magnificPopup({
-					type: 'inline',
-					fixedContentPos: false,
-					fixedBgPos: true,
-					overflowY: 'auto',
-					closeBtnInside: true,
-					preloader: false,
-					midClick: true,
-					removalDelay: 300,
-					mainclassName: 'my-mfp-zoom-in'
-				});
-				})}	 */}
-
-		{/* <!--//pop-up-box --> */}
+            </div>
 
 				<div className="content-grids">
 					<div className="content-grid">
@@ -47,9 +29,13 @@ const trailers = () => (
 						<a className="button play-icon popup-with-zoom-anim" href="#small-dialog1">Watch trailer</a>
 						<a className="button play-icon" href="/book">Book now</a>
 					</div>
+
+                    <MyModal show={true} />
+
 					<div id="small-dialog1" className="mfp-hide">
 						<iframe  src="https://www.youtube.com/embed/bwzLiQZDw2I" frameborder="0" allowfullscreen></iframe>
 					</div>
+
 					<div className="content-grid">
 						<a className="play-icon popup-with-zoom-anim" href="#small-dialog2"><img src="images/m12.jpg" title="allbum-name" /></a>
 						<h3>"Joker" centers around the iconic arch nemesis and is an original, standalone fictional story not seen before on the big screen. </h3>
@@ -95,10 +81,16 @@ const trailers = () => (
 					<div id="small-dialog6" className="mfp-hide">
 						<iframe  src="https://www.youtube.com/embed/FtSd844cI7U" frameborder="0" allowfullscreen></iframe>
 					</div>
-				</div>
-			</div>
+
             </div>
             </div>
+            </div>
+ 
+
+
+
+
+            </React.Fragment>
 );
 
 export default trailers;
