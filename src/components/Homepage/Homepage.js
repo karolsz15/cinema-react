@@ -30,7 +30,7 @@ const homepage = props => (
         <AutoPlay />
 
     <div class="video" id="video">
-        <iframe  src="https://www.youtube.com/embed/bwzLiQZDw2I" frameborder="0" allowfullscreen></iframe>
+        <iframe  src="https://www.youtube.com/embed/bwzLiQZDw2I" frameBorder="0" allowFullScreen></iframe>
     </div>
     <div class="news">
         <div class="col-md-6 news-left-grid">

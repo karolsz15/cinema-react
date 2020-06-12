@@ -3,7 +3,7 @@ import React from 'react';
 import Modal from "react-bootstrap/Modal";
 import Button from 'react-bootstrap/Button';
 
-const myModal = (props) => {
+const myModal = props => {
     return (
       <Modal
             {...props}
@@ -13,11 +13,18 @@ const myModal = (props) => {
           >
             <Modal.Header closeButton>
               <Modal.Title id="contained-modal-title-vcenter">
-                Modal heading
+                {props.title}
               </Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                    <iframe  src="https://www.youtube.com/embed/zAGVQLHvwOY" frameborder="0" allowfullscreen></iframe>
+              <iframe 
+                src={props.trailer} 
+
+                width="560" 
+                height="315" 
+                frameBorder="0" 
+                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen>
+              </iframe>
             </Modal.Body>
             <Modal.Footer>
               <Button onClick={props.onHide}>Close</Button>

@@ -8,13 +8,13 @@ import Menu from '../components/Menu/Menu';
 import Trailers from '../components/Trailers/Trailers';
 import Contact from '../components/Contact/Contact';
 import Booking from '../components/Booking/Booking';
-import Error from '../components/Error/Error';;
+import Error from '../components/Error/Error';
 
 class CinemaContainer extends Component {
     render () {
       return (
         <React.Fragment>
-            <div class="full">
+            <div className="full">
                 <Menu />
                 <Switch>
                     <Route path ="/" exact component={Homepage} />
