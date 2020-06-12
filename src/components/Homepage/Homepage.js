@@ -1,4 +1,8 @@
 import React from 'react';
+import AutoPlay from '../AutoPlay/AutoPlay';
+
+import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick-theme.css";
 
 const homepage = props => (
 
@@ -22,15 +26,9 @@ const homepage = props => (
                 <a class="book" href="/book"><i class="book1"></i>BOOK TICKET</a>
             </div>
         </div>
-        <div>EMPTY DIV FOR SOME SPACING (PICTURES ANIMATION HERE)</div>
-    {/* <div class="review-slider">
-        <li><img src="/images/r11.jpg" alt=""/></li>
-        <li><img src="images/r12.jpg" alt=""/></li>
-        <li><img src="images/r13.jpg" alt=""/></li>
-        <li><img src="images/r14.jpg" alt=""/></li>
-        <li><img src="images/r15.jpg" alt=""/></li>
-        <li><img src="images/r16.jpg" alt=""/></li>
-    </div> */}
+
+        <AutoPlay />
+
     <div class="video" id="video">
         <iframe  src="https://www.youtube.com/embed/bwzLiQZDw2I" frameborder="0" allowfullscreen></iframe>
     </div>
