@@ -1,11 +1,10 @@
 import React, {Component} from 'react';
-import MyModal from '../../UI/MyModal/MyModal';
+import MovieModal from '../../UI/MovieModal/MovieModal';
 
 class SingleMovie extends Component {
 
     state = {
-        modalVisible: false,
-        // title: this.props.title,
+        modalVisible: false
     }
 
     showModal =() => {
@@ -20,7 +19,7 @@ class SingleMovie extends Component {
         return (
             <React.Fragment>
 
-                <MyModal 
+                <MovieModal 
                     show={this.state.modalVisible} 
                     onHide={this.hideModal} 
                     title={this.props.title} 

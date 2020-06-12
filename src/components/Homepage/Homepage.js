@@ -23,7 +23,7 @@ const homepage = props => (
                 <p class="review">Release &nbsp;&nbsp;&nbsp;&nbsp;: &nbsp;&nbsp; 22 November 2019</p>
                 <p class="special">What truths about the past await Elsa as she ventures into the unknown to the enchanted forests and dark seas beyond Arendelle? Together with Anna, Kristoff, Olaf and Sven, she'll face a dangerous but remarkable journey.</p>
                 <a class="video" href="#video"><i class="video1"></i>WATCH TRAILER</a>
-                <a class="book" href="/book"><i class="book1"></i>BOOK TICKET</a>
+                <a class="book" href="/booking"><i class="book1"></i>BOOK TICKET</a>
             </div>
         </div>
 
