@@ -8,6 +8,7 @@ import Menu from '../components/Menu/Menu';
 import Trailers from '../components/Trailers/Trailers';
 import Contact from '../components/Contact/Contact';
 import Booking from '../components/Booking/Booking';
+import Error from '../components/Error/Error';;
 
 class CinemaContainer extends Component {
     render () {
@@ -20,7 +21,7 @@ class CinemaContainer extends Component {
                     <Route path ="/trailers" component={Trailers} />
                     <Route path ="/booking" component={Booking} />
                     <Route path ="/contact" component={Contact} />
-                    <Route render={() => <h1>404: Page not found</h1>} />
+                    <Route component={Error} />
                 </Switch>
             </div>
         </React.Fragment>
