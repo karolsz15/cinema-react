@@ -1007,8 +1007,11 @@ a.b-home:hover{
 /*--contact--*/
 .main-contact{
 	padding:4em 5em;
-	  border-top: 1px solid #000;
+	border-top: 1px solid #000;
+	text-align: center;
 }
+
+
 .main-contact p{
 	color: #000;
 	font-size: 1.2em;
@@ -1022,8 +1025,9 @@ a.b-home:hover{
 .main-contact h3{
 	margin-left: 15px;
 }
-.contact-form{
-	margin-top:3em;
+.contact_form{
+	margin-top:2em;
+	text-align: center;
 }
 .main-contact form input[type="text"],.main-contact form textarea{
 	width: 100%;

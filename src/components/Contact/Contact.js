@@ -16,7 +16,7 @@ const contact = props => (
             <div class="main-contact">
                 <h3 class="head">CONTACT</h3>
                 <p>feel free to ask questions about reservations and the cinema</p>
-                <div class="contact-form">
+                <div class="contact_info">
                     <form>
                         <div class="col-md-6 contact-left">
                             <input type="text" placeholder="Name" required/>

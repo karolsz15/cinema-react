@@ -6,7 +6,7 @@ import axios from 'axios';
 
 class Trailers extends Component {
 
-    state ={
+    state = {
         showModal: false,
         error: false,
         movies: null
@@ -111,9 +111,6 @@ class Trailers extends Component {
                         poster={this.state.movies.four.posterUrl} 
                         trailer={this.state.movies.four.trailerUrl}
                     />
-                    
-                    
-
                 </div>
             );
         }
