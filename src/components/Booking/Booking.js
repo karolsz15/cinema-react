@@ -2,18 +2,20 @@ import React, {Component} from 'react';
 import axios from 'axios';
 
 import BookingModal from './BookingModal/BookingModal';
+import OneMovie from './OneMovie';
+import Spinner from '../UI/Spinner/Spinner';
 
 class Booking extends Component {
 	
 	state = {
-        modalVisible: true,
+        modalVisible: false,
         error: false,
         movies: null
     }
 
     componentDidMount() {
         axios
-          .get("https://karol-cinema.firebaseio.com/reservations.json")
+          .get("https://karol-cinema.firebaseio.com/test.json")
           .then(response => {
             this.setState({
                 movies: response.data
@@ -32,68 +34,56 @@ class Booking extends Component {
     }
 
 	render() {
+
+		let singleMovie = null;
+		if (this.state.movies) { 
+			singleMovie = (
+				<React.Fragment>
+					<OneMovie 
+						title={this.state.movies.one.title} 
+						summary={this.state.movies.one.summary} 
+						poster={this.state.movies.one.posterUrl} />
+					<OneMovie 
+						title={this.state.movies.two.title} 
+						summary={this.state.movies.two.summary} 
+						poster={this.state.movies.two.posterUrl} />
+					<OneMovie 
+						title={this.state.movies.three.title} 
+						summary={this.state.movies.three.summary} 
+						poster={this.state.movies.three.posterUrl} />
+					<OneMovie 
+						title={this.state.movies.four.title} 
+						summary={this.state.movies.four.summary} 
+						poster={this.state.movies.four.posterUrl} />
+				</React.Fragment>
+			);
+
+		} else {
+			singleMovie = <Spinner />;
+		}
+
 		return (
-			<div className="main">
-				<div className="error-content">
-					<div className="top-header span_top">
-						<div className="logo">
-							<a href="index.html"><img src="images/logo4.png" alt="" /></a>
-							<p>Ticket booking app</p>
+			<React.Fragment>
+				<div className="main">
+					<div className="error-content">
+						<div className="top-header span_top">
+							<div className="logo">
+								<a href="index.html"><img src="images/logo4.png" alt="" /></a>
+								<p>Ticket booking app</p>
+							</div>
+							<div className="clearfix"></div>
 						</div>
-						<div className="clearfix"></div>
-					</div>
-					<div className="container">
-							
-					<BookingModal 
+						<div className="container">
+								
+						<BookingModal 
 							show={this.state.modalVisible} 
 							onHide={this.hideModal} 
-					/>
-
-						{/* <!-- MOVIES POSTERS AND HOURS --> */}
-						<div className="media">
-							<img src="images/r11.jpg" className="mr-3" alt="..."></img>
-							<div className="media-body">
-							<h5 className="mt-0">Frozen II</h5>
-							Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-							<br />
-							<div className="mt-5">
-							<a className="btn btn-secondary" href="#selection">10:00</a>
-							<a className="btn btn-secondary" href="#selection">13:00</a>
-							</div>
-							</div>
+						/>
+						{singleMovie}
 						</div>
-						<hr/>
-
-						<div className="media">
-							<img src="images/r12.jpg" className="mr-3" alt="..." />
-							<div className="media-body">
-							<h5 className="mt-0">Joker</h5>
-							Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-							<br />
-							<div className="mt-5">
-							<a className="btn btn-secondary" href="#selection">20:00</a>
-							<a className="btn btn-secondary" href="#selection">22:00</a>
-							</div>
-							</div>
-						</div>
-						<hr/>
-
-						<div className="media">
-							<img src="images/r13.jpg" className="mr-3" alt="..." />
-							<div className="media-body">
-							<h5 className="mt-0">Knives Out</h5>
-							Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-							<br />
-							<div className="mt-5">
-							<a className="btn btn-secondary" href="#selection">16:00</a>
-							<a className="btn btn-secondary" href="#selection">21:00</a>
-							</div>
-							</div>
-						</div>
-						<hr/>
 					</div>
-				</div>
-			</div> 
+				</div> 
+			</React.Fragment>
 		)
 	}
 }

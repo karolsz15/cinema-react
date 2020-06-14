@@ -59,6 +59,8 @@ class Trailers extends Component {
 
         if (this.state.movies) {
 
+            // ['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight'].map(el => {});
+
             movies = (
                 <div className="content-grids">
                     <SingleMovie 
@@ -85,31 +87,29 @@ class Trailers extends Component {
                         poster={this.state.movies.four.posterUrl} 
                         trailer={this.state.movies.four.trailerUrl}
                     />
-
-
                     <SingleMovie 
-                        title={this.state.movies.one.title} 
-                        summary={limitMovieDescriptionTitle(this.state.movies.one.summary)} 
-                        poster={this.state.movies.one.posterUrl} 
-                        trailer={this.state.movies.one.trailerUrl}
+                        title={this.state.movies.five.title} 
+                        summary={limitMovieDescriptionTitle(this.state.movies.five.summary)} 
+                        poster={this.state.movies.five.posterUrl} 
+                        trailer={this.state.movies.five.trailerUrl}
                     />
                     <SingleMovie 
-                        title={this.state.movies.two.title} 
-                        summary={limitMovieDescriptionTitle(this.state.movies.two.summary)} 
-                        poster={this.state.movies.two.posterUrl} 
-                        trailer={this.state.movies.two.trailerUrl}
+                        title={this.state.movies.six.title} 
+                        summary={limitMovieDescriptionTitle(this.state.movies.six.summary)} 
+                        poster={this.state.movies.six.posterUrl} 
+                        trailer={this.state.movies.six.trailerUrl}
                     />
                     <SingleMovie 
-                        title={this.state.movies.three.title} 
-                        summary={limitMovieDescriptionTitle(this.state.movies.three.summary)} 
-                        poster={this.state.movies.three.posterUrl} 
-                        trailer={this.state.movies.three.trailerUrl}
+                        title={this.state.movies.seven.title} 
+                        summary={limitMovieDescriptionTitle(this.state.movies.seven.summary)} 
+                        poster={this.state.movies.seven.posterUrl} 
+                        trailer={this.state.movies.seven.trailerUrl}
                     />
                     <SingleMovie 
-                        title={this.state.movies.four.title} 
-                        summary={limitMovieDescriptionTitle(this.state.movies.four.summary)} 
-                        poster={this.state.movies.four.posterUrl} 
-                        trailer={this.state.movies.four.trailerUrl}
+                        title={this.state.movies.eight.title} 
+                        summary={limitMovieDescriptionTitle(this.state.movies.eight.summary)} 
+                        poster={this.state.movies.eight.posterUrl} 
+                        trailer={this.state.movies.eight.trailerUrl}
                     />
                 </div>
             );
