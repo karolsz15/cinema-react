@@ -3,7 +3,7 @@ import React from 'react';
 import Modal from "react-bootstrap/Modal";
 import Button from 'react-bootstrap/Button';
 
-const myModal = props => {
+const movieModal = props => {
     return (
       <Modal
             {...props}
@@ -33,4 +33,4 @@ const myModal = props => {
     );
   };
 
-  export default myModal;
+  export default movieModal;

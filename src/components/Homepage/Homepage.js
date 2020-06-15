@@ -4,6 +4,8 @@ import {Link} from 'react-router-dom';
 import HomepageHeader from './HomepageHeader/HomepageHeader';
 import AutoPlay from '../AutoPlay/AutoPlay';
 import Spinner from '../UI/Spinner/Spinner';
+import MovieModal from '../UI/MovieModal/MovieModal';
+
 
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
@@ -12,6 +14,7 @@ import axios from 'axios';
 class Homepage extends Component {
 
     state = {
+        modalVisible: false,
         error: false,
         movies: null
     }
@@ -28,9 +31,19 @@ class Homepage extends Component {
           .catch(error => this.setState({ error: true }));
     }
 
+    showModal =() => {
+        this.setState({modalVisible: true})
+    };
+
+    hideModal = () => {
+        this.setState({modalVisible: false})
+    }
+
     render () {
         let header = this.state.error ? <p>Movies can't be loaded</p> : <Spinner />;
         let posters = this.state.error ? <p>Posters can't be loaded</p> : <Spinner />;
+        let trailerModal = this.state.error ? <p>Trailer can't be loaded</p> : <Spinner />;
+
 
         if (this.state.movies) {
             header = (
@@ -41,8 +54,12 @@ class Homepage extends Component {
                     release={this.state.movies.one.release}
                     genres={this.state.movies.one.genres}
                     summary={this.state.movies.one.summary}
-                    trailer={this.state.movies.one.trailerUrl} />
+                    trailer={this.state.movies.one.trailerUrl}  
+                    trailerClicked={this.showModal}
+                    hideModal={this.hideModal} 
+                    showModal={this.state.showModal} />
             );
+
             posters = (
                 <AutoPlay 
                     poster1={this.state.movies.one.posterUrl}
@@ -54,12 +71,20 @@ class Homepage extends Component {
                     poster7={this.state.movies.seven.posterUrl} 
                     poster8={this.state.movies.eight.posterUrl} />
             );
+
+           trailerModal = (  
+                <MovieModal 
+                    show={this.state.modalVisible}
+                    title={this.state.movies.one.title} 
+                    trailer={this.state.movies.one.trailerUrl}  
+                    onHide={this.hideModal} />
+           );
         }
 
         return (
             <React.Fragment>
                 <div className="main">
-
+                    {trailerModal}
                    {header}
                    {posters}
                     

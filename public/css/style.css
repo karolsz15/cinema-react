@@ -266,7 +266,7 @@ label{
 
 .header-info {
 	float:right;
-	padding-top:4em;
+	padding-top: 30%;
 	width: 40%;
 	margin-right: 2.5%;
 }
@@ -593,7 +593,7 @@ i.contact1 {
 	background:#fff;
 	padding:4em 3em;
 	display: flex;	
-	align-items: center;
+	align-content: center;
 }
 .news-left-grid h3 {
 	color:#b8b8b8;
