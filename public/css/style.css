@@ -508,7 +508,6 @@ i.contact1 {
 }
 .logo{
 	float: left;
-	width: 48%;
 }
 .logo a {
 	display: block;
@@ -1517,10 +1516,12 @@ font-weight: 700;
 		min-height: 630px;
 	}
 	.logo {
-		width: 36%;
+		display: flex;
+		align-items: center;
+
 	}
 	.logo img {
-		width: 95%;
+		/* width: 80%; */
 	}
 	.search {
 		padding: 6px 8px;
@@ -1529,8 +1530,7 @@ font-weight: 700;
 	}
 	.logo p {
 		font-size: 1.3em;
-		padding: 4px 0 4px 15px;
-		margin: 8px 0 0px 15px;
+		padding: 4px 0;
 	}
 	.right-content {
 		padding: 2em;
@@ -1558,7 +1558,7 @@ font-weight: 700;
 		padding-top: 6em;
 	}
 	.top-header {
-		padding: 0.9em 3em 0.9em 2em;
+		padding: 0.9em 2em;
 	}
 	.search {
 		margin-top: 4px;

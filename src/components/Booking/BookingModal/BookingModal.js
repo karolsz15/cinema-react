@@ -35,7 +35,7 @@ centered
                     </option>
                 </select>
             </div>
-            <div id="ticket" className="ticket">
+            {/* <div id="ticket" className="ticket">
                 <select className="custom-select custom-select-lg" id="movie" name="movieSelection">
                     <option selected disabled style={{display: 'none'}}>
                         Choose movie
@@ -51,7 +51,7 @@ centered
                         Choose hour
                     </option>
                 </select>
-            </div>
+            </div> */}
             <div id="hall" className="hall"></div>
             <div id="detail" className="detail">
                 <input id="name" placeholder="name"/>

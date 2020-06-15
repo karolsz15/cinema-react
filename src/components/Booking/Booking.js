@@ -40,18 +40,22 @@ class Booking extends Component {
 			singleMovie = (
 				<React.Fragment>
 					<OneMovie 
+						clicked={this.showModal}
 						title={this.state.movies.one.title} 
 						summary={this.state.movies.one.summary} 
 						poster={this.state.movies.one.posterUrl} />
-					<OneMovie 
+					<OneMovie
+						clicked={this.showModal} 
 						title={this.state.movies.two.title} 
 						summary={this.state.movies.two.summary} 
 						poster={this.state.movies.two.posterUrl} />
-					<OneMovie 
+					<OneMovie
+						clicked={this.showModal} 
 						title={this.state.movies.three.title} 
 						summary={this.state.movies.three.summary} 
 						poster={this.state.movies.three.posterUrl} />
-					<OneMovie 
+					<OneMovie
+						clicked={this.showModal} 
 						title={this.state.movies.four.title} 
 						summary={this.state.movies.four.summary} 
 						poster={this.state.movies.four.posterUrl} />
