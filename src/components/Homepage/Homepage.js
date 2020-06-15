@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {Link} from 'react-router-dom';
 
 import HomepageHeader from './HomepageHeader/HomepageHeader';
 import AutoPlay from '../AutoPlay/AutoPlay';
@@ -58,7 +59,7 @@ class Homepage extends Component {
         return (
             <React.Fragment>
                 <div className="main">
-                    
+
                    {header}
                    {posters}
                     
@@ -67,33 +68,23 @@ class Homepage extends Component {
                         <h3>Book your ticket now!</h3>
                         <h2>Book your ticket now!</h2>
                         <h4>Book your ticket now!</h4>
-                        <a href="/book"><i className="book"></i>BOOK TICKET</a>
+                        <Link to="/booking"><i className="book"></i>BOOK TICKET</Link>
                     </div>
                     <div className="col-md-6 news-right-grid">
                         <h3>News</h3>
                         <div className="news-grid">
                             <h5>Lorem Ipsum Dolor Sit Amet</h5>
-                            <label>Jan 05 2020</label>
+                            <label>June 15 2020</label>
                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.</p>
                         </div>
                         <div className="news-grid">
                             <h5>Lorem Ipsum Dolor Sit Amet</h5>
-                            <label>Jan 01 2020</label>
+                            <label>June 10 2020</label>
                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.</p>
                         </div>
-                        <a className="more" href="#">MORE</a>
                     </div>
                     <div className="clearfix"></div>
                 </div>
-                <div>EMPTY DIV FOR SOME SPACING (PICTURES ANIMATION HERE)</div>
-                {/* <div className="more-reviews">
-                    <li><img src="images/m11.jpg" alt=""/></li>
-                    <li><img src="images/m12.jpg" alt=""/></li>
-                    <li><img src="images/m13.jpg" alt=""/></li>
-                    <li><img src="images/m14.jpg" alt=""/></li>
-                    <li><img src="images/m15.jpg" alt=""/></li>
-                    <li><img src="images/m16.jpg" alt=""/></li>
-                </div>	 */}
                 </div>
             </React.Fragment>
         );

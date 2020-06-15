@@ -591,7 +591,9 @@ i.contact1 {
 }
 .news {
 	background:#fff;
-	padding:4em 3em;	
+	padding:4em 3em;
+	display: flex;	
+	align-items: center;
 }
 .news-left-grid h3 {
 	color:#b8b8b8;
