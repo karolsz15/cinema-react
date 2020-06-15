@@ -29,29 +29,39 @@ class Homepage extends Component {
 
     render () {
         let header = this.state.error ? <p>Movies can't be loaded</p> : <Spinner />;
+        let posters = this.state.error ? <p>Posters can't be loaded</p> : <Spinner />;
 
         if (this.state.movies) {
             header = (
                 <HomepageHeader 
-                bigImage={this.state.movies.one.bigImageUrl} 
-                title={this.state.movies.one.title} 
-                cast={this.state.movies.one.cast}
-                release={this.state.movies.one.release}
-                genres={this.state.movies.one.genres}
-                summary={this.state.movies.one.summary}
-                trailer={this.state.movies.one.trailerUrl} />
+                    bigImage={this.state.movies.one.bigImageUrl} 
+                    title={this.state.movies.one.title} 
+                    cast={this.state.movies.one.cast}
+                    release={this.state.movies.one.release}
+                    genres={this.state.movies.one.genres}
+                    summary={this.state.movies.one.summary}
+                    trailer={this.state.movies.one.trailerUrl} />
+            );
+            posters = (
+                <AutoPlay 
+                    poster1={this.state.movies.one.posterUrl}
+                    poster2={this.state.movies.two.posterUrl} 
+                    poster3={this.state.movies.three.posterUrl} 
+                    poster4={this.state.movies.four.posterUrl} 
+                    poster5={this.state.movies.five.posterUrl} 
+                    poster6={this.state.movies.six.posterUrl} 
+                    poster7={this.state.movies.seven.posterUrl} 
+                    poster8={this.state.movies.eight.posterUrl} />
             );
         }
 
         return (
             <React.Fragment>
                 <div className="main">
+                    
                    {header}
-                    <AutoPlay />
-    
-                <div className="video" id="video">
-                    <iframe  src="https://www.youtube.com/embed/bwzLiQZDw2I" frameBorder="0" allowFullScreen></iframe>
-                </div>
+                   {posters}
+                    
                 <div className="news">
                     <div className="col-md-6 news-left-grid">
                         <h3>Book your ticket now!</h3>

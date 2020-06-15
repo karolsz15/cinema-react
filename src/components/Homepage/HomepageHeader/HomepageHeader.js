@@ -14,8 +14,8 @@ const homepageHeader = props => (
     <div className="header-info">
         <h1>{props.title}</h1>
         <p className="age">{props.cast}</p>
-        <p className="review reviewgo">Genre	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : &nbsp;&nbsp; {props.genres} </p>
-        <p className="review">Release &nbsp;&nbsp;&nbsp;&nbsp;: &nbsp;&nbsp; {props.release} </p>
+        <p className="review reviewgo">Genre: {props.genres} </p>
+        <p className="review">Release: {props.release} </p>
         <p className="special"> {props.summary} </p>
         <div className="headerButtons">
             <Link to="/trailers" className="video"><i className="video1"></i>TRAILER</Link>

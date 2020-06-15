@@ -248,12 +248,12 @@ label{
 	-moz-background-size:cover;
 	-o-background-size:cover;
 	-ms-background-size:cover;
-	min-height: 800px;	
+	min-height: 100vh;	
 }
 
 .headerButtons {
 	display: flex;
-	justify-items: space-between;
+	justify-content: space-around;
 }
 
 .trailerDescription {
@@ -323,7 +323,7 @@ a.video, a.book {
   -o-border-radius: 5px;
   -ms-border-radius: 5px;
   border-bottom: 3px solid #422f2f;
-  width:20%;
+  width:40%;
   display:block;
 }
 
@@ -1411,7 +1411,7 @@ font-weight: 700;
 
 @media screen and (max-width: 1440px) {
 	.header {
-		min-height: auto;
+		min-height: 100vh;
 	}
 	.top-header {
 		padding: 1em 3em 1em 2em;
@@ -1483,7 +1483,7 @@ font-weight: 700;
 	}
 	a.video,a.book {
 		font-size: 1.2em;
-		width: 35%;
+		width: 40%;
 		margin-top: 20px;
 	}
 	.header-info h1 {
@@ -1499,16 +1499,14 @@ font-weight: 700;
 		font-size: 0.95em;
 	}	
 	.header {
-		min-height: auto;
+		min-height: 100vh;
 	}
 	.logo {
 		display: flex;
 		align-items: center;
 
 	}
-	.logo img {
-		/* width: 80%; */
-	}
+
 	.search {
 		padding: 6px 8px;
 		width: 19%;
@@ -1588,7 +1586,7 @@ font-weight: 700;
 	}
 	a.video, a.book {
 		font-size: 1.2em;
-		width: 35%;
+		width: 40%;
 		margin-top: 15px;
 	}
 	p.special {
@@ -1652,7 +1650,7 @@ font-weight: 700;
 		margin-top: 0.35em;
 	}
 	.header {
-		min-height: 471px;
+		min-height: 100vh;
 	}
 	.header-info {
 		float: right;
@@ -1832,7 +1830,7 @@ font-weight: 700;
 		width:40%;
 	}
 	.header {
-		min-height: 353px;
+		min-height: 100vh;
 	}
 	.header-info h1 {
 		font-size: 1.8em;
@@ -1931,7 +1929,7 @@ font-weight: 700;
 }
 @media screen and (max-width: 768px) {
 	.header {
-		min-height: 345px;
+		min-height: 100vh;
 	}
 	.news {
 		padding: 2em 0em;
@@ -1998,7 +1996,7 @@ font-weight: 700;
 		letter-spacing: 0px;
 	}
 	.header {
-		min-height: 325px;
+		min-height: 100vh;
 	}
 	p.age,p.review,p.review.reviewgo  {
 		height: 18px;
@@ -2281,7 +2279,7 @@ font-weight: 700;
 		border-left: 46px solid #383838;
 	}
 	.header {
-		min-height: 220px;
+		min-height: 100vh;
 	}
 	.news-left-grid h2 {
 		font-size: 1.45em;
