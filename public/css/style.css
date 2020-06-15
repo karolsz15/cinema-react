@@ -248,7 +248,12 @@ label{
 	-moz-background-size:cover;
 	-o-background-size:cover;
 	-ms-background-size:cover;
-	min-height:750px;	
+	min-height: 800px;	
+}
+
+.headerButtons {
+	display: flex;
+	justify-items: space-between;
 }
 
 .trailerDescription {
@@ -262,7 +267,7 @@ label{
 .header-info {
 	float:right;
 	padding-top:4em;
-	width:25%;
+	width: 40%;
 	margin-right: 2.5%;
 }
 .header-info h1 {
@@ -284,8 +289,7 @@ p.special {
 	color:#f4f4f4;
 	font-size:1em;
 	font-weight:400;
-	line-height:1.7em;
-	margin:2.2em 0;
+	line-height:1.4em;
 }
 p.age a {
 	color:#f4f4f4;
@@ -306,11 +310,11 @@ p.review{
 	line-height:1.7em;
 	margin:0.8em 0;	
 }
-a.video {
+a.video, a.book {
   background: #dfb636;
-  font-size: 1.25em;
+  font-size: 1em;
   text-decoration: none;
-  padding: 12px 25px 12px 15px;
+  padding: .5em;
   color: #fff;
   font-weight: 600;
   border-radius: 5px;
@@ -318,28 +322,11 @@ a.video {
   -moz-border-radius: 5px;
   -o-border-radius: 5px;
   -ms-border-radius: 5px;
-  border-bottom: 3px solid #2d2d2d;
-  width:75%;
+  border-bottom: 3px solid #422f2f;
+  width:20%;
   display:block;
-  margin-top:25px;
 }
-a.book {
-  background: #bb7b29;
-  font-size: 1.25em;
-  text-decoration: none;
-  padding: 12px 25px 12px 15px;
-  color: #fff;
-  font-weight: 600;
-  border-radius: 5px;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  -o-border-radius: 5px;
-  -ms-border-radius: 5px;
-  border-bottom: 3px solid #2d2d2d;
-  width:75%;
-  display:block;
-  margin-top:18px;
-}
+
 a.book:hover,a.video:hover {
 	background: #000;
     border-bottom: 3px solid #000;
@@ -1424,7 +1411,7 @@ font-weight: 700;
 
 @media screen and (max-width: 1440px) {
 	.header {
-		min-height: 661px;
+		min-height: auto;
 	}
 	.top-header {
 		padding: 1em 3em 1em 2em;
@@ -1496,8 +1483,7 @@ font-weight: 700;
 	}
 	a.video,a.book {
 		font-size: 1.2em;
-		padding: 9px 22px 9px 13px;
-		width: 70%;
+		width: 35%;
 		margin-top: 20px;
 	}
 	.header-info h1 {
@@ -1513,7 +1499,7 @@ font-weight: 700;
 		font-size: 0.95em;
 	}	
 	.header {
-		min-height: 630px;
+		min-height: auto;
 	}
 	.logo {
 		display: flex;
@@ -1602,15 +1588,14 @@ font-weight: 700;
 	}
 	a.video, a.book {
 		font-size: 1.2em;
-		padding: 9px 22px 9px 13px;
-		width: 75%;
+		width: 35%;
 		margin-top: 15px;
 	}
 	p.special {
 		margin: 1.5em 0 2em 0;
 	}
 	.header {
-		min-height: 586px;
+		min-height: 100vh;
 	}
 	.logo img {
 		width: 90%;

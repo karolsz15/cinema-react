@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 
 const homepageHeader = props => (
 
@@ -16,8 +17,11 @@ const homepageHeader = props => (
         <p className="review reviewgo">Genre	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : &nbsp;&nbsp; {props.genres} </p>
         <p className="review">Release &nbsp;&nbsp;&nbsp;&nbsp;: &nbsp;&nbsp; {props.release} </p>
         <p className="special"> {props.summary} </p>
-        <a className="video" href="/trailers"><i className="video1"></i>WATCH TRAILER</a>
-        <a className="book" href="/booking"><i className="book1"></i>BOOK TICKET</a>
+        <div className="headerButtons">
+            <Link to="/trailers" className="video"><i className="video1"></i>TRAILER</Link>
+            <Link to="/booking" className="book"><i className="book1"></i>TICKET</Link>
+        </div>
+
     </div>
 </div>
 
