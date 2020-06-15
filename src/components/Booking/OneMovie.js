@@ -3,10 +3,11 @@ import React from 'react';
 const oneMovie = props => {
     return (
         <React.Fragment>
-            <div className="media">
+            <div className="booking_object">
                 <img src={props.poster} className="mr-3" alt="..."></img>
                 <div className="media-body">
                     <h5 className="mt-0">{props.title}</h5>
+                    <br />
                     {props.summary}
                     <br />
                     <div className="mt-5">
