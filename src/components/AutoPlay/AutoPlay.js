@@ -19,28 +19,28 @@ class AutoPlay extends Component {
       <div style={{padding: '1em'}}>
         <Slider {...settings}>
           <div>
-            <h3><img src={this.props.poster1} alt=""/></h3>
+            <img src={this.props.poster1} alt="" />
           </div>
           <div>
-            <h3><img src={this.props.poster2} alt=""/></h3>
+            <img src={this.props.poster2} alt="" />
           </div>
           <div>
-            <h3><img src={this.props.poster3} alt=""/></h3>
+            <img src={this.props.poster3} alt="" />
           </div>
           <div>
-            <h3><img src={this.props.poster4} alt=""/></h3>
+            <img src={this.props.poster4} alt="" />
           </div>
           <div>
-            <h3><img src={this.props.poster5} alt=""/></h3>
+            <img src={this.props.poster5} alt="" />
           </div>
           <div>
-            <h3><img src={this.props.poster6} alt=""/></h3>
+            <img src={this.props.poster6} alt="" />
           </div>
           <div>
-            <h3><img src={this.props.poster7} alt=""/></h3>
+            <img src={this.props.poster7} alt="" />
           </div>
           <div>
-            <h3><img src={this.props.poster8} alt=""/></h3>
+            <img src={this.props.poster8} alt="" />
           </div>
         </Slider>
       </div>

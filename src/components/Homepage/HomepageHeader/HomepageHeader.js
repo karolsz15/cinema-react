@@ -19,8 +19,8 @@ const homepageHeader = props => (
                     <p className="review">Release: {props.release} </p>
                     <p className="special"> {props.summary} </p>
                     <div className="headerButtons">
-                        <Link onClick={props.trailerClicked} className="video"><i className="video1"></i>TRAILER</Link>
-                        <Link to="/booking" className="book"><i className="book1"></i>TICKET</Link>
+                        <div onClick={props.trailerClicked} className="videoButton"><i className="video1"></i>TRAILER</div>
+                        <Link to="/booking" className="bookButton"><i className="book1"></i>TICKET</Link>
                     </div>
 
                 </div>

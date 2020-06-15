@@ -12,6 +12,10 @@ body a{
 	-ms-transition:0.5s all;
 }
 
+a:hover {
+	text-decoration: none;
+	color: #fff;
+}
 /* MAIN DIV*/
 
 main {
@@ -23,6 +27,10 @@ main {
 	align-items: center;
   }
   
+form {
+	display: flex;
+}
+
 main #action form {
 	width: 50em;
 	margin: 0 auto;
@@ -166,8 +174,8 @@ main .selection {
 /* END OF MAIN DIV*/
 
 .navbar {
-	*position: relative;
-	*z-index: 2;
+	position: relative;
+	z-index: 2;
 	margin-bottom: 20px;
 	overflow: visible;
   }
@@ -276,7 +284,7 @@ label{
 	font-weight:700;
 	margin-bottom:12px;
 	padding-bottom:7px;
-	border-bottom:1px solid #4b4b4b;
+	border-bottom:1px solid #fff;
 }
 p.age {
 	color:#f4f4f4;
@@ -310,7 +318,8 @@ p.review{
 	line-height:1.7em;
 	margin:0.8em 0;	
 }
-a.video, a.book {
+.videoButton, 
+.bookButton {
   background: #dfb636;
   font-size: 1em;
   text-decoration: none;
@@ -325,11 +334,19 @@ a.video, a.book {
   border-bottom: 3px solid #422f2f;
   width:40%;
   display:block;
+  
+  transition:0.5s all;
+  -webkit-transition:0.5s all;
+  -moz-transition:0.5s all;
+  -o-transition:0.5s all;
+  -ms-transition:0.5s all;
 }
 
-a.book:hover,a.video:hover {
-	background: #000;
-    border-bottom: 3px solid #000;
+.bookButton:hover,
+.videoButton:hover {
+	background: #b3912b;
+	border-bottom: 3px solid #000;
+	cursor: pointer;
 }
 i.book1 {
 	width:40px;
@@ -1017,7 +1034,8 @@ a.b-home:hover{
 	margin-top:2em;
 	text-align: center;
 }
-.main-contact form input[type="text"],.main-contact form textarea{
+.main-contact form input[type="text"],
+.main-contact form textarea{
 	width: 100%;
 	padding: 10px 14px;
 	border: 3px solid #000;
@@ -1930,6 +1948,7 @@ font-weight: 700;
 	}
 }
 @media screen and (max-width: 768px) {
+	
 	.header {
 		min-height: 100vh;
 	}
@@ -1971,6 +1990,10 @@ font-weight: 700;
 }
 
 @media screen and (max-width: 640px) {
+	form {
+		display: block;
+	}
+	
 	p.claim {
 		width: 85%;
 		margin: 6px 0;
