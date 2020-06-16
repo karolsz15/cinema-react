@@ -4,6 +4,7 @@ import axios from 'axios';
 import BookingModal from './BookingModal/BookingModal';
 import OneMovie from './OneMovie';
 import Spinner from '../UI/Spinner/Spinner';
+import BookingSelection from './BookingSelection/BookingSelection';
 
 class Booking extends Component {
 	
@@ -34,7 +35,7 @@ class Booking extends Component {
     }
 
 	render() {
-
+		
 		let singleMovie = null;
 		if (this.state.movies) { 
 			singleMovie = (
@@ -103,6 +104,7 @@ class Booking extends Component {
 							show={this.state.modalVisible} 
 							onHide={this.hideModal} 
 						/>
+						<BookingSelection />
 						{singleMovie}
 						</div>
 					</div>
