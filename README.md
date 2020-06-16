@@ -1,2 +1,2 @@
 Project development still in progress...
-LIVE DEMO: https://karol-cinema.herokuapp.com/
+LIVE DEMO: https://cinemareactkarol.web.app/
