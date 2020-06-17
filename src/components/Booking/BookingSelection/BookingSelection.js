@@ -1,15 +1,28 @@
 import React from 'react';
 
-const bookingSelection = props => (
-    <select className="custom-select custom-select-lg" id="day" name="daySelection">
-        <option selected>
-            Monday
-        </option>
-        <option>
-            Tuesday
-        </option>
-        
-    </select>
-);
+const bookingSelection = props => {
+    var fullDate = new Date();
+    const dayOfMonth = fullDate.getDate();
+    const dayOfWeek = fullDate.getDay();
+    const month = fullDate.getMonth();
+
+    const weekDays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday",
+                      "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+
+    return (
+        <select className="custom-select custom-select-lg" id="day" name="daySelection" style={{marginBottom: '1em'}}>
+            <option selected>
+                {weekDays[dayOfWeek]} {dayOfMonth}.{month}
+            </option>
+            {/* HANDLE EDGE CASE WITH LAST DAY OF MONTH LATER! E.G. 31.06 !-> 32.06*/}
+           {[1,2,3,4,5,6].map(n => (
+               <option>
+                  {weekDays[dayOfWeek+n]} {dayOfMonth+n}.{month} 
+               </option>
+           ))}
+
+        </select>
+    );
+};
 
 export default bookingSelection;
