@@ -76,10 +76,10 @@ class SeatsSelection extends Component {
     }
     
     bookingHandler = () => {
-        axios.post('https://karol-cinema.firebaseio.com/reservations/friday/16.json', {
-            firstName: 'Fred',
-            lastName: 'Flintstone'
-          })
+
+        let allReservedSeats = [...this.state.reservedSeats, ...this.state.activeSeats];
+
+        axios.put(`https://karol-cinema.firebaseio.com/reservations/monday/10/reservedSeats.json`, allReservedSeats)
           .then( response => {
             console.log(response);
           })
