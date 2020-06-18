@@ -6,21 +6,20 @@ const bookingSelection = props => {
     const dayOfWeek = fullDate.getDay();
     const month = fullDate.getMonth();
 
-    const weekDays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday",
-                      "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    const weekDays = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday",
+                      "sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"];
 
     return (
-        <select className="custom-select custom-select-lg" id="day" name="daySelection" style={{marginBottom: '1em'}}>
-            <option selected>
+        <select onChange={props.changed} className="custom-select custom-select-lg" id="day" name="daySelection" style={{marginBottom: '1em'}}>
+            <option selected value={weekDays[dayOfWeek]}>
                 {weekDays[dayOfWeek]} {dayOfMonth}.{month}
             </option>
             {/* HANDLE EDGE CASE WITH LAST DAY OF MONTH LATER! E.G. 31.06 !-> 32.06*/}
            {[1,2,3,4,5,6].map(n => (
-               <option>
+               <option value={weekDays[dayOfWeek+n]}>
                   {weekDays[dayOfWeek+n]} {dayOfMonth+n}.{month} 
                </option>
            ))}
-
         </select>
     );
 };

@@ -11,7 +11,9 @@ class Booking extends Component {
 	state = {
         modalVisible: false,
         error: false,
-        movies: null
+		movies: null,
+		reservations: null,
+		activeDay: null
     }
 
     componentDidMount() {
@@ -20,6 +22,16 @@ class Booking extends Component {
           .then(response => {
             this.setState({
                 movies: response.data
+			});
+			// console.log(response.data)
+          })
+		  .catch(error => this.setState({ error: true }));
+		  
+		  axios
+          .get("https://karol-cinema.firebaseio.com/reservations.json")
+          .then(response => {
+            this.setState({
+                reservations: response.data
 			});
 			console.log(response.data)
           })
@@ -32,7 +44,11 @@ class Booking extends Component {
 
     hideModal = () => {
         this.setState({modalVisible: false})
-    }
+	}
+	
+	changeActiveDay = (day) => {
+		this.setState({activeDay: day})
+	}
 
 	render() {
 		
@@ -45,41 +61,6 @@ class Booking extends Component {
 						title={this.state.movies.one.title} 
 						summary={this.state.movies.one.summary} 
 						poster={this.state.movies.one.posterUrl} />
-					<OneMovie
-						clicked={this.showModal} 
-						title={this.state.movies.two.title} 
-						summary={this.state.movies.two.summary} 
-						poster={this.state.movies.two.posterUrl} />
-					<OneMovie
-						clicked={this.showModal} 
-						title={this.state.movies.three.title} 
-						summary={this.state.movies.three.summary} 
-						poster={this.state.movies.three.posterUrl} />
-					<OneMovie
-						clicked={this.showModal} 
-						title={this.state.movies.four.title} 
-						summary={this.state.movies.four.summary} 
-						poster={this.state.movies.four.posterUrl} />
-					<OneMovie
-						clicked={this.showModal} 
-						title={this.state.movies.five.title} 
-						summary={this.state.movies.five.summary} 
-						poster={this.state.movies.five.posterUrl} />
-					<OneMovie
-						clicked={this.showModal} 
-						title={this.state.movies.six.title} 
-						summary={this.state.movies.six.summary} 
-						poster={this.state.movies.six.posterUrl} />
-					<OneMovie
-						clicked={this.showModal} 
-						title={this.state.movies.seven.title} 
-						summary={this.state.movies.seven.summary} 
-						poster={this.state.movies.seven.posterUrl} />
-					<OneMovie
-						clicked={this.showModal} 
-						title={this.state.movies.eight.title} 
-						summary={this.state.movies.eight.summary} 
-						poster={this.state.movies.eight.posterUrl} />
 				</React.Fragment>
 			);
 
@@ -104,14 +85,14 @@ class Booking extends Component {
 							show={this.state.modalVisible} 
 							onHide={this.hideModal} 
 						/>
-						<BookingSelection />
+						<BookingSelection changed={e => this.changeActiveDay(e.target.value)}/>
 						{singleMovie}
 						</div>
 					</div>
 				</div> 
 			</React.Fragment>
-		)
-	}
-}
+		);
+	};
+};
     
 export default Booking;
