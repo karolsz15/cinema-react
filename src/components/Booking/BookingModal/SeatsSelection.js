@@ -3,9 +3,13 @@ import React, {Component} from 'react';
 class SeatsSelection extends Component {
 
     state = {
-        inactiveSeats: [],
         activeSeats: [],
-        reservedSeats: [1, 66, 67, 68]
+        reservedSeats: [1, 66, 67, 68], //fetch from DB
+        reservationName: null,
+        reservationSurname: null,
+        reservationEmail: null,
+        reservationPhone: null,
+        summaryVisible: false
     }
 
     toggleActivatedSeat = seat => {
@@ -24,11 +28,40 @@ class SeatsSelection extends Component {
         };
     }
 
+    updateName = newName => {
+        this.setState({
+            reservationName: newName
+        });
+    }
+
+    updateSurname = newSurname => {
+        this.setState({
+            reservationSurname: newSurname
+        });
+    }
+
+    updateEmail = newEmail => {
+        this.setState({
+            reservationEmail: newEmail
+        });
+    }
+
+    updatePhone = newPhone => {
+        this.setState({
+            reservationPhone: newPhone
+        });
+    }
+
+    showSummary = () => {
+        this.setState({
+            summaryVisible: true
+        });
+    }
+
     render() {
 
         let seats = [];
         
-
         for (let i=1; i<=100; i++) {
             let classes;
 
@@ -45,6 +78,17 @@ class SeatsSelection extends Component {
             seats.push(<div className={classes} id={i} onClick={() => this.toggleActivatedSeat(i)}>{i}</div>);
         }
 
+        let summary = (
+            <div>
+                Details of your booking: <br />
+                Seats: {this.state.activeSeats.join(', ')} <br />
+                Name: {this.state.reservationName} <br />
+                Surname: {this.state.reservationSurname} <br />
+                E-mail: {this.state.reservationEmail} <br />
+                Phone number: {this.state.reservationPhone}
+            </div>
+        );
+
         return (
             <React.Fragment>
                 <div id="selection" className="selection">
@@ -54,14 +98,17 @@ class SeatsSelection extends Component {
                     </div>
                 </div>
                 <div id="detail" className="">
-                    <input id="name" placeholder="name"/>
-                    <input id="surname" placeholder="surname"/>
-                    <input id="email" placeholder="e-mail"/>
-                    <input id="phone" placeholder="phone"/>
+                    <input id="name" placeholder="name" onChange={e => this.updateName(e.target.value)} />
+                    <input id="surname" placeholder="surname" onChange={e => this.updateSurname(e.target.value)} />
+                    <input id="email" placeholder="e-mail" onChange={e => this.updateEmail(e.target.value)} />
+                    <input id="phone" placeholder="phone" onChange={e => this.updatePhone(e.target.value)} />
                 </div>
-                <div id="summation" className="summation">Summary</div>
-                <div id="summationList" className="summationList"></div>
-                <div id="finishReservation" className="finishReservation">Book!</div>
+                <div className="buttonsContainer">
+                    <button onClick={this.showSummary} id="summation" className="btn btn-secondary">Summary</button>
+                    <button id="finishReservation" className="btn btn-secondary">Book!</button>
+                </div>
+                {this.state.summaryVisible ? summary : null}
+
             </React.Fragment>
         );
     };

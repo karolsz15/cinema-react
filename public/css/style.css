@@ -52,7 +52,12 @@ form {
 	cursor: not-allowed;
 }
 
-
+.buttonsContainer {
+	display: flex;
+	margin: 1em;
+	min-width: 15vw;
+	justify-content: space-between;
+}
 
 .active {
 	background-color: green;
