@@ -38,14 +38,15 @@ form {
 	background: #dfb636;
 	height: 2em;
 	width: 2em;
-	border: 1px solid black;
+	/* border: 1px solid black; */
 	margin: .5em;
+	border-radius: .5em;
 }
 
 .seat:hover {cursor: pointer;}
 
 .reserved {
-	background-color: red;
+	background-color: #DF4234;
 }
 
 .reserved:hover {
@@ -60,7 +61,7 @@ form {
 }
 
 .active {
-	background-color: green;
+	background-color: #98DF34;
 }
 
 .active:hover {cursor: pointer;}
@@ -145,7 +146,7 @@ main .selection {
 	height: 2em;
 	width: 100%;
 	margin-bottom: .5em;
-	/* padding-top: .5em; */
+	padding-top: .2em;
 	text-align: center;
 	background-color: #dfb636;
 	border-radius: 2em 2em 0em 0em;
