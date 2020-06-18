@@ -32,11 +32,33 @@ form {
 }
 
 .seat {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background: #dfb636;
 	height: 2em;
 	width: 2em;
 	border: 1px solid black;
 	margin: .5em;
 }
+
+.seat:hover {cursor: pointer;}
+
+.reserved {
+	background-color: red;
+}
+
+.reserved:hover {
+	cursor: not-allowed;
+}
+
+
+
+.active {
+	background-color: green;
+}
+
+.active:hover {cursor: pointer;}
 
 .seatsContainer {
 	display: grid;

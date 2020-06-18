@@ -1,22 +1,53 @@
 import React, {Component} from 'react';
 
 class SeatsSelection extends Component {
+
     state = {
-        activeSeats: []
+        inactiveSeats: [],
+        activeSeats: [],
+        reservedSeats: [1, 66, 67, 68]
+    }
+
+    toggleActivatedSeat = seat => {
+        if (this.state.activeSeats.includes(seat)) {
+            let newActiveSeats = [...this.state.activeSeats];
+            newActiveSeats = newActiveSeats.filter(item => item !== seat);
+            this.setState({
+                activeSeats: newActiveSeats
+            });
+        } else {
+            let newActiveSeats = [...this.state.activeSeats];
+            newActiveSeats.push(seat);
+            this.setState({
+                activeSeats: newActiveSeats
+            });
+        };
     }
 
     render() {
 
         let seats = [];
+        
 
         for (let i=1; i<=100; i++) {
-            seats.push(<div className="seat">{i}</div>);
+            let classes;
+
+            if (this.state.reservedSeats.includes(i)) {
+                classes = "seat reserved"
+            } 
+            else if (this.state.activeSeats.includes(i)) {
+                classes = "seat active"
+            }
+            else {
+                classes = "seat";
+            }
+
+            seats.push(<div className={classes} id={i} onClick={() => this.toggleActivatedSeat(i)}>{i}</div>);
         }
 
         return (
             <React.Fragment>
                 <div id="selection" className="selection">
-                    {/* You are booking seats for day: {props.day} hour: {props.hour} */}
                     <div id="screen" className="screen">SCREEN</div>
                     <div id="seatsContainer" className="seatsContainer">
                         {seats}
