@@ -83,6 +83,54 @@ class Booking extends Component {
 						poster={this.state.movies.two.posterUrl}
 						hour1={this.state.hours[2]}
 						hour2={this.state.hours[3]}  />
+					<OneMovie 
+						clicked1={() => this.showModal(this.state.hours[4], this.state.movies.three.title)}
+						clicked2={() => this.showModal(this.state.hours[5], this.state.movies.three.title)}
+						title={this.state.movies.three.title} 
+						summary={this.state.movies.three.summary} 
+						poster={this.state.movies.three.posterUrl}
+						hour1={this.state.hours[4]}
+						hour2={this.state.hours[5]}  />
+					<OneMovie 
+						clicked1={() => this.showModal(this.state.hours[0], this.state.movies.four.title)}
+						clicked2={() => this.showModal(this.state.hours[1], this.state.movies.four.title)}
+						title={this.state.movies.four.title} 
+						summary={this.state.movies.four.summary} 
+						poster={this.state.movies.four.posterUrl}
+						hour1={this.state.hours[0]}
+						hour2={this.state.hours[1]}  />
+					<OneMovie 
+						clicked1={() => this.showModal(this.state.hours[2], this.state.movies.five.title)}
+						clicked2={() => this.showModal(this.state.hours[3], this.state.movies.five.title)}
+						title={this.state.movies.five.title} 
+						summary={this.state.movies.five.summary} 
+						poster={this.state.movies.five.posterUrl}
+						hour1={this.state.hours[2]}
+						hour2={this.state.hours[3]}  />
+					<OneMovie 
+						clicked1={() => this.showModal(this.state.hours[4], this.state.movies.six.title)}
+						clicked2={() => this.showModal(this.state.hours[5], this.state.movies.six.title)}
+						title={this.state.movies.six.title} 
+						summary={this.state.movies.six.summary} 
+						poster={this.state.movies.six.posterUrl}
+						hour1={this.state.hours[4]}
+						hour2={this.state.hours[5]}  />
+					<OneMovie 
+						clicked1={() => this.showModal(this.state.hours[0], this.state.movies.seven.title)}
+						clicked2={() => this.showModal(this.state.hours[1], this.state.movies.seven.title)}
+						title={this.state.movies.seven.title} 
+						summary={this.state.movies.seven.summary} 
+						poster={this.state.movies.seven.posterUrl}
+						hour1={this.state.hours[0]}
+						hour2={this.state.hours[1]}  />
+					<OneMovie 
+						clicked1={() => this.showModal(this.state.hours[2], this.state.movies.eight.title)}
+						clicked2={() => this.showModal(this.state.hours[3], this.state.movies.eight.title)}
+						title={this.state.movies.eight.title} 
+						summary={this.state.movies.eight.summary} 
+						poster={this.state.movies.eight.posterUrl}
+						hour1={this.state.hours[2]}
+						hour2={this.state.hours[3]}  />
 				</React.Fragment>
 			);
 
