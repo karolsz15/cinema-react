@@ -7,13 +7,18 @@ import Spinner from '../UI/Spinner/Spinner';
 import BookingSelection from './BookingSelection/BookingSelection';
 
 class Booking extends Component {
-	
+
+	// let fullDate = new Date();
+
 	state = {
         modalVisible: false,
         error: false,
 		movies: null,
 		reservations: null,
-		activeDay: null
+		activeDay: new Date().getDay(),
+		hours: ['08:00', '10:00', '12:00', '14:00', '18:00', '20:00', '22:00'],
+		activeHour: null,
+		activeTitle: null
     }
 
     componentDidMount() {
@@ -38,30 +43,57 @@ class Booking extends Component {
           .catch(error => this.setState({ error: true }));
     }
 
-	showModal =() => {
-        this.setState({modalVisible: true})
-    };
+	showModal = (hour, title) => {
+        this.setState({
+			modalVisible: true,
+			activeHour: hour,
+			activeTitle: title
+		})
+    }
 
     hideModal = () => {
         this.setState({modalVisible: false})
 	}
 	
-	changeActiveDay = (day) => {
+	changeActiveDay = day => {
 		this.setState({activeDay: day})
 	}
 
 	render() {
 		
 		let singleMovie = null;
-		if (this.state.movies) { 
+		let reservationModal = null;
+		
+		if (this.state.movies && this.state.reservations) { 
 			singleMovie = (
 				<React.Fragment>
 					<OneMovie 
-						clicked={this.showModal}
+						clicked1={() => this.showModal(this.state.hours[0], this.state.movies.one.title)}
+						clicked2={() => this.showModal(this.state.hours[1], this.state.movies.one.title)}
 						title={this.state.movies.one.title} 
 						summary={this.state.movies.one.summary} 
-						poster={this.state.movies.one.posterUrl} />
+						poster={this.state.movies.one.posterUrl}
+						hour1={this.state.hours[0]}
+						hour2={this.state.hours[1]}  />
+					<OneMovie 
+						clicked1={() => this.showModal(this.state.hours[2], this.state.movies.two.title)}
+						clicked2={() => this.showModal(this.state.hours[3], this.state.movies.two.title)}
+						title={this.state.movies.two.title} 
+						summary={this.state.movies.two.summary} 
+						poster={this.state.movies.two.posterUrl}
+						hour1={this.state.hours[2]}
+						hour2={this.state.hours[3]}  />
 				</React.Fragment>
+			);
+
+			reservationModal = (
+				<BookingModal 
+					show={this.state.modalVisible} 
+					onHide={this.hideModal}
+					title={this.state.activeTitle}
+					day={this.state.activeDay}
+					hour={this.state.activeHour} 
+				/>
 			);
 
 		} else {
@@ -81,10 +113,7 @@ class Booking extends Component {
 						</div>
 						<div className="container">
 								
-						<BookingModal 
-							show={this.state.modalVisible} 
-							onHide={this.hideModal} 
-						/>
+						{reservationModal}
 						<BookingSelection changed={e => this.changeActiveDay(e.target.value)}/>
 						{singleMovie}
 						</div>

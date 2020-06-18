@@ -31,6 +31,12 @@ form {
 	display: flex;
 }
 
+.seat {
+	min-height: 1em;
+	min-width: 1em;
+	border: 1px solid black;
+}
+
 main #action form {
 	width: 50em;
 	margin: 0 auto;

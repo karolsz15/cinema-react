@@ -31,6 +31,18 @@ form {
 	display: flex;
 }
 
+.seat {
+	height: 2em;
+	width: 2em;
+	border: 1px solid black;
+	margin: .5em;
+}
+
+.seatsContainer {
+	display: grid;
+	grid-template-columns: repeat(10, 1fr);
+}
+
 main #action form {
 	width: 50em;
 	margin: 0 auto;
