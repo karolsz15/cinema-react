@@ -108,19 +108,20 @@ main .selection {
 	color: #000;
   }
   
-  main .hall {
+ .hall {
 	width: 60vw;
 	margin: 0 0;
 	overflow: hidden;
   }
-  main .hall .screen {
+
+ .screen {
 	height: 2em;
-	margin-bottom: 0.5em;
+	width: 100%;
+	margin-bottom: .5em;
+	/* padding-top: .5em; */
 	text-align: center;
-	color: #000000;
 	background-color: #dfb636;
-	border-radius: 3em 3em 0em 0em;
-	line-height: 2em;
+	border-radius: 2em 2em 0em 0em;
   }
   main .hall .row {
 	clear: both;
