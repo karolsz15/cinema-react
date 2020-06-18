@@ -20,7 +20,7 @@ const bookingModal = props => {
                 </Modal.Header>
                 <Modal.Body>
                     <main>
-                       <SeatsSelection />
+                       <SeatsSelection day={props.day} hour={props.hour} title={props.title} />
                     </main>
                 </Modal.Body>
                 <Modal.Footer>

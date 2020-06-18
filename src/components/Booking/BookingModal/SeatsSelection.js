@@ -1,15 +1,32 @@
 import React, {Component} from 'react';
+import axios from 'axios';
 
 class SeatsSelection extends Component {
 
     state = {
+        day: this.props.day,
+        hour: this.props.hour,
+        title: this.props.title,
         activeSeats: [],
-        reservedSeats: [1, 66, 67, 68], //fetch from DB
+        reservedSeats: [], //fetch from DB
         reservationName: null,
         reservationSurname: null,
         reservationEmail: null,
         reservationPhone: null,
-        summaryVisible: false
+        summaryVisible: false,
+        error: false
+    }
+
+    //get up to date reserved seats
+    componentDidMount() {
+        axios
+        .get(`https://karol-cinema.firebaseio.com/reservations/monday/10/reservedSeats.json`)
+        .then(response => {
+            this.setState({
+                reservedSeats: response.data
+            });
+        })
+        .catch(error => this.setState({ error: true }));
     }
 
     toggleActivatedSeat = seat => {
@@ -56,6 +73,19 @@ class SeatsSelection extends Component {
         this.setState({
             summaryVisible: true
         });
+    }
+    
+    bookingHandler = () => {
+        axios.post('https://karol-cinema.firebaseio.com/reservations/friday/16.json', {
+            firstName: 'Fred',
+            lastName: 'Flintstone'
+          })
+          .then( response => {
+            console.log(response);
+          })
+          .catch( error => {
+            console.log(error);
+          });
     }
 
     render() {
@@ -105,10 +135,9 @@ class SeatsSelection extends Component {
                 </div>
                 <div className="buttonsContainer">
                     <button onClick={this.showSummary} id="summation" className="btn btn-secondary">Summary</button>
-                    <button id="finishReservation" className="btn btn-secondary">Book!</button>
+                    <button onClick={this.bookingHandler} id="finishReservation" className="btn btn-secondary">Book!</button>
                 </div>
                 {this.state.summaryVisible ? summary : null}
-
             </React.Fragment>
         );
     };

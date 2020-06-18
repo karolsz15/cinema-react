@@ -38,7 +38,7 @@ class Booking extends Component {
             this.setState({
                 reservations: response.data
 			});
-			console.log(response.data)
+			// console.log(response.data)
           })
           .catch(error => this.setState({ error: true }));
     }
@@ -92,8 +92,8 @@ class Booking extends Component {
 					onHide={this.hideModal}
 					title={this.state.activeTitle}
 					day={this.state.activeDay}
-					hour={this.state.activeHour} 
-				/>
+					hour={this.state.activeHour}
+					reservations={this.state.reservations} />
 			);
 
 		} else {
