@@ -14,7 +14,8 @@ class SeatsSelection extends Component {
         reservationEmail: null,
         reservationPhone: null,
         summaryVisible: false,
-        error: false
+        error: false,
+        booked: false
     }
 
     //get up to date reserved seats
@@ -75,17 +76,54 @@ class SeatsSelection extends Component {
         });
     }
     
+    clearForm = () => {
+        this.setState({
+            reservationName: null,
+            reservationSurname: null,
+            reservationEmail: null,
+            reservationPhone: null,  
+        });
+    }
+
     bookingHandler = () => {
 
         let allReservedSeats = [...this.state.reservedSeats, ...this.state.activeSeats];
+        let customerData = {
+            seats: this.state.activeSeats,
+            name: this.state.reservationName,
+            surname: this.state.reservationSurname,
+            email: this.state.reservationEmail,
+            phone: this.state.reservationPhone
+        };
 
         axios.put(`https://karol-cinema.firebaseio.com/reservations/monday/10/reservedSeats.json`, allReservedSeats)
-          .then( response => {
-            console.log(response);
-          })
-          .catch( error => {
+        .then( response => {
+          console.log(response);
+        })
+        .catch( error => {
+          console.log(error);
+        });
+
+        // axios.put(`https://karol-cinema.firebaseio.com/reservations/${this.state.day}/${this.state.hour}/reservedSeats.json`, allReservedSeats)
+        //   .then( response => {
+        //     console.log(response);
+        //   })
+        //   .catch( error => {
+        //     console.log(error);
+        //   });
+
+        axios.post(`https://karol-cinema.firebaseio.com/reservations/monday/10/customersData.json`, customerData)
+        .then( response => {
+          console.log(response);
+        })
+        .catch( error => {
             console.log(error);
-          });
+        });
+
+        this.setState({
+            reservedSeats: allReservedSeats,
+            booked: true
+        })
     }
 
     render() {
@@ -95,7 +133,7 @@ class SeatsSelection extends Component {
         for (let i=1; i<=100; i++) {
             let classes;
 
-            if (this.state.reservedSeats.includes(i)) {
+            if (this.state.reservedSeats && this.state.reservedSeats.includes(i)) {
                 classes = "seat reserved"
             } 
             else if (this.state.activeSeats.includes(i)) {
@@ -108,16 +146,24 @@ class SeatsSelection extends Component {
             seats.push(<div className={classes} id={i} onClick={() => this.toggleActivatedSeat(i)}>{i}</div>);
         }
 
-        let summary = (
-            <div>
-                Details of your booking: <br />
-                Seats: {this.state.activeSeats.join(', ')} <br />
-                Name: {this.state.reservationName} <br />
-                Surname: {this.state.reservationSurname} <br />
-                E-mail: {this.state.reservationEmail} <br />
-                Phone number: {this.state.reservationPhone}
-            </div>
-        );
+        let summary;
+
+        if (this.state.booked) {
+            summary = (
+                <div> Your seats are sucessfully booked! </div>
+            )
+        } else {
+            summary = (
+                <div>
+                    Details of your booking: <br />
+                    Seats: {this.state.activeSeats.join(', ')} <br />
+                    Name: {this.state.reservationName} <br />
+                    Surname: {this.state.reservationSurname} <br />
+                    E-mail: {this.state.reservationEmail} <br />
+                    Phone number: {this.state.reservationPhone}
+                </div>
+            )
+        }
 
         return (
             <React.Fragment>
