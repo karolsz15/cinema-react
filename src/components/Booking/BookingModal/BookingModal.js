@@ -5,6 +5,10 @@ import Button from 'react-bootstrap/Button';
 import SeatsSelection from './SeatsSelection';
 
 const bookingModal = props => {
+
+    String.prototype.Capitalize = function() {
+        return this.charAt(0).toUpperCase() + this.slice(1);
+    }
     
     return (
         <Modal
@@ -15,7 +19,7 @@ const bookingModal = props => {
             >
                 <Modal.Header closeButton>
                     <Modal.Title id="contained-modal-title-vcenter">
-                        '{props.title}' on {props.day} at {props.hour}
+                        '{props.title}' on {props.day.Capitalize()} at {props.hour}
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>

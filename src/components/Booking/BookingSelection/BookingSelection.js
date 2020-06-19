@@ -9,15 +9,19 @@ const bookingSelection = props => {
     const weekDays = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday",
                       "sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"];
 
+    String.prototype.Capitalize = function() {
+        return this.charAt(0).toUpperCase() + this.slice(1);
+    }
+
     return (
-        <select onChange={props.changed} className="custom-select custom-select-lg" id="day" name="daySelection" style={{marginBottom: '1em'}}>
-            <option selected value={weekDays[dayOfWeek]}>
-                {weekDays[dayOfWeek]} {dayOfMonth}.{month}
+        <select onChange={props.changed} defaultValue={weekDays[dayOfWeek]} className="custom-select custom-select-lg" id="day" name="daySelection" style={{marginBottom: '1em'}}>
+            <option value={weekDays[dayOfWeek]}>
+                {weekDays[dayOfWeek].Capitalize()} {dayOfMonth}.{month}
             </option>
             {/* HANDLE EDGE CASE WITH LAST DAY OF MONTH LATER! E.G. 31.06 !-> 32.06*/}
            {[1,2,3,4,5,6].map(n => (
                <option value={weekDays[dayOfWeek+n]}>
-                  {weekDays[dayOfWeek+n]} {dayOfMonth+n}.{month} 
+                  {weekDays[dayOfWeek+n].Capitalize()} {dayOfMonth+n}.{month} 
                </option>
            ))}
         </select>
