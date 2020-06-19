@@ -38,7 +38,6 @@ form {
 	background: #dfb636;
 	height: 2em;
 	width: 2em;
-	/* border: 1px solid black; */
 	margin: .5em;
 	border-radius: .5em;
 }
@@ -1679,6 +1678,13 @@ font-weight: 700;
 	}
 }
 @media screen and (max-width: 1024px) {
+
+	.seat {
+		height: 2em;
+		width: 2em;
+		margin: .25em;
+	}
+
 	.main {
 		border-left: 80px solid #383838;
 	}	
@@ -1858,6 +1864,7 @@ font-weight: 700;
 		width: 80%;
 		margin: 8px 0;
 	}
+
 	.footer {
 		padding: 2em 1em;
 	}
@@ -2182,6 +2189,19 @@ font-weight: 700;
 	}
 }
 @media screen and (max-width: 480px) {
+
+	main .selection {
+		max-width: 100%;
+		margin: 0;
+		padding: .5em;
+	}
+
+	.seat {
+		height: 1.5em;
+		width: 1.5em;
+		margin: .25em;
+	}
+
 	.header-info {
 		display: none;
 	}
