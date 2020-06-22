@@ -308,7 +308,7 @@ label{
 
 .trailerDescription {
 	font-size: 0.8em;
-	height: 15em;
+	min-height: 18em;
 	overflow: hidden;
 	margin-top: 0.35em;
 	color: #b8b8b8;
@@ -793,7 +793,7 @@ p.claim {
 
 .content-grid{
 	text-align: center;
-	border: 1px solid rgba(235, 235, 235, 0.53);
+	border: 2px solid rgba(235, 235, 235, 0.53);
 	box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.35);
 }
 .content-grids {
@@ -804,8 +804,7 @@ p.claim {
 	margin: 0 5%;
 }
 .trailerPoster {
-	max-height: 350px;
-	width: auto;
+	max-height: 330px;
 }
 .last-grid{
 	margin-right:0px;
@@ -2195,6 +2194,10 @@ font-weight: 700;
 		max-width: 100%;
 		margin: 0;
 		padding: .5em;
+	}
+
+	.trailerDescription {
+		min-height: 0;
 	}
 
 	.seat {
