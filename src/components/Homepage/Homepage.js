@@ -6,7 +6,6 @@ import AutoPlay from '../AutoPlay/AutoPlay';
 import Spinner from '../UI/Spinner/Spinner';
 import MovieModal from '../UI/MovieModal/MovieModal';
 
-
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
 import axios from 'axios';
