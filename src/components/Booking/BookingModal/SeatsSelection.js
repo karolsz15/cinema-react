@@ -16,6 +16,7 @@ class SeatsSelection extends Component {
         summaryVisible: false,
         error: false,
         booked: false,
+        bookable: false
     }
 
     //get up to date reserved seats
@@ -73,16 +74,16 @@ class SeatsSelection extends Component {
 
     updatePhone = newPhone => {
         this.setState({
-            reservationPhone: newPhone
+            reservationPhone: newPhone,
+            bookable: true
         });
     }
 
     showSummary = () => {
         this.setState({
-            summaryVisible: true
+            summaryVisible: true,
         });
     }
-
 
     bookingHandler = () => {
 
@@ -94,14 +95,6 @@ class SeatsSelection extends Component {
             email: this.state.reservationEmail,
             phone: this.state.reservationPhone
         };
-
-        // axios.put(`https://karol-cinema.firebaseio.com/reservations/monday/10/reservedSeats.json`, allReservedSeats)
-        // .then( response => {
-        //   console.log(response);
-        // })
-        // .catch( error => {
-        //   console.log(error);
-        // });
 
         axios.put(`https://karol-cinema.firebaseio.com/reservations/${this.state.day}/${this.state.hour}/reservedSeats.json`, allReservedSeats)
           .then( response => {
@@ -165,7 +158,7 @@ class SeatsSelection extends Component {
                     E-mail: {this.state.reservationEmail} <br />
                     Phone number: {this.state.reservationPhone}
                 </div>
-            )
+            );
         } else {
             summary = (
                 <div> Please fill the form correctly! </div>
@@ -191,8 +184,18 @@ class SeatsSelection extends Component {
                                 <input id="phone" type="tel" placeholder="phone" onChange={e => this.updatePhone(e.target.value)}  required />
                             </div>
                             <div className="buttonsContainer">
-                                <button onClick={this.showSummary} id="summation" className="btn btn-secondary bookingButton">Summary</button>
-                                <input type="submit" onClick={this.bookingHandler} id="finishReservation" className="btn btn-secondary bookingButton" value="Book!"></input>
+                                <button 
+                                    onClick={this.showSummary} 
+                                    id="summation" 
+                                    className="btn btn-secondary bookingButton">Summary</button>
+                                <input 
+                                    onClick={this.bookingHandler} 
+                                    disabled={!this.state.bookable}
+
+                                    type="submit" 
+                                    id="finishReservation" 
+                                    className="btn btn-secondary bookingButton" 
+                                    value="Book!"></input>
                             </div>
                         </form>
                     </React.Fragment>) : null}
