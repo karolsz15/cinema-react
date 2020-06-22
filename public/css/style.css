@@ -31,6 +31,10 @@ form {
 	display: flex;
 }
 
+.bookingForm {
+	flex-direction: column;
+}
+
 .seat {
 	display: flex;
 	justify-content: center;
@@ -56,7 +60,11 @@ form {
 	display: flex;
 	margin: 1em;
 	min-width: 15vw;
-	justify-content: space-between;
+	justify-content: center;
+}
+
+.bookingButton {
+	margin: .5em;
 }
 
 .active {
@@ -190,20 +198,12 @@ main .selection {
   main .finishReservation:hover {
 	cursor: pointer;
   }
-  main .detail {
-	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
-	width: 50em;
-	margin: 0 auto;
-	overflow: hidden;
-	margin-top: 1em;
-	margin-bottom: 1em;
-  }
-  main .detail input {
-	color: #ffffff;
-	background-color: #333333;
-  }
+
+
+.detail {
+
+}
+
   #informationSeatBox {
 	position: absolute;
 	width: 15em;

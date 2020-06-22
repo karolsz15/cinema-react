@@ -15,7 +15,7 @@ class SeatsSelection extends Component {
         reservationPhone: null,
         summaryVisible: false,
         error: false,
-        booked: false
+        booked: false,
     }
 
     //get up to date reserved seats
@@ -75,15 +75,7 @@ class SeatsSelection extends Component {
             summaryVisible: true
         });
     }
-    
-    clearForm = () => {
-        this.setState({
-            reservationName: null,
-            reservationSurname: null,
-            reservationEmail: null,
-            reservationPhone: null,  
-        });
-    }
+
 
     bookingHandler = () => {
 
@@ -148,20 +140,28 @@ class SeatsSelection extends Component {
 
         let summary;
 
-        if (this.state.booked) {
+        if (this.state.activeSeats.length === 0) {
+            summary = (
+                <div> Please choose your seats! </div>
+            )
+        } else if (this.state.booked) {
             summary = (
                 <div> Your seats are sucessfully booked! </div>
             )
-        } else {
+        } else if (!this.state.booked && (this.state.reservationName && this.state.reservationSurname && this.state.reservationEmail && this.state.reservationPhone) && this.state.activeSeats.length !== 0) {
             summary = (
                 <div>
-                    Details of your booking: <br />
+                    <strong>Details of your booking</strong><br />
                     Seats: {this.state.activeSeats.join(', ')} <br />
                     Name: {this.state.reservationName} <br />
                     Surname: {this.state.reservationSurname} <br />
                     E-mail: {this.state.reservationEmail} <br />
                     Phone number: {this.state.reservationPhone}
                 </div>
+            )
+        } else {
+            summary = (
+                <div> Please fill the form correctly! </div>
             )
         }
 
@@ -173,16 +173,23 @@ class SeatsSelection extends Component {
                         {seats}
                     </div>
                 </div>
-                <div id="detail" className="">
-                    <input id="name" placeholder="name" onChange={e => this.updateName(e.target.value)} />
-                    <input id="surname" placeholder="surname" onChange={e => this.updateSurname(e.target.value)} />
-                    <input id="email" placeholder="e-mail" onChange={e => this.updateEmail(e.target.value)} />
-                    <input id="phone" placeholder="phone" onChange={e => this.updatePhone(e.target.value)} />
-                </div>
-                <div className="buttonsContainer">
-                    <button onClick={this.showSummary} id="summation" className="btn btn-secondary">Summary</button>
-                    <button onClick={this.bookingHandler} id="finishReservation" className="btn btn-secondary">Book!</button>
-                </div>
+
+                {!this.state.booked ? (
+                    <React.Fragment>
+                        <form className="bookingForm">
+                            <div id="detail" className="detail">
+                                <input id="name" type="text" placeholder="name" onChange={e => this.updateName(e.target.value)} required />
+                                <input id="surname" type="text" placeholder="surname" onChange={e => this.updateSurname(e.target.value)} required />
+                                <input id="email" type="email" placeholder="e-mail" onChange={e => this.updateEmail(e.target.value)} required />
+                                <input id="phone" type="tel" placeholder="phone" onChange={e => this.updatePhone(e.target.value)}  required />
+                            </div>
+                            <div className="buttonsContainer">
+                                <button onClick={this.showSummary} id="summation" className="btn btn-secondary bookingButton">Summary</button>
+                                <input type="submit" onClick={this.bookingHandler} id="finishReservation" className="btn btn-secondary bookingButton" value="Book!"></input>
+                            </div>
+                        </form>
+                    </React.Fragment>) : null}
+
                 {this.state.summaryVisible ? summary : null}
             </React.Fragment>
         );
