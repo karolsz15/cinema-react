@@ -1681,6 +1681,10 @@ font-weight: 700;
 }
 @media screen and (max-width: 1024px) {
 
+	.sliderImage {
+		max-height: 300px;
+	}
+
 	.seat {
 		height: 2em;
 		width: 2em;
@@ -1867,6 +1871,10 @@ font-weight: 700;
 		margin: 8px 0;
 	}
 
+	.sliderImage {
+		max-height: 230px;
+	}
+
 	.footer {
 		padding: 2em 1em;
 	}
@@ -1999,7 +2007,11 @@ font-weight: 700;
 		padding: 0.25em 2em 0.25em 1em;
 	}
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 760px) {
+
+	.sliderContainer {
+		display: none;
+	}
 	
 	.header {
 		min-height: 100vh;

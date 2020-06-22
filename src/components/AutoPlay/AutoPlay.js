@@ -16,31 +16,31 @@ class AutoPlay extends Component {
     };
     
     return (
-      <div style={{padding: '1em'}}>
+      <div className="sliderContainer" style={{padding: '1em'}}>
         <Slider {...settings}>
           <div>
-            <img src={this.props.poster1} alt="" />
+            <img src={this.props.poster1} alt="" className="sliderImage" />
           </div>
           <div>
-            <img src={this.props.poster2} alt="" />
+            <img src={this.props.poster2} alt="" className="sliderImage" />
           </div>
           <div>
-            <img src={this.props.poster3} alt="" />
+            <img src={this.props.poster3} alt="" className="sliderImage" />
           </div>
           <div>
-            <img src={this.props.poster4} alt="" />
+            <img src={this.props.poster4} alt="" className="sliderImage" />
           </div>
           <div>
-            <img src={this.props.poster5} alt="" />
+            <img src={this.props.poster5} alt="" className="sliderImage" />
           </div>
           <div>
-            <img src={this.props.poster6} alt="" />
+            <img src={this.props.poster6} alt="" className="sliderImage" />
           </div>
           <div>
-            <img src={this.props.poster7} alt="" />
+            <img src={this.props.poster7} alt="" className="sliderImage" />
           </div>
           <div>
-            <img src={this.props.poster8} alt="" />
+            <img src={this.props.poster8} alt="" className="sliderImage" />
           </div>
         </Slider>
       </div>
