@@ -19,6 +19,7 @@ const movieModal = props => {
             <Modal.Body>
               <iframe 
                 src={props.trailer} 
+                title={props.title} 
 
                 width="560" 
                 height="315" 

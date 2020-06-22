@@ -44,17 +44,16 @@ class Homepage extends Component {
         let posters = this.state.error ? <p>Posters can't be loaded</p> : <Spinner />;
         let trailerModal = this.state.error ? <p>Trailer can't be loaded</p> : <Spinner />;
 
-
         if (this.state.movies) {
             header = (
                 <HomepageHeader 
-                    bigImage={this.state.movies.one.bigImageUrl} 
-                    title={this.state.movies.one.title} 
-                    cast={this.state.movies.one.cast}
-                    release={this.state.movies.one.release}
-                    genres={this.state.movies.one.genres}
-                    summary={this.state.movies.one.summary}
-                    trailer={this.state.movies.one.trailerUrl}  
+                    bigImage={this.state.movies.two.bigImageUrl} 
+                    title={this.state.movies.two.title} 
+                    cast={this.state.movies.two.cast}
+                    release={this.state.movies.two.release}
+                    genres={this.state.movies.two.genres}
+                    summary={this.state.movies.two.summary}
+                    trailer={this.state.movies.two.trailerUrl}  
                     trailerClicked={this.showModal}
                     hideModal={this.hideModal} 
                     showModal={this.state.showModal} />
@@ -75,8 +74,8 @@ class Homepage extends Component {
            trailerModal = (  
                 <MovieModal 
                     show={this.state.modalVisible}
-                    title={this.state.movies.one.title} 
-                    trailer={this.state.movies.one.trailerUrl}  
+                    title={this.state.movies.two.title} 
+                    trailer={this.state.movies.two.trailerUrl}  
                     onHide={this.hideModal} />
            );
         }

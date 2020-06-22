@@ -3,6 +3,7 @@ body{
 	margin:0;
 	font-family: 'Open Sans', sans-serif;
 	background:#fff;
+	overflow-x: hidden;
 }
 body a{
     transition:0.5s all;
@@ -107,7 +108,7 @@ main .selection {
 	overflow: auto;
   }
 
-  main .selection select {
+  /* main .selection select {
 	width: 12em;
 	color: #dfb636;
 	background-color: #333333;
@@ -115,7 +116,7 @@ main .selection {
   main .selection #movie {
 	color: #dfb636;
 	background-color: #333333;
-  }
+  } */
 
   main .ticket {
 	margin: 0 10vw;
@@ -302,6 +303,7 @@ label{
 .headerButtons {
 	display: flex;
 	justify-content: space-around;
+	margin: 1em;
 }
 
 .trailerDescription {

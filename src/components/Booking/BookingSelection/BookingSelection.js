@@ -20,7 +20,7 @@ const bookingSelection = props => {
             </option>
             {/* HANDLE EDGE CASE WITH LAST DAY OF MONTH LATER! E.G. 31.06 !-> 32.06*/}
            {[1,2,3,4,5,6].map(n => (
-               <option value={weekDays[dayOfWeek+n]}>
+               <option value={weekDays[dayOfWeek+n]} key={weekDays[dayOfWeek+n]}>
                   {weekDays[dayOfWeek+n].Capitalize()} {dayOfMonth+n}.{month} 
                </option>
            ))}
