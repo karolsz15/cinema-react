@@ -21,11 +21,18 @@ class SeatsSelection extends Component {
     //get up to date reserved seats
     componentDidMount() {
         axios
-        .get(`https://karol-cinema.firebaseio.com/reservations/monday/10/reservedSeats.json`)
+        .get(`https://karol-cinema.firebaseio.com/reservations/${this.state.day}/${this.state.hour}/reservedSeats.json`)
         .then(response => {
-            this.setState({
-                reservedSeats: response.data
-            });
+            if (response.data === null) {
+                this.setState({
+                    reservedSeats: []
+                });
+            } else {
+                this.setState({
+                    reservedSeats: response.data
+                });
+            }
+            // console.log(response);
         })
         .catch(error => this.setState({ error: true }));
     }
@@ -88,23 +95,23 @@ class SeatsSelection extends Component {
             phone: this.state.reservationPhone
         };
 
-        axios.put(`https://karol-cinema.firebaseio.com/reservations/monday/10/reservedSeats.json`, allReservedSeats)
-        .then( response => {
-          console.log(response);
-        })
-        .catch( error => {
-          console.log(error);
-        });
+        // axios.put(`https://karol-cinema.firebaseio.com/reservations/monday/10/reservedSeats.json`, allReservedSeats)
+        // .then( response => {
+        //   console.log(response);
+        // })
+        // .catch( error => {
+        //   console.log(error);
+        // });
 
-        // axios.put(`https://karol-cinema.firebaseio.com/reservations/${this.state.day}/${this.state.hour}/reservedSeats.json`, allReservedSeats)
-        //   .then( response => {
-        //     console.log(response);
-        //   })
-        //   .catch( error => {
-        //     console.log(error);
-        //   });
+        axios.put(`https://karol-cinema.firebaseio.com/reservations/${this.state.day}/${this.state.hour}/reservedSeats.json`, allReservedSeats)
+          .then( response => {
+            console.log(response);
+          })
+          .catch( error => {
+            console.log(error);
+          });
 
-        axios.post(`https://karol-cinema.firebaseio.com/reservations/monday/10/customersData.json`, customerData)
+        axios.post(`https://karol-cinema.firebaseio.com/reservations/${this.state.day}/${this.state.hour}/customersData.json`, customerData)
         .then( response => {
           console.log(response);
         })
