@@ -12,10 +12,10 @@ SCREENSHOTS:
 <img src='screenshots/tablet5.png'></img>
 
 2. Mobile views
-<img src='screenshots/mobile1.png' height="50%"></img>
-<img src='screenshots/mobile2.png' height="50%"></img>
-<img src='screenshots/mobile3.png' height="50%"></img>
-<img src='screenshots/mobile-booking.png' height="50%"></img>
+<img src='screenshots/mobile1.png' width="70%"></img>
+<img src='screenshots/mobile2.png' width="70%"></img>
+<img src='screenshots/mobile3.png' width="70%"></img>
+<img src='screenshots/mobile-booking.png' width="70%"></img>
 
 3. Customer's data and reservation posted to database - confirmation
 <img src='screenshots/database.png'></img>
