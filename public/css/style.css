@@ -26,8 +26,12 @@ main {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-  }
-  
+}
+
+iframe {
+	max-width: 100%;
+}
+
 form {
 	display: flex;
 }
@@ -2056,7 +2060,10 @@ font-weight: 700;
 	}
 	.news-left-grid h2 {
 		font-size: 2.1em;
-	}	
+	}
+	.news-right-grid {
+		margin-top: 0;
+	}		
 	.news-left-grid h3, .news-right-grid h3 {
 		font-size: 1.8em;
 	}
@@ -2096,6 +2103,10 @@ font-weight: 700;
 	.booking_object {
 		flex-direction: column;
 	}
+
+	.news-right-grid {
+		margin-top: 2em;
+	}	
 	
 	p.claim {
 		width: 85%;
