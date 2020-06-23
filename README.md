@@ -16,33 +16,33 @@ The application is fully responsive, works properly on desktop, tablets and mobi
 ### I. Tablet views
 
 #### 1. Seats selection
-<img src='screenshots/tablet1.png' style='margin: 1em'></img>
+<img src='screenshots/tablet1.png' style='margin: 1em'></img><hr/>
 
 #### 2. Reservation details preview
-<img src='screenshots/tablet2.png' style='margin: 1em'></img>
+<img src='screenshots/tablet2.png' style='margin: 1em'></img><hr/>
 
 #### 3. Booking confirmation 
-<img src='screenshots/tablet3.png' style='margin: 1em'></img>
+<img src='screenshots/tablet3.png' style='margin: 1em'></img><hr/>
 
 #### 4. Trailers page view
-<img src='screenshots/tablet4.png' style='margin: 1em'></img>
+<img src='screenshots/tablet4.png' style='margin: 1em'></img><hr/>
 
 #### 5. Trailer popup modal
-<img src='screenshots/tablet5.png' style='margin: 1em'></img>
+<img src='screenshots/tablet5.png' style='margin: 1em'></img><hr/>
 
 ### II. Mobile views <br />
 
 #### 1. Seats selection
-<img src='screenshots/mobile1.png' width="40%" style='margin: 1em'></img>
+<img src='screenshots/mobile1.png' width="40%" style='margin: 1em'></img><hr/>
 
 #### 2. Reservation details preview
-<img src='screenshots/mobile2.png' width="40%" style='margin: 1em'></img>
+<img src='screenshots/mobile2.png' width="40%" style='margin: 1em'></img><hr/>
 
 #### 3. Booking confirmation 
-<img src='screenshots/mobile3.png' width="40%" style='margin: 1em'></img>
+<img src='screenshots/mobile3.png' width="40%" style='margin: 1em'></img><hr/>
 
 #### 4. Movie selection view
-<img src='screenshots/mobile-booking.png' width="40%" style='margin: 1em'></img>
+<img src='screenshots/mobile-booking.png' width="40%" style='margin: 1em'></img><hr/>
 
 ### III. Customer's data and reservation posted to database - confirmation
 <img src='screenshots/database.png' style='margin: 1em'></img>
