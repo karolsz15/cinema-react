@@ -676,13 +676,13 @@ i.contact1 {
 	margin:3px 0 2.1em 0;
 }
 .news-left-grid p {
-	color:#bb7b29;
+	color: #dfb636;
 	font-size:1.4em;
 	font-weight:600;
 	margin-top:2.7em;
 }
 .news-left-grid a {
-	background:#bb7b29;
+	background: #dfb636;
 	font-size:1.3em;
 	text-decoration:none;
 	  padding: 15px 25px 15px 15px;
@@ -735,6 +735,8 @@ i.book {
 	margin-top:0.5em;
 }
 .news-grid {
+	font-size: .9em;
+	line-height: 1em;
 	padding-bottom:1.2em;
 	margin-bottom:1.2em;
 	border-bottom:1px solid #F3F3F3;
@@ -1685,6 +1687,10 @@ font-weight: 700;
 		max-height: 300px;
 	}
 
+	.trailerDescription {
+		min-height: 16em;
+	}
+
 	.seat {
 		height: 2em;
 		width: 2em;
@@ -1721,8 +1727,7 @@ font-weight: 700;
 	}
 	.news-right-grid p {
 		font-size: 0.95em;
-		line-height: 1.7em;
-		height: 67px;
+		line-height: 1.4em;
 		overflow: hidden;
 		margin-top: 0.35em;
 	}
@@ -1731,7 +1736,7 @@ font-weight: 700;
 	}
 	.header-info {
 		float: right;
-		padding-top: 2em;
+		margin-top: 5%;
 		width: 31%;
 		margin-right: 2%;
 	}
@@ -1743,7 +1748,6 @@ font-weight: 700;
 	}
 	p.special {
 		margin: 1em 0 1em 0;
-		height: 20px;
 		overflow: hidden;
 	}
 	.logo {
@@ -1866,13 +1870,28 @@ font-weight: 700;
 	}
 }
 @media screen and (max-width: 800px) {
+
 	p.claim {
 		width: 80%;
 		margin: 8px 0;
 	}
 
+	.header-info {
+		width: 50%;
+		margin-top: 35%;
+	}
+
+	.videoButton, 
+	.bookButton {
+	width: auto;
+	}
+
 	.sliderImage {
 		max-height: 230px;
+	}
+
+	.trailerDescription {
+		min-height: 14em;
 	}
 
 	.footer {
@@ -1912,7 +1931,7 @@ font-weight: 700;
 		width:40%;
 	}
 	.header {
-		min-height: 100vh;
+		min-height: 75vh;
 	}
 	.header-info h1 {
 		font-size: 1.8em;
@@ -1920,17 +1939,11 @@ font-weight: 700;
 	p.review.reviewgo {
 		display: none;
 	}
-	p.age a {
-		padding: 4px 8px;
-		margin-right: 0.5em;
-		border: 1px solid #3bd369;
-	}
-	.header-info {
-		width: 32%;
-	}
+
 	a.video {
 		display:none;
 	}
+	
 	a.book {
 		font-size: 1.1em;
 		padding: 6px 17px 3px 11px;
@@ -2007,7 +2020,29 @@ font-weight: 700;
 		padding: 0.25em 2em 0.25em 1em;
 	}
 }
+
 @media screen and (max-width: 760px) {
+
+	.main {
+		display: flex;
+		flex-direction: column;
+	}
+
+	.header-info {
+		width: 100%;
+		float: none;
+		padding: 10%;
+		margin-top: 0;
+	}
+
+	.videoButton, 
+	.bookButton {
+	width: 40%;
+	}
+
+	.age, .review {
+		display: none;
+	}
 
 	.sliderContainer {
 		display: none;
@@ -2098,9 +2133,7 @@ font-weight: 700;
 	p.review.reviewgo {
 		display:block;
 	}
-	p.special {
-		display:none;
-	}
+
 	.header-info h1 {
 		font-size: 1.7em;
 	}
@@ -2109,12 +2142,14 @@ font-weight: 700;
 		margin-right: 0%;
 	}
 	i.book1 {
-		width: 30px;
-		height: 25px;
-		background: url('../../images/img-sprite.png') no-repeat -219px -63px;
-		margin-right: 5px;
-		background-size: 268px;
+		width: 40px;
+		height: 35px;
+		background: url('../../images/img-sprite.png') no-repeat -300px -87px;
+		display: inline-block;
+		vertical-align: middle;
+		margin-right: 10px;
 	}
+	
 	a.book {
 		font-size: 1em;
 		padding: 10px 17px 7px 11px;
@@ -2219,8 +2254,15 @@ font-weight: 700;
 	}
 
 	.header-info {
-		display: none;
+		padding: 0 5%;
+		margin-top: 90%;
 	}
+
+	.news {
+		display: flex;
+		flex-direction: column;
+	}
+
 	.logo {
 		width: 65%;
 	}

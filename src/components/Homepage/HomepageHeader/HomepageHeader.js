@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom';
 const homepageHeader = props => (
 
     <React.Fragment>
-            <div className="header" style={{background: `url(${props.bigImage})` }}>
+            <div className="header" style={{background: `no-repeat top url(${props.bigImage})` }}>
                 <div className="top-header">
                     <div className="logo">
                         <a href="/"><img src="images/logo4.png" alt="" /></a>
