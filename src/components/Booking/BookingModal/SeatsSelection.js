@@ -186,14 +186,12 @@ class SeatsSelection extends Component {
                             <div className="buttonsContainer">
                                 <button 
                                     onClick={this.showSummary} 
-                                    id="summation" 
                                     className="btn btn-secondary bookingButton">Summary</button>
                                 <input 
                                     onClick={this.bookingHandler} 
                                     disabled={!this.state.bookable}
 
                                     type="submit" 
-                                    id="finishReservation" 
                                     className="btn btn-secondary bookingButton" 
                                     value="Book!"></input>
                             </div>

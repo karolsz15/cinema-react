@@ -9,14 +9,8 @@ const oneMovie = props => {
                     <h5 style={{margin: '.5em'}}>{props.title}</h5>
                     {props.summary}
                     <div>
-                        <button 
-                            style={{margin: '.5em'}} 
-                            onClick={props.clicked1} 
-                            className="btn btn-secondary">{props.hour1}</button>
-                        <button 
-                            style={{margin: '.5em'}} 
-                            onClick={props.clicked2} 
-                            className="btn btn-secondary">{props.hour2}</button>
+                        <a style={{margin: '.5em'}} onClick={props.clicked1} className="btn btn-secondary" href="#selection">{props.hour1}</a>
+                        <a style={{margin: '.5em'}} onClick={props.clicked2} className="btn btn-secondary" href="#selection">{props.hour2}</a>
                     </div>
                 </div>
             </div>
