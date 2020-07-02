@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Slider from "react-slick";
 
 class AutoPlay extends Component {
-  
+
   render() {
 
     const settings = {
@@ -16,7 +16,7 @@ class AutoPlay extends Component {
       cssEase: "linear"
     };
     
-    let posters = this.props.postersArray.map(el => (
+    const posters = this.props.postersArray.map(el => (
       <div>
         <img src={el} alt="movie poster" className="sliderImage" />
       </div>

@@ -3,7 +3,7 @@ import SingleMovie from './SingleMovie/SingleMovie';
 import Spinner from '../UI/Spinner/Spinner';
 
 import axios from 'axios';
-const _ = require('lodash');
+import _ from 'lodash';
 
 class Trailers extends Component {
 

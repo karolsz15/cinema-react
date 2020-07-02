@@ -30,7 +30,6 @@ class Booking extends Component {
             this.setState({
                 movies: response.data
 			});
-			// console.log(response.data)
           })
 		  .catch(error => this.setState({ error: true }));
 		  
@@ -40,7 +39,6 @@ class Booking extends Component {
             this.setState({
                 reservations: response.data
 			});
-			// console.log(response.data)
           })
           .catch(error => this.setState({ error: true }));
     }

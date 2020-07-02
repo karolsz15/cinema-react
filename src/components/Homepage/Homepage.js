@@ -9,7 +9,7 @@ import MovieModal from '../UI/MovieModal/MovieModal';
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
 import axios from 'axios';
-const _ = require('lodash');
+import _ from 'lodash';
 
 class Homepage extends Component {
 
@@ -60,22 +60,11 @@ class Homepage extends Component {
             
             const moviesArray = _.values(this.state.movies);
             
-            const autoPlayPostersArray = moviesArray.map( el => el.posterUrl)
-            // console.log(autoPlayPostersArray);
+            const autoPlayPostersArray = moviesArray.map( el => el.posterUrl);
 
             posters = (
                 <AutoPlay postersArray={autoPlayPostersArray} />
             );
-
-            // {moviesArray.map(el => (
-            //     <SingleMovie 
-            //             title={el.title} 
-            //             summary={limitMovieDescriptionTitle(el.summary)} 
-            //             poster={el.posterUrl} 
-            //             trailer={el.trailerUrl}
-            //             key={el.title}
-            //     />
-            // ))}
 
            trailerModal = (  
                 <MovieModal 
@@ -89,32 +78,33 @@ class Homepage extends Component {
         return (
             <React.Fragment>
                 <div className="main">
+
                     {trailerModal}
-                   {header}
-                   {posters}
-                    
-                <div className="news">
-                    <div className="col-md-6 news-left-grid">
-                        <h3>Book your ticket now!</h3>
-                        <h2>Book your ticket now!</h2>
-                        <h4>Book your ticket now!</h4>
-                        <Link to="/booking"><i className="book"></i>BOOK TICKET</Link>
-                    </div>
-                    <div className="col-md-6 news-right-grid">
-                        <h3>News</h3>
-                        <div className="news-grid">
-                            <h5>Lorem Ipsum Dolor Sit Amet</h5>
-                            <label>June 15 2020</label>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.</p>
+                    {header}
+                    {posters}
+                        
+                    <div className="news">
+                        <div className="col-md-6 news-left-grid">
+                            <h3>Book your ticket now!</h3>
+                            <h2>Book your ticket now!</h2>
+                            <h4>Book your ticket now!</h4>
+                            <Link to="/booking"><i className="book"></i>BOOK TICKET</Link>
                         </div>
-                        <div className="news-grid">
-                            <h5>Lorem Ipsum Dolor Sit Amet</h5>
-                            <label>June 10 2020</label>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.</p>
+                        <div className="col-md-6 news-right-grid">
+                            <h3>News</h3>
+                            <div className="news-grid">
+                                <h5>Lorem Ipsum Dolor Sit Amet</h5>
+                                <label>June 15 2020</label>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.</p>
+                            </div>
+                            <div className="news-grid">
+                                <h5>Lorem Ipsum Dolor Sit Amet</h5>
+                                <label>June 10 2020</label>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.</p>
+                            </div>
                         </div>
+                        <div className="clearfix"></div>
                     </div>
-                    <div className="clearfix"></div>
-                </div>
                 </div>
             </React.Fragment>
         );
