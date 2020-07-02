@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Slider from "react-slick";
 
 class AutoPlay extends Component {
+  
   render() {
 
     const settings = {
@@ -15,33 +16,16 @@ class AutoPlay extends Component {
       cssEase: "linear"
     };
     
+    let posters = this.props.postersArray.map(el => (
+      <div>
+        <img src={el} alt="movie poster" className="sliderImage" />
+      </div>
+    ));
+
     return (
       <div className="sliderContainer" style={{padding: '1em'}}>
         <Slider {...settings}>
-          <div>
-            <img src={this.props.poster1} alt="" className="sliderImage" />
-          </div>
-          <div>
-            <img src={this.props.poster2} alt="" className="sliderImage" />
-          </div>
-          <div>
-            <img src={this.props.poster3} alt="" className="sliderImage" />
-          </div>
-          <div>
-            <img src={this.props.poster4} alt="" className="sliderImage" />
-          </div>
-          <div>
-            <img src={this.props.poster5} alt="" className="sliderImage" />
-          </div>
-          <div>
-            <img src={this.props.poster6} alt="" className="sliderImage" />
-          </div>
-          <div>
-            <img src={this.props.poster7} alt="" className="sliderImage" />
-          </div>
-          <div>
-            <img src={this.props.poster8} alt="" className="sliderImage" />
-          </div>
+          {posters}
         </Slider>
       </div>
     );

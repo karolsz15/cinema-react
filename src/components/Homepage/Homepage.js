@@ -9,6 +9,7 @@ import MovieModal from '../UI/MovieModal/MovieModal';
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
 import axios from 'axios';
+const _ = require('lodash');
 
 class Homepage extends Component {
 
@@ -25,7 +26,6 @@ class Homepage extends Component {
             this.setState({
                 movies: response.data
 			});
-			console.log(response.data)
           })
           .catch(error => this.setState({ error: true }));
     }
@@ -57,18 +57,25 @@ class Homepage extends Component {
                     hideModal={this.hideModal} 
                     showModal={this.state.showModal} />
             );
+            
+            const moviesArray = _.values(this.state.movies);
+            
+            const autoPlayPostersArray = moviesArray.map( el => el.posterUrl)
+            // console.log(autoPlayPostersArray);
 
             posters = (
-                <AutoPlay 
-                    poster1={this.state.movies.one.posterUrl}
-                    poster2={this.state.movies.two.posterUrl} 
-                    poster3={this.state.movies.three.posterUrl} 
-                    poster4={this.state.movies.four.posterUrl} 
-                    poster5={this.state.movies.five.posterUrl} 
-                    poster6={this.state.movies.six.posterUrl} 
-                    poster7={this.state.movies.seven.posterUrl} 
-                    poster8={this.state.movies.eight.posterUrl} />
+                <AutoPlay postersArray={autoPlayPostersArray} />
             );
+
+            // {moviesArray.map(el => (
+            //     <SingleMovie 
+            //             title={el.title} 
+            //             summary={limitMovieDescriptionTitle(el.summary)} 
+            //             poster={el.posterUrl} 
+            //             trailer={el.trailerUrl}
+            //             key={el.title}
+            //     />
+            // ))}
 
            trailerModal = (  
                 <MovieModal 
