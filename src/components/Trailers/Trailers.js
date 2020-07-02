@@ -3,6 +3,7 @@ import SingleMovie from './SingleMovie/SingleMovie';
 import Spinner from '../UI/Spinner/Spinner';
 
 import axios from 'axios';
+const _ = require('lodash');
 
 class Trailers extends Component {
 
@@ -51,7 +52,6 @@ class Trailers extends Component {
                     return acc + cur.length;
                 }, 0);
 
-                // return the result
                 return `${newDesc.join(' ')} ...`;
             }
             return desc;
@@ -59,61 +59,22 @@ class Trailers extends Component {
 
         if (this.state.movies) {
 
-            // ['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight'].map(el => {});
+            const moviesArray = _.values(this.state.movies);
 
             movies = (
                 <div className="content-grids">
-                    <SingleMovie 
-                        title={this.state.movies.one.title} 
-                        summary={limitMovieDescriptionTitle(this.state.movies.one.summary)} 
-                        poster={this.state.movies.one.posterUrl} 
-                        trailer={this.state.movies.one.trailerUrl}
-                    />
-                    <SingleMovie 
-                        title={this.state.movies.two.title} 
-                        summary={limitMovieDescriptionTitle(this.state.movies.two.summary)} 
-                        poster={this.state.movies.two.posterUrl} 
-                        trailer={this.state.movies.two.trailerUrl}
-                    />
-                    <SingleMovie 
-                        title={this.state.movies.three.title} 
-                        summary={limitMovieDescriptionTitle(this.state.movies.three.summary)} 
-                        poster={this.state.movies.three.posterUrl} 
-                        trailer={this.state.movies.three.trailerUrl}
-                    />
-                    <SingleMovie 
-                        title={this.state.movies.four.title} 
-                        summary={limitMovieDescriptionTitle(this.state.movies.four.summary)} 
-                        poster={this.state.movies.four.posterUrl} 
-                        trailer={this.state.movies.four.trailerUrl}
-                    />
-                    <SingleMovie 
-                        title={this.state.movies.five.title} 
-                        summary={limitMovieDescriptionTitle(this.state.movies.five.summary)} 
-                        poster={this.state.movies.five.posterUrl} 
-                        trailer={this.state.movies.five.trailerUrl}
-                    />
-                    <SingleMovie 
-                        title={this.state.movies.six.title} 
-                        summary={limitMovieDescriptionTitle(this.state.movies.six.summary)} 
-                        poster={this.state.movies.six.posterUrl} 
-                        trailer={this.state.movies.six.trailerUrl}
-                    />
-                    <SingleMovie 
-                        title={this.state.movies.seven.title} 
-                        summary={limitMovieDescriptionTitle(this.state.movies.seven.summary)} 
-                        poster={this.state.movies.seven.posterUrl} 
-                        trailer={this.state.movies.seven.trailerUrl}
-                    />
-                    <SingleMovie 
-                        title={this.state.movies.eight.title} 
-                        summary={limitMovieDescriptionTitle(this.state.movies.eight.summary)} 
-                        poster={this.state.movies.eight.posterUrl} 
-                        trailer={this.state.movies.eight.trailerUrl}
-                    />
+                    {moviesArray.map(el => (
+                        <SingleMovie 
+                                title={el.title} 
+                                summary={limitMovieDescriptionTitle(el.summary)} 
+                                poster={el.posterUrl} 
+                                trailer={el.trailerUrl}
+                                key={el.title}
+                        />
+                    ))}
                 </div>
             );
-        }
+        };
 
         return (
             <React.Fragment>

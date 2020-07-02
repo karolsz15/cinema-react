@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
+import PropTypes from 'prop-types'; // ES6
 
 import Homepage from '../components/Homepage/Homepage';
 import Menu from '../components/Menu/Menu';
