@@ -1,31 +1,33 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { format, add } from 'date-fns';
 
 const bookingSelection = props => {
 
     const fullDate = new Date();
-    const dayOfMonth = fullDate.getDate();
-    const dayOfWeek = fullDate.getDay();
-    const month = fullDate.getMonth();
+    const dayOfMonth = format(fullDate, 'dd');
+    const dayOfWeek = format(fullDate, 'cccc');
+    const month = format(fullDate, 'LL');
 
-    const weekDays = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday",
-                      "sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"];
-
-    String.prototype.Capitalize = function() {
-        return this.charAt(0).toUpperCase() + this.slice(1);
+    String.prototype.unCapitalize = function() {
+        return this.charAt(0).toLowerCase() + this.slice(1);
     }
 
     return (
-        <select onChange={props.changed} defaultValue={weekDays[dayOfWeek]} className="custom-select custom-select-lg" id="day" name="daySelection" style={{marginBottom: '1em'}}>
-            <option value={weekDays[dayOfWeek]}>
-                {weekDays[dayOfWeek].Capitalize()} {dayOfMonth}.{month}
+        <select onChange={props.changed} defaultValue={dayOfWeek} className="custom-select custom-select-lg" id="day" name="daySelection" style={{marginBottom: '1em'}}>
+            
+            {/* default value - current day */}
+            <option value={dayOfWeek.unCapitalize()}>
+                {dayOfWeek} {dayOfMonth}.{month}
             </option>
-            {/* HANDLE EDGE CASE WITH LAST DAY OF MONTH LATER! E.G. 31.06 !-> 32.06*/}
+
+            {/* options' values - list of future six days */}
            {[1,2,3,4,5,6].map(n => (
-               <option value={weekDays[dayOfWeek+n]} key={weekDays[dayOfWeek+n]}>
-                  {weekDays[dayOfWeek+n].Capitalize()} {dayOfMonth+n}.{month} 
+               <option value={format(add(fullDate, {days: n}), 'cccc').unCapitalize()} key={format(add(fullDate, {days: n}), 'cccc')}>
+                  {format(add(fullDate, {days: n}), 'cccc')} {format(add(fullDate, {days: n}), 'dd')}.{format(add(fullDate, {days: n}), 'LL')} 
                </option>
            ))}
+
         </select>
     );
 };
