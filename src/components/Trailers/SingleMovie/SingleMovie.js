@@ -1,4 +1,6 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
+
 import MovieModal from '../../UI/MovieModal/MovieModal';
 
 class SingleMovie extends Component {
@@ -31,10 +33,18 @@ class SingleMovie extends Component {
                     <div className="trailerDescription">{this.props.summary}</div>
                     <a onClick={this.showModal} className="button play-icon" href="#small-dialog3">Watch trailer</a>
                     <a className="button play-icon" href="/booking">Book now</a>
-                </div>    
+                </div>
+
             </React.Fragment>
         );
     }
+};
+
+SingleMovie.propTypes = {
+    poster: PropTypes.string,
+    title: PropTypes.string,
+    summary: PropTypes.string,
+    trailer: PropTypes.string
 };
 
 export default SingleMovie;

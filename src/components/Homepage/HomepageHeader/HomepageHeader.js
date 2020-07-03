@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 const homepageHeader = props => (
 
@@ -27,5 +28,15 @@ const homepageHeader = props => (
             </div>
     </React.Fragment>
 );
+
+homepageHeader.propTypes = {
+    bigImage: PropTypes.string,
+    title: PropTypes.string,
+    cast: PropTypes.string,
+    genres: PropTypes.string,
+    release: PropTypes.string,
+    summary: PropTypes.string,
+    trailerClicked: PropTypes.func
+};
 
 export default homepageHeader;

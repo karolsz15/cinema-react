@@ -74,6 +74,7 @@ class Booking extends Component {
 							title={el.title} 
 							summary={el.summary} 
 							poster={el.posterUrl}
+							key={el.id}
 							hour1={hoursArray[0]}
 							hour2={hoursArray[1]}  />
 					);

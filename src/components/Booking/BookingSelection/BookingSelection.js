@@ -1,7 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const bookingSelection = props => {
-    var fullDate = new Date();
+
+    const fullDate = new Date();
     const dayOfMonth = fullDate.getDate();
     const dayOfWeek = fullDate.getDay();
     const month = fullDate.getMonth();
@@ -26,6 +28,10 @@ const bookingSelection = props => {
            ))}
         </select>
     );
+};
+
+bookingSelection.propTypes = {
+    changed: PropTypes.func
 };
 
 export default bookingSelection;

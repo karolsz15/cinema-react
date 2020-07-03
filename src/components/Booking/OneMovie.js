@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const oneMovie = props => {
     return (
@@ -18,5 +19,15 @@ const oneMovie = props => {
         </React.Fragment>
     );
 };
+
+oneMovie.propTypes = {
+    poster: PropTypes.string,
+    title: PropTypes.string,
+    summary: PropTypes.string,
+    clicked1: PropTypes.func,
+    clicked2: PropTypes.func,
+    hour1: PropTypes.string,
+    hour2: PropTypes.string
+}
 
 export default oneMovie;

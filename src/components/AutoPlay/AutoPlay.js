@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Slider from "react-slick";
+import PropTypes from 'prop-types';
 
 class AutoPlay extends Component {
 
@@ -17,7 +18,7 @@ class AutoPlay extends Component {
     };
     
     const posters = this.props.postersArray.map(el => (
-      <div>
+      <div key={el}>
         <img src={el} alt="movie poster" className="sliderImage" />
       </div>
     ));
@@ -31,5 +32,9 @@ class AutoPlay extends Component {
     );
   }
 };
+
+AutoPlay.propTypes = {
+  postersArray: PropTypes.arrayOf(PropTypes.string)
+}
 
 export default AutoPlay;
