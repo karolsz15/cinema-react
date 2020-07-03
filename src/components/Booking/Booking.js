@@ -65,7 +65,7 @@ class Booking extends Component {
 			
 			const moviesArray = _.values(this.state.movies);
 
-			{allMovies = moviesArray.map(el => {
+			allMovies = moviesArray.map(el => {
 					let hoursArray = _.values(el.hours).join('').split(',');
 					return (
 						<OneMovie 
@@ -78,8 +78,7 @@ class Booking extends Component {
 							hour1={hoursArray[0]}
 							hour2={hoursArray[1]}  />
 					);
-				}
-			)};
+			});
 
 			moviesList = (
 				<React.Fragment>
