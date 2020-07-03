@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
-import PropTypes from 'prop-types'; // ES6
+import PropTypes from 'prop-types';
 
 import Homepage from '../components/Homepage/Homepage';
 import Menu from '../components/Menu/Menu';
-
-//testing
 import Trailers from '../components/Trailers/Trailers';
 import Contact from '../components/Contact/Contact';
 import Booking from '../components/Booking/Booking';

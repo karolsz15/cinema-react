@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios';
+import _ from 'lodash';
 
 import BookingModal from './BookingModal/BookingModal';
 import OneMovie from './OneMovie';
@@ -61,76 +62,32 @@ class Booking extends Component {
 
 	render() {
 		
-		let singleMovie = null;
+		let moviesList = null;
 		let reservationModal = null;
+		let allMovies = null
 		
 		if (this.state.movies && this.state.reservations) { 
-			singleMovie = (
+			
+			const moviesArray = _.values(this.state.movies);
+
+			{allMovies = moviesArray.map(el => {
+					let hoursArray = _.values(el.hours).join('').split(',');
+					return (
+						<OneMovie 
+							clicked1={() => this.showModal(hoursArray[0], el.title)}
+							clicked2={() => this.showModal(hoursArray[1], el.title)}
+							title={el.title} 
+							summary={el.summary} 
+							poster={el.posterUrl}
+							hour1={hoursArray[0]}
+							hour2={hoursArray[1]}  />
+					);
+				}
+			)};
+
+			moviesList = (
 				<React.Fragment>
-					<OneMovie 
-						clicked1={() => this.showModal(this.state.hours[22], this.state.movies.one.title)}
-						clicked2={() => this.showModal(this.state.hours[24], this.state.movies.one.title)}
-						title={this.state.movies.one.title} 
-						summary={this.state.movies.one.summary} 
-						poster={this.state.movies.one.posterUrl}
-						hour1={this.state.hours[22]}
-						hour2={this.state.hours[24]}  />
-					<OneMovie 
-						clicked1={() => this.showModal(this.state.hours[11], this.state.movies.two.title)}
-						clicked2={() => this.showModal(this.state.hours[13], this.state.movies.two.title)}
-						title={this.state.movies.two.title} 
-						summary={this.state.movies.two.summary} 
-						poster={this.state.movies.two.posterUrl}
-						hour1={this.state.hours[11]}
-						hour2={this.state.hours[13]}  />
-					<OneMovie 
-						clicked1={() => this.showModal(this.state.hours[14], this.state.movies.three.title)}
-						clicked2={() => this.showModal(this.state.hours[16], this.state.movies.three.title)}
-						title={this.state.movies.three.title} 
-						summary={this.state.movies.three.summary} 
-						poster={this.state.movies.three.posterUrl}
-						hour1={this.state.hours[14]}
-						hour2={this.state.hours[16]}  />
-					<OneMovie 
-						clicked1={() => this.showModal(this.state.hours[15], this.state.movies.four.title)}
-						clicked2={() => this.showModal(this.state.hours[17], this.state.movies.four.title)}
-						title={this.state.movies.four.title} 
-						summary={this.state.movies.four.summary} 
-						poster={this.state.movies.four.posterUrl}
-						hour1={this.state.hours[15]}
-						hour2={this.state.hours[17]}  />
-					<OneMovie 
-						clicked1={() => this.showModal(this.state.hours[18], this.state.movies.five.title)}
-						clicked2={() => this.showModal(this.state.hours[20], this.state.movies.five.title)}
-						title={this.state.movies.five.title} 
-						summary={this.state.movies.five.summary} 
-						poster={this.state.movies.five.posterUrl}
-						hour1={this.state.hours[18]}
-						hour2={this.state.hours[20]}  />
-					<OneMovie 
-						clicked1={() => this.showModal(this.state.hours[19], this.state.movies.six.title)}
-						clicked2={() => this.showModal(this.state.hours[21], this.state.movies.six.title)}
-						title={this.state.movies.six.title} 
-						summary={this.state.movies.six.summary} 
-						poster={this.state.movies.six.posterUrl}
-						hour1={this.state.hours[19]}
-						hour2={this.state.hours[21]}  />
-					<OneMovie 
-						clicked1={() => this.showModal(this.state.hours[9], this.state.movies.seven.title)}
-						clicked2={() => this.showModal(this.state.hours[10], this.state.movies.seven.title)}
-						title={this.state.movies.seven.title} 
-						summary={this.state.movies.seven.summary} 
-						poster={this.state.movies.seven.posterUrl}
-						hour1={this.state.hours[9]}
-						hour2={this.state.hours[10]}  />
-					<OneMovie 
-						clicked1={() => this.showModal(this.state.hours[23], this.state.movies.eight.title)}
-						clicked2={() => this.showModal(this.state.hours[12], this.state.movies.eight.title)}
-						title={this.state.movies.eight.title} 
-						summary={this.state.movies.eight.summary} 
-						poster={this.state.movies.eight.posterUrl}
-						hour1={this.state.hours[23]}
-						hour2={this.state.hours[12]}  />
+					{allMovies}
 				</React.Fragment>
 			);
 
@@ -145,7 +102,7 @@ class Booking extends Component {
 			);
 
 		} else {
-			singleMovie = <Spinner />;
+			moviesList = <Spinner />;
 		}
 
 		return (
@@ -163,7 +120,7 @@ class Booking extends Component {
 								
 						{reservationModal}
 						<BookingSelection changed={e => this.changeActiveDay(e.target.value)}/>
-						{singleMovie}
+						{moviesList}
 						</div>
 					</div>
 				</div> 
