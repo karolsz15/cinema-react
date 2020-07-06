@@ -14,7 +14,7 @@ const bookingSelection = props => {
     }
 
     return (
-        <select onChange={props.changed} defaultValue={dayOfWeek} className="custom-select custom-select-lg" id="day" name="daySelection" style={{marginBottom: '1em'}}>
+        <select onChange={props.changed} defaultValue={dayOfWeek} className="custom-select custom-select-lg mb-4" id="day" name="daySelection">
             
             {/* default value - current day */}
             <option value={dayOfWeek.unCapitalize()}>
