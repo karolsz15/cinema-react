@@ -67,10 +67,12 @@ const reducer = (state = initialState, action) => {
             }
         case 'TOGGLE_ACTIVATED_SEAT':
             let newActiveSeats = [...state.activeSeats];
-            if (state.activeSeats.includes(action.seat)) {
-                newActiveSeats = newActiveSeats.filter(item => item !== action.seat);
-            } else {
-                newActiveSeats.push(action.seat);
+            if (!state.booked) {
+                if (state.activeSeats.includes(action.seat)) {
+                    newActiveSeats = newActiveSeats.filter(item => item !== action.seat);
+                } else {
+                    newActiveSeats.push(action.seat);
+                }
             }
             return {
                 ...state,

@@ -1,19 +1,19 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import _ from 'lodash';
+import {connect} from 'react-redux';
 
 import BookingModal from './BookingModal/BookingModal';
 import OneMovie from './OneMovie';
 import Spinner from '../UI/Spinner/Spinner';
 import BookingSelection from './BookingSelection/BookingSelection';
-import {connect} from 'react-redux';
 
 class Booking extends Component {
 
-    // NOW HANDLED WITH REDUX
-	// state = {
-    //     modalVisible: false,
-    //     error: false,
+    //	NOW HANDLED WITH REDUX
+	//	state = {
+    //	modalVisible: false,
+    //	error: false,
 	// 	movies: null,
 	// 	reservations: null,
 	// 	activeDay: ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"][new Date().getDay()],
@@ -35,23 +35,7 @@ class Booking extends Component {
             this.props.setReservations(response.data);
           })
           .catch(error => this.props.setError);
-    }
-
-	// showModal = (hour, title) => {
-    //     this.setState({
-	// 		modalVisible: true,
-	// 		activeHour: hour,
-	// 		activeTitle: title
-	// 	})
-    // }
-
-    // hideModal = () => {
-    //     this.setState({modalVisible: false})
-	// }
-	
-	// changeActiveDay = day => {
-	// 	this.setState({activeDay: day})
-	// }
+    };
 
 	render() {
 		
@@ -91,13 +75,12 @@ class Booking extends Component {
 					title={this.props.bookingActiveTitle}
 					day={this.props.bookingActiveDay}
 					hour={this.props.bookingActiveHour}
-					// reservations={this.props.bookingReservations} 
 				/>
 			);
 
 		} else {
 			moviesList = <Spinner />;
-		}
+		};
 
 		return (
 			<React.Fragment>
@@ -115,7 +98,7 @@ class Booking extends Component {
 							{reservationModal}
 							<BookingSelection changed={e => this.props.changeActiveDay(e.target.value)}/>
 							{moviesList}
-							
+
 						</div>
 					</div>
 				</div> 
@@ -146,6 +129,5 @@ const mapDispatchToProps = dispatch => {
 		changeActiveDay: (day) => dispatch({type: 'CHANGE_ACTIVE_DAY', day: day}),
     };
 };
-
     
 export default connect(mapStateToProps,mapDispatchToProps)(Booking);
