@@ -1,102 +1,51 @@
 import React, {Component} from 'react';
 import axios from 'axios';
+import {connect} from 'react-redux';
 
 class SeatsSelection extends Component {
 
-    state = {
-        day: this.props.day,
-        hour: this.props.hour,
-        title: this.props.title,
-        activeSeats: [],
-        reservedSeats: [], //fetch from DB
-        reservationName: null,
-        reservationSurname: null,
-        reservationEmail: null,
-        reservationPhone: null,
-        summaryVisible: false,
-        error: false,
-        booked: false,
-        bookable: false
-    }
+    // NOW HANDLED WITH REDUX
+    // state = {
+    //     day: this.props.day,
+    //     hour: this.props.hour,
+    //     title: this.props.title,
+    //     activeSeats: [],
+    //     reservedSeats: [],
+    //     reservationName: null,
+    //     reservationSurname: null,
+    //     reservationEmail: null,
+    //     reservationPhone: null,
+    //     summaryVisible: false,
+    //     error: false,
+    //     booked: false,
+    //     bookable: false
+    // }
 
-    //get up to date reserved seats
     componentDidMount() {
         axios
-        .get(`https://karol-cinema.firebaseio.com/reservations/${this.state.day}/${this.state.hour}/reservedSeats.json`)
+        .get(`https://karol-cinema.firebaseio.com/reservations/${this.props.selectionDay}/${this.props.selectionHour}/reservedSeats.json`)
         .then(response => {
             if (response.data === null) {
-                this.setState({
-                    reservedSeats: []
-                });
+                this.props.setReservedSeats([]);
             } else {
-                this.setState({
-                    reservedSeats: response.data
-                });
+                this.props.setReservedSeats(response.data);
             }
-            // console.log(response);
         })
-        .catch(error => this.setState({ error: true }));
-    }
-
-    toggleActivatedSeat = seat => {
-        if (this.state.activeSeats.includes(seat)) {
-            let newActiveSeats = [...this.state.activeSeats];
-            newActiveSeats = newActiveSeats.filter(item => item !== seat);
-            this.setState({
-                activeSeats: newActiveSeats
-            });
-        } else {
-            let newActiveSeats = [...this.state.activeSeats];
-            newActiveSeats.push(seat);
-            this.setState({
-                activeSeats: newActiveSeats
-            });
-        };
-    }
-
-    updateName = newName => {
-        this.setState({
-            reservationName: newName
-        });
-    }
-
-    updateSurname = newSurname => {
-        this.setState({
-            reservationSurname: newSurname
-        });
-    }
-
-    updateEmail = newEmail => {
-        this.setState({
-            reservationEmail: newEmail
-        });
-    }
-
-    updatePhone = newPhone => {
-        this.setState({
-            reservationPhone: newPhone,
-            bookable: true
-        });
-    }
-
-    showSummary = () => {
-        this.setState({
-            summaryVisible: true,
-        });
+        .catch(error => this.props.setError);
     }
 
     bookingHandler = () => {
-
-        let allReservedSeats = [...this.state.reservedSeats, ...this.state.activeSeats];
+        
+        let allReservedSeats = [...this.props.selectionReservedSeats, ...this.props.selectionActiveSeats];
         let customerData = {
-            seats: this.state.activeSeats,
-            name: this.state.reservationName,
-            surname: this.state.reservationSurname,
-            email: this.state.reservationEmail,
-            phone: this.state.reservationPhone
+            seats: this.props.selectionActiveSeats,
+            name: this.props.selectionName,
+            surname: this.props.selectionSurname,
+            email: this.props.selectionEmail,
+            phone: this.props.selectionPhone
         };
 
-        axios.put(`https://karol-cinema.firebaseio.com/reservations/${this.state.day}/${this.state.hour}/reservedSeats.json`, allReservedSeats)
+        axios.put(`https://karol-cinema.firebaseio.com/reservations/${this.props.selectionDay}/${this.props.selectionHour}/reservedSeats.json`, allReservedSeats)
           .then( response => {
             console.log(response);
           })
@@ -104,7 +53,7 @@ class SeatsSelection extends Component {
             console.log(error);
           });
 
-        axios.post(`https://karol-cinema.firebaseio.com/reservations/${this.state.day}/${this.state.hour}/customersData.json`, customerData)
+        axios.post(`https://karol-cinema.firebaseio.com/reservations/${this.props.selectionDay}/${this.props.selectionHour}/customersData.json`, customerData)
         .then( response => {
           console.log(response);
         })
@@ -112,10 +61,7 @@ class SeatsSelection extends Component {
             console.log(error);
         });
 
-        this.setState({
-            reservedSeats: allReservedSeats,
-            booked: true
-        })
+        this.props.reserveSeats(allReservedSeats);
     }
 
     render() {
@@ -125,38 +71,38 @@ class SeatsSelection extends Component {
         for (let i=1; i<=100; i++) {
             let classes;
 
-            if (this.state.reservedSeats && this.state.reservedSeats.includes(i)) {
+            if (this.props.selectionReservedSeats && this.props.selectionReservedSeats.includes(i)) {
                 classes = "seat reserved"
             } 
-            else if (this.state.activeSeats.includes(i)) {
+            else if (this.props.selectionActiveSeats.includes(i)) {
                 classes = "seat active"
             }
             else {
                 classes = "seat";
             }
 
-            seats.push(<div className={classes} id={i} onClick={() => this.toggleActivatedSeat(i)}>{i}</div>);
+            seats.push(<div className={classes} key={i} onClick={() => this.props.toggleActivatedSeat(i)}>{i}</div>);
         }
 
         let summary;
 
-        if (this.state.activeSeats.length === 0) {
+        if (this.props.selectionActiveSeats.length === 0) {
             summary = (
                 <div> Please choose your seats! </div>
             )
-        } else if (this.state.booked) {
+        } else if (this.props.selectionBooked) {
             summary = (
                 <div> Your seats are sucessfully booked! </div>
             )
-        } else if (!this.state.booked && (this.state.reservationName && this.state.reservationSurname && this.state.reservationEmail && this.state.reservationPhone) && this.state.activeSeats.length !== 0) {
+        } else if (!this.props.selectionBooked && (this.props.selectionName && this.props.selectionSurname && this.props.selectionEmail && this.props.selectionPhone) && this.props.selectionActiveSeats.length !== 0) {
             summary = (
                 <div>
                     <strong>Details of your booking</strong><br />
-                    Seats: {this.state.activeSeats.join(', ')} <br />
-                    Name: {this.state.reservationName} <br />
-                    Surname: {this.state.reservationSurname} <br />
-                    E-mail: {this.state.reservationEmail} <br />
-                    Phone number: {this.state.reservationPhone}
+                    Seats: {this.props.selectionActiveSeats.join(', ')} <br />
+                    Name: {this.props.selectionName} <br />
+                    Surname: {this.props.selectionSurname} <br />
+                    E-mail: {this.props.selectionEmail} <br />
+                    Phone number: {this.props.selectionPhone}
                 </div>
             );
         } else {
@@ -174,22 +120,23 @@ class SeatsSelection extends Component {
                     </div>
                 </div>
 
-                {!this.state.booked ? (
+                {!this.props.selectionBooked ? (
                     <React.Fragment>
                         <form className="bookingForm">
                             <div id="detail" className="detail">
-                                <input id="name" type="text" placeholder="name" onChange={e => this.updateName(e.target.value)} required />
-                                <input id="surname" type="text" placeholder="surname" onChange={e => this.updateSurname(e.target.value)} required />
-                                <input id="email" type="email" placeholder="e-mail" onChange={e => this.updateEmail(e.target.value)} required />
-                                <input id="phone" type="tel" placeholder="phone" onChange={e => this.updatePhone(e.target.value)}  required />
+                                <input id="name" type="text" placeholder="name" onChange={e => this.props.updateName(e.target.value)} required />
+                                <input id="surname" type="text" placeholder="surname" onChange={e => this.props.updateSurname(e.target.value)} required />
+                                <input id="email" type="email" placeholder="e-mail" onChange={e => this.props.updateEmail(e.target.value)} required />
+                                <input id="phone" type="tel" placeholder="phone" onChange={e => this.props.updatePhone(e.target.value)}  required />
                             </div>
                             <div className="buttonsContainer">
                                 <button 
-                                    onClick={this.showSummary} 
+                                    onClick={(event) => this.props.showSummary(event)}
+                                    disabled={this.props.selectionSummaryVisible} 
                                     className="btn btn-secondary bookingButton">Summary</button>
                                 <input 
                                     onClick={this.bookingHandler} 
-                                    disabled={!this.state.bookable}
+                                    disabled={!this.props.selectionBookable || this.props.selectionActiveSeats.length === 0}
 
                                     type="submit" 
                                     className="btn btn-secondary bookingButton" 
@@ -198,10 +145,45 @@ class SeatsSelection extends Component {
                         </form>
                     </React.Fragment>) : null}
 
-                {this.state.summaryVisible ? summary : null}
+                {this.props.selectionSummaryVisible ? summary : null}
             </React.Fragment>
         );
     };
 };
 
-export default SeatsSelection;
+const mapStateToProps = state => {
+    return {
+        selectionError: state.error,
+        selectionDay: state.activeDay,
+        selectionHour: state.activeHour,
+        selectionTitle: state.activeTitle,
+        selectionActiveSeats: state.activeSeats,
+        selectionReservedSeats: state.reservedSeats,
+        selectionName: state.reservationName,
+        selectionSurname: state.reservationSurname,
+        selectionEmail: state.reservationEmail,
+        selectionPhone: state.reservationPhone,
+        selectionSummaryVisible: state.summaryVisible,
+        selectionBooked: state.booked,
+        selectionBookable: state.bookable
+    };
+};
+
+const mapDispatchToProps = dispatch => {
+    return {
+        hideModal: () => dispatch({type: 'HIDE_MODAL'}),
+		setError: () => dispatch({type: 'ERROR'}),
+        toggleActivatedSeat: (seat) => dispatch({type: 'TOGGLE_ACTIVATED_SEAT', seat: seat}),
+        updateName: (name) => dispatch({type: 'UPDATE_NAME', name: name}),
+        updateSurname: (surname) => dispatch({type: 'UPDATE_SURNAME', surname: surname}),
+        updatePhone: (phone) => dispatch({type: 'UPDATE_PHONE', phone: phone}),
+        updateEmail: (email) => dispatch({type: 'UPDATE_EMAIL', email: email}),
+        reserveSeats: (seats) => dispatch({type: 'RESERVE_SEATS', seats: seats}),
+        showSummary: (e) => dispatch({type: 'SHOW_SUMMARY', e: e}),
+        setBookable: () => dispatch({type: 'SET_BOOKABLE'}),
+        unSetBookable: () => dispatch({type: 'UNSET_BOOKABLE'}),
+        setReservedSeats: (data) => dispatch({type: 'SET_RESERVED_SEATS', data: data})
+    };
+};
+
+export default connect(mapStateToProps,mapDispatchToProps)(SeatsSelection);

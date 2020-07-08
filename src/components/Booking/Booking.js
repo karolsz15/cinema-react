@@ -91,7 +91,8 @@ class Booking extends Component {
 					title={this.props.bookingActiveTitle}
 					day={this.props.bookingActiveDay}
 					hour={this.props.bookingActiveHour}
-					reservations={this.props.bookingReservations} />
+					// reservations={this.props.bookingReservations} 
+				/>
 			);
 
 		} else {
@@ -110,10 +111,11 @@ class Booking extends Component {
 							<div className="clearfix"></div>
 						</div>
 						<div className="container">
-								
-						{reservationModal}
-						<BookingSelection changed={e => this.props.changeActiveDay(e.target.value)}/>
-						{moviesList}
+
+							{reservationModal}
+							<BookingSelection changed={e => this.props.changeActiveDay(e.target.value)}/>
+							{moviesList}
+							
 						</div>
 					</div>
 				</div> 
