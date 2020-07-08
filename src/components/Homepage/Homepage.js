@@ -10,55 +10,48 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import axios from 'axios';
 import _ from 'lodash';
+import {connect} from 'react-redux';
 
 class Homepage extends Component {
 
-    state = {
-        modalVisible: false,
-        error: false,
-        movies: null
-    }
-
+    // NOW HANDLED WITH REDUX
+    // state = {
+    //     modalVisible: false,
+    //     error: false,
+    //     movies: null
+    // }
+    
     componentDidMount() {
         axios
           .get("https://karol-cinema.firebaseio.com/test.json")
           .then(response => {
-            this.setState({
-                movies: response.data
-			});
+            this.props.setMovies(response.data);
           })
-          .catch(error => this.setState({ error: true }));
-    }
-
-    showModal =() => {
-        this.setState({modalVisible: true})
-    };
-
-    hideModal = () => {
-        this.setState({modalVisible: false})
+          .catch(error => this.props.setError);
     }
 
     render () {
-        let header = this.state.error ? <p>Movies can't be loaded</p> : <Spinner />;
-        let posters = this.state.error ? <p>Posters can't be loaded</p> : <Spinner />;
-        let trailerModal = this.state.error ? <p>Trailer can't be loaded</p> : <Spinner />;
 
-        if (this.state.movies) {
+        let header = this.props.HPerror ? <p>Movies can't be loaded</p> : <Spinner />;
+        let posters = this.props.HPerror ? <p>Posters can't be loaded</p> : <Spinner />;
+        let trailerModal = this.props.HPerror ? <p>Trailer can't be loaded</p> : <Spinner />;
+
+        if (this.props.HPmovies) {
             header = (
                 <HomepageHeader 
-                    bigImage={this.state.movies.two.bigImageUrl} 
-                    title={this.state.movies.two.title} 
-                    cast={this.state.movies.two.cast}
-                    release={this.state.movies.two.release}
-                    genres={this.state.movies.two.genres}
-                    summary={this.state.movies.two.summary}
-                    trailer={this.state.movies.two.trailerUrl}  
-                    trailerClicked={this.showModal}
-                    hideModal={this.hideModal} 
-                    showModal={this.state.showModal} />
+                    bigImage={this.props.HPmovies.two.bigImageUrl} 
+                    title={this.props.HPmovies.two.title} 
+                    cast={this.props.HPmovies.two.cast}
+                    release={this.props.HPmovies.two.release}
+                    genres={this.props.HPmovies.two.genres}
+                    summary={this.props.HPmovies.two.summary}
+                    trailer={this.props.HPmovies.two.trailerUrl}  
+                    trailerClicked={this.props.showModal}
+                    hideModal={this.props.hideModal}  
+                />
             );
             
-            const moviesArray = _.values(this.state.movies);
+            const moviesArray = _.values(this.props.HPmovies);
             
             const autoPlayPostersArray = moviesArray.map( el => el.posterUrl);
 
@@ -68,10 +61,10 @@ class Homepage extends Component {
 
            trailerModal = (  
                 <MovieModal 
-                    show={this.state.modalVisible}
-                    title={this.state.movies.two.title} 
-                    trailer={this.state.movies.two.trailerUrl}  
-                    onHide={this.hideModal} />
+                    show={this.props.HPmodalVisible}
+                    title={this.props.HPmovies.two.title} 
+                    trailer={this.props.HPmovies.two.trailerUrl}  
+                    onHide={this.props.hideModal} />
            );
         }
 
@@ -111,4 +104,21 @@ class Homepage extends Component {
     };
 };
 
-export default Homepage;
+const mapStateToProps = state => {
+    return {
+        HPmodalVisible: state.modalVisible,
+        HPerror: state.error,
+        HPmovies: state.movies
+    };
+};
+
+const mapDispatchToProps = dispatch => {
+    return {
+        showModal: () => dispatch({type: 'SHOW_MODAL'}),
+        hideModal: () => dispatch({type: 'HIDE_MODAL'}),
+        setMovies: (data) => dispatch({type: 'SET_MOVIES', data: data}),
+        setError: () => dispatch({type: 'ERROR'})
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Homepage);
