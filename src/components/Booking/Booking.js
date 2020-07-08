@@ -136,7 +136,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        showBookingModal: () => dispatch({type: 'SHOW_BOOKING_MODAL'}),
+        showBookingModal: (hour, title) => dispatch({type: 'SHOW_BOOKING_MODAL', hour: hour , title: title}),
         hideModal: () => dispatch({type: 'HIDE_MODAL'}),
 		setMovies: (data) => dispatch({type: 'SET_MOVIES', data: data}),
 		setReservations: (data) => dispatch({type: 'SET_RESERVATIONS', data: data}),
