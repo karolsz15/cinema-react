@@ -40,6 +40,11 @@ form {
 	flex-direction: column;
 }
 
+.errorImg {
+	max-height: 80vh;
+	max-width: 80vw;
+}
+
 .seat {
 	display: flex;
 	justify-content: center;
