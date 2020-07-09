@@ -1,14 +1,15 @@
 # React Cinema Booking Application
 
-## 1. LIVE DEMO: https://reactcinemabookingbykarol.web.app
+## 1. LIVE DEMO: https://karolreactcinemabooking.web.app/
 
 ## 2. DESCRIPTION
 
-Cinema Booking Application created with React.js. Single Page Application created with React Router 
+Cinema Booking Application created with React and Redux. Single Page Application created with React Router 
 consists of homepage, trailers subpage, ticket booking subpage and a contact subpage. 
 All movies posters, titles, details end trailers' URLs are fetched dynamically with AJAX requests created with axios.
 AJAX post and update requests were used to create customers' seats reservations. 
-You can see that customer's data and reservation are posted to database in one of the screenshots below. 
+You can see that customer's data and reservation are posted to database in one of the screenshots below.
+Application's state is handled with Redux. 
 The application is fully responsive, works properly on desktop, tablets and mobiles (tested on iPad and iPhone).
 
 ## 3. SCREENSHOTS:
