@@ -14,7 +14,12 @@ const initialState = {
         reservationPhone: null,
         summaryVisible: false,
         booked: false,
-        bookable: false
+        bookable: false,
+        contactName: '',
+        contactEmail: '',
+        contactPhone: '',
+        contactMessage: '',
+        messageSent: false
 };
 
 const reducer = (state = initialState, action) => {
@@ -125,6 +130,31 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 reservedSeats: action.data
+            }
+        case 'UPDATE_CONTACT_NAME':
+            return {
+                ...state,
+                contactName: action.name
+            }
+        case 'UPDATE_CONTACT_EMAIL':
+            return {
+                ...state,
+                contactEmail: action.email
+            }
+        case 'UPDATE_CONTACT_PHONE':
+            return {
+                ...state,
+                contactPhone: action.phone
+            }
+        case 'UPDATE_MESSAGE':
+            return {
+                ...state,
+                contactMessage: action.message
+            }
+        case 'SEND_MESSAGE':
+            return {
+                ...state,
+                messageSent: true
             }
     }
     return state;

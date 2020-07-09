@@ -31,7 +31,7 @@ class SingleMovie extends Component {
                 <div className="content-grid">
                     <div className="play-icon"><img className="trailerPoster" src={this.props.poster} alt="movie poster" /></div>
                     <div className="trailerDescription">{this.props.summary}</div>
-                    <a onClick={this.showModal} className="button play-icon" href="#small-dialog3">Watch trailer</a>
+                    <a onClick={this.showModal} className="button play-icon" href="#trailer">Watch trailer</a>
                     <a className="button play-icon" href="/booking">Book now</a>
                 </div>
 
