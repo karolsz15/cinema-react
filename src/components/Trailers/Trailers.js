@@ -4,7 +4,7 @@ import Spinner from '../UI/Spinner/Spinner';
 
 import axios from 'axios';
 import _ from 'lodash';
-import {useSelector, useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 const Trailers = () => {
 
