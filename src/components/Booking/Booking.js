@@ -1,133 +1,112 @@
-import React, {Component} from 'react';
+import React, { useEffect, useCallback } from 'react';
 import axios from 'axios';
 import _ from 'lodash';
-import {connect} from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 import BookingModal from './BookingModal/BookingModal';
 import OneMovie from './OneMovie';
 import Spinner from '../UI/Spinner/Spinner';
 import BookingSelection from './BookingSelection/BookingSelection';
 
-class Booking extends Component {
+const Booking = () => {
 
-    //	NOW HANDLED WITH REDUX
-	//	state = {
-    //	modalVisible: false,
-    //	error: false,
-	// 	movies: null,
-	// 	reservations: null,
-	// 	activeDay: ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"][new Date().getDay()],
-	// 	activeHour: null,
-	// 	activeTitle: null
-    // }
+	//map state to consts
+	const bookingModalVisible = useSelector(state => state.modalVisible);
+	const bookingMovies = useSelector(state => state.movies);
+	const bookingReservations = useSelector(state => state.reservations);
+	const bookingActiveDay = useSelector(state => state.activeDay);
+	const bookingActiveHour = useSelector(state => state.activeHour);
+	const bookingActiveTitle = useSelector(state => state.activeTitle);
 
-    componentDidMount() {
-        axios
+	//map dispatch to consts
+	const dispatch = useDispatch();
+    const showBookingModal = useCallback( (hour, title) => dispatch({type: 'SHOW_BOOKING_MODAL', hour: hour , title: title}) , [dispatch] );
+	const hideModal = useCallback( () => dispatch({type: 'HIDE_MODAL'}) , [dispatch] );
+	const setMovies = useCallback( (data) => dispatch({type: 'SET_MOVIES', data: data}) , [dispatch] );
+	const setReservations = useCallback( (data) => dispatch({type: 'SET_RESERVATIONS', data: data}) , [dispatch] );
+	const setError = useCallback( () => dispatch({type: 'ERROR'}) , [dispatch] );
+	const changeActiveDay = useCallback( (day) => dispatch({type: 'CHANGE_ACTIVE_DAY', day: day}) , [dispatch] );
+
+	useEffect(() => {
+		axios
           .get("https://karol-cinema.firebaseio.com/test.json")
           .then(response => {
-            this.props.setMovies(response.data);
+            setMovies(response.data);
           })
-          .catch(error => this.props.setError);
+          .catch(error => setError);
 		  
-		  axios
+		axios
           .get("https://karol-cinema.firebaseio.com/reservations.json")
           .then(response => {
-            this.props.setReservations(response.data);
+            setReservations(response.data);
           })
-          .catch(error => this.props.setError);
-    };
-
-	render() {
+          .catch(error => setError);
+	}, [setMovies, setReservations, setError]);
+    
+	let moviesList, reservationModal, allMovies;
 		
-		let moviesList = null;
-		let reservationModal = null;
-		let allMovies = null
-		
-		if (this.props.bookingMovies && this.props.bookingReservations) { 
+	if (bookingMovies && bookingReservations) { 
 			
-			const moviesArray = _.values(this.props.bookingMovies);
+		const moviesArray = _.values(bookingMovies);
 
-			allMovies = moviesArray.map(el => {
-					let hoursArray = _.values(el.hours).join('').split(',');
-					return (
-						<OneMovie 
-							clicked1={() => this.props.showBookingModal(hoursArray[0], el.title)}
-							clicked2={() => this.props.showBookingModal(hoursArray[1], el.title)}
-							title={el.title} 
-							summary={el.summary} 
-							poster={el.posterUrl}
-							key={el.id}
-							hour1={hoursArray[0]}
-							hour2={hoursArray[1]}  />
-					);
-			});
-
-			moviesList = (
-				<React.Fragment>
-					{allMovies}
-				</React.Fragment>
-			);
-
-			reservationModal = (
-				<BookingModal 
-					show={this.props.bookingModalVisible} 
-					onHide={this.props.hideModal}
-					title={this.props.bookingActiveTitle}
-					day={this.props.bookingActiveDay}
-					hour={this.props.bookingActiveHour}
+		allMovies = moviesArray.map(el => {
+			let hoursArray = _.values(el.hours).join('').split(',');
+			return (
+				<OneMovie 
+					clicked1={() => showBookingModal(hoursArray[0], el.title)}
+					clicked2={() => showBookingModal(hoursArray[1], el.title)}
+					title={el.title} 
+					summary={el.summary} 
+					poster={el.posterUrl}
+					key={el.id}
+					hour1={hoursArray[0]}
+					hour2={hoursArray[1]}  
 				/>
 			);
+		});
 
-		} else {
-			moviesList = <Spinner />;
-		};
-
-		return (
+		moviesList = (
 			<React.Fragment>
-				<div className="main">
-					<div className="error-content">
-						<div className="top-header span_top">
-							<div className="logo">
-								<a href="index.html"><img src="images/logo4.png" alt="" /></a>
-								<p>Ticket booking app</p>
-							</div>
-							<div className="clearfix"></div>
-						</div>
-						<div className="container">
-
-							{reservationModal}
-							<BookingSelection changed={e => this.props.changeActiveDay(e.target.value)}/>
-							{moviesList}
-
-						</div>
-					</div>
-				</div> 
+				{allMovies}
 			</React.Fragment>
 		);
+
+		reservationModal = (
+			<BookingModal 
+				show={bookingModalVisible} 
+				onHide={hideModal}
+				title={bookingActiveTitle}
+				day={bookingActiveDay}
+				hour={bookingActiveHour}
+			/>
+		);
+
+	} else {
+		moviesList = <Spinner />;
 	};
-};
 
-const mapStateToProps = state => {
-    return {
-        bookingModalVisible: state.modalVisible,
-        bookingError: state.error,
-		bookingMovies: state.movies,
-		bookingReservations: state.reservations,
-		bookingActiveDay: state.activeDay,
-		bookingActiveHour: state.activeHour,
-		bookingActiveTitle: state.activeTitle
-    };
-};
+	return (
+		<React.Fragment>
+			<div className="main">
+				<div className="error-content">
+					<div className="top-header span_top">
+						<div className="logo">
+							<a href="index.html"><img src="images/logo4.png" alt="logo" /></a>
+							<p>Ticket booking app</p>
+						</div>
+						<div className="clearfix"></div>
+					</div>
+					<div className="container">
 
-const mapDispatchToProps = dispatch => {
-    return {
-        showBookingModal: (hour, title) => dispatch({type: 'SHOW_BOOKING_MODAL', hour: hour , title: title}),
-        hideModal: () => dispatch({type: 'HIDE_MODAL'}),
-		setMovies: (data) => dispatch({type: 'SET_MOVIES', data: data}),
-		setReservations: (data) => dispatch({type: 'SET_RESERVATIONS', data: data}),
-		setError: () => dispatch({type: 'ERROR'}),
-		changeActiveDay: (day) => dispatch({type: 'CHANGE_ACTIVE_DAY', day: day}),
-    };
+						{reservationModal}
+						<BookingSelection changed={e => changeActiveDay(e.target.value)} />
+						{moviesList}
+
+					</div>
+				</div>
+			</div> 
+		</React.Fragment>
+	);
 };
     
-export default connect(mapStateToProps,mapDispatchToProps)(Booking);
+export default Booking;
