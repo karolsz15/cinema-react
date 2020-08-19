@@ -1,4 +1,4 @@
-import React, {useEffect, useCallback} from 'react';
+import React, {useState, useEffect, useCallback} from 'react';
 import {Link} from 'react-router-dom';
 import {useSelector, useDispatch} from 'react-redux';
 
@@ -14,15 +14,15 @@ import _ from 'lodash';
 
 const Homepage = () => {
 
+    //local state to show and hide trailers modal
+    const [modalVisible, setModalVisible] = useState(false);
+
     //map state to consts
-    const HPmodalVisible = useSelector(state => state.modalVisible);
     const HPerror = useSelector(state => state.error);
     const HPmovies = useSelector(state => state.movies);
 
     //map dispatch to consts
 	const dispatch = useDispatch();
-    const showModal = useCallback( () => dispatch({type: 'SHOW_MODAL'}) , [dispatch] );
-    const hideModal = useCallback( () => dispatch({type: 'SHOW_MODAL'}) , [dispatch] );
     const setMovies = useCallback( (data) => dispatch({type: 'SET_MOVIES', data: data}) , [dispatch] );
     const setError = useCallback( () => dispatch({type: 'ERROR'}) , [dispatch] );
 
@@ -49,8 +49,8 @@ const Homepage = () => {
                 genres={HPmovies.two.genres}
                 summary={HPmovies.two.summary}
                 trailer={HPmovies.two.trailerUrl}  
-                trailerClicked={showModal}
-                hideModal={hideModal}  
+                trailerClicked={() => setModalVisible(true)}
+                hideModal={() => setModalVisible(false)}  
             />
         );
             
@@ -63,10 +63,10 @@ const Homepage = () => {
 
         trailerModal = (  
             <MovieModal 
-                show={HPmodalVisible}
+                show={modalVisible}
                 title={HPmovies.two.title} 
                 trailer={HPmovies.two.trailerUrl}  
-                onHide={hideModal} />
+                onHide={() => setModalVisible(false)} />
         );
     };
 

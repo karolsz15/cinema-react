@@ -1,5 +1,4 @@
 const initialState = {
-        modalVisible: false,
         error: false,
         movies: null,
     	reservations: null,
@@ -23,11 +22,6 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
     switch (action.type) {
-        case 'SHOW_MODAL':
-            return {
-                ...state,
-                modalVisible: true
-            }
         case 'HIDE_MODAL':
             return {
                 ...state,
