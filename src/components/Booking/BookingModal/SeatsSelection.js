@@ -1,189 +1,154 @@
-import React, {Component} from 'react';
+import React, { useEffect, useCallback } from 'react';
 import axios from 'axios';
-import {connect} from 'react-redux';
+import { useSelector, useDispatch} from 'react-redux';
 
-class SeatsSelection extends Component {
+const SeatsSelection = () => {
 
-    // NOW HANDLED WITH REDUX
-    // state = {
-    //     day: this.props.day,
-    //     hour: this.props.hour,
-    //     title: this.props.title,
-    //     activeSeats: [],
-    //     reservedSeats: [],
-    //     reservationName: null,
-    //     reservationSurname: null,
-    //     reservationEmail: null,
-    //     reservationPhone: null,
-    //     summaryVisible: false,
-    //     error: false,
-    //     booked: false,
-    //     bookable: false
-    // }
+    //map state to consts
+    const selectionDay = useSelector(state => state.activeDay);
+    const selectionHour = useSelector(state => state.activeHour);
+    const selectionActiveSeats = useSelector(state => state.activeSeats);
+    const selectionReservedSeats = useSelector(state => state.reservedSeats);
+    const selectionName = useSelector(state => state.reservationName);
+    const selectionSurname = useSelector(state => state.reservationSurname);
+    const selectionEmail = useSelector(state => state.reservationEmail);
+    const selectionPhone = useSelector(state => state.reservationPhone);
+    const selectionSummaryVisible = useSelector(state => state.summaryVisible);
+    const selectionBooked = useSelector(state => state.booked);
+    const selectionBookable = useSelector(state => state.bookable);
 
-    componentDidMount() {
+    //map dispatch to consts
+    const dispatch = useDispatch();
+    const setError = useCallback( () => dispatch({type: 'ERROR'}) , [dispatch] );
+    const toggleActivatedSeat = useCallback( (seat) => dispatch({type: 'TOGGLE_ACTIVATED_SEAT', seat: seat}) , [dispatch] );
+    const updateName = useCallback( (name) => dispatch({type: 'UPDATE_NAME', name: name}) , [dispatch] );
+    const updateSurname = useCallback( (surname) => dispatch({type: 'UPDATE_SURNAME', surname: surname}) , [dispatch] );
+    const updatePhone = useCallback( (phone) => dispatch({type: 'UPDATE_PHONE', phone: phone}) , [dispatch] );
+    const updateEmail = useCallback( (email) => dispatch({type: 'UPDATE_EMAIL', email: email}) , [dispatch] );
+    const reserveSeats = useCallback( (seats) => dispatch({type: 'RESERVE_SEATS', seats: seats}) , [dispatch] );
+    const showSummary = useCallback( (e) => dispatch({type: 'SHOW_SUMMARY', e: e}) , [dispatch] );
+    const setReservedSeats = useCallback( (data) => dispatch({type: 'SET_RESERVED_SEATS', data: data}) , [dispatch] );
+
+    //get reserved seats HTTP request
+    useEffect(() => {
         axios
-        .get(`https://karol-cinema.firebaseio.com/reservations/${this.props.selectionDay}/${this.props.selectionHour}/reservedSeats.json`)
+        .get(`https://karol-cinema.firebaseio.com/reservations/${selectionDay}/${selectionHour}/reservedSeats.json`)
         .then(response => {
             if (response.data === null) {
-                this.props.setReservedSeats([]);
+                setReservedSeats([]);
             } else {
-                this.props.setReservedSeats(response.data);
+                setReservedSeats(response.data);
             }
         })
-        .catch(error => this.props.setError);
-    }
-
-    bookingHandler = () => {
+        .catch(error => setError);
+    }, [setReservedSeats, setError]);
         
-        let allReservedSeats = [...this.props.selectionReservedSeats, ...this.props.selectionActiveSeats];
+    const bookingHandler = () => {
+        let allReservedSeats = [...selectionReservedSeats, ...selectionActiveSeats];
         let customerData = {
-            seats: this.props.selectionActiveSeats,
-            name: this.props.selectionName,
-            surname: this.props.selectionSurname,
-            email: this.props.selectionEmail,
-            phone: this.props.selectionPhone
+            seats: selectionActiveSeats,
+            name: selectionName,
+            surname: selectionSurname,
+            email: selectionEmail,
+            phone: selectionPhone
         };
 
-        axios.put(`https://karol-cinema.firebaseio.com/reservations/${this.props.selectionDay}/${this.props.selectionHour}/reservedSeats.json`, allReservedSeats)
-          .then( response => {
-            console.log(response);
-          })
-          .catch( error => {
-            console.log(error);
-          });
-
-        axios.post(`https://karol-cinema.firebaseio.com/reservations/${this.props.selectionDay}/${this.props.selectionHour}/customersData.json`, customerData)
+        axios.put(`https://karol-cinema.firebaseio.com/reservations/${selectionDay}/${selectionHour}/reservedSeats.json`, allReservedSeats)
         .then( response => {
-          console.log(response);
+            console.log(response);
         })
         .catch( error => {
             console.log(error);
         });
 
-        this.props.reserveSeats(allReservedSeats);
-    }
+        axios.post(`https://karol-cinema.firebaseio.com/reservations/${selectionDay}/${selectionHour}/customersData.json`, customerData)
+        .then( response => {
+            console.log(response);
+        })
+        .catch( error => {
+            console.log(error);
+        });
+        reserveSeats(allReservedSeats);
+    };
 
-    render() {
-
-        let seats = [];
+    const seats = [];
         
-        for (let i=1; i<=100; i++) {
-            let classes;
-
-            if (this.props.selectionReservedSeats && this.props.selectionReservedSeats.includes(i)) {
-                classes = "seat reserved"
-            } 
-            else if (this.props.selectionActiveSeats.includes(i)) {
-                classes = "seat active"
-            }
-            else {
-                classes = "seat";
-            }
-
-            seats.push(<div className={classes} key={i} onClick={() => this.props.toggleActivatedSeat(i)}>{i}</div>);
-        }
-
-        let summary;
-
-        if (this.props.selectionActiveSeats.length === 0) {
-            summary = (
-                <div> Please choose your seats! </div>
-            )
-        } else if (this.props.selectionBooked) {
-            summary = (
-                <div> Your seats are sucessfully booked! </div>
-            )
-        } else if (!this.props.selectionBooked && (this.props.selectionName && this.props.selectionSurname && this.props.selectionEmail && this.props.selectionPhone) && this.props.selectionActiveSeats.length !== 0) {
-            summary = (
-                <div>
-                    <strong>Details of your booking</strong><br />
-                    Seats: {this.props.selectionActiveSeats.join(', ')} <br />
-                    Name: {this.props.selectionName} <br />
-                    Surname: {this.props.selectionSurname} <br />
-                    E-mail: {this.props.selectionEmail} <br />
-                    Phone number: {this.props.selectionPhone}
-                </div>
-            );
+    for (let i=1; i<=100; i++) {
+        let classes;
+        if (selectionReservedSeats && selectionReservedSeats.includes(i)) {
+            classes = "seat reserved"
+        } else if (selectionActiveSeats.includes(i)) {
+            classes = "seat active"
         } else {
-            summary = (
-                <div> Please fill the form correctly! </div>
-            )
+            classes = "seat";
         }
+        seats.push(<div className={classes} key={i} onClick={() => toggleActivatedSeat(i)}>{i}</div>);
+    };
 
-        return (
-            <React.Fragment>
-                <div id="selection" className="selection">
-                    <div id="screen" className="screen">SCREEN</div>
-                    <div id="seatsContainer" className="seatsContainer">
-                        {seats}
-                    </div>
-                </div>
+    let summary;
 
-                {!this.props.selectionBooked ? (
-                    <React.Fragment>
-                        <form className="bookingForm">
-                            <div id="detail" className="detail">
-                                <input id="name" type="text" placeholder="name" onChange={e => this.props.updateName(e.target.value)} required />
-                                <input id="surname" type="text" placeholder="surname" onChange={e => this.props.updateSurname(e.target.value)} required />
-                                <input id="email" type="email" placeholder="e-mail" onChange={e => this.props.updateEmail(e.target.value)} required />
-                                <input id="phone" type="tel" placeholder="phone" onChange={e => this.props.updatePhone(e.target.value)}  required />
-                            </div>
-                            <div className="buttonsContainer">
-                                <button 
-                                    onClick={(event) => this.props.showSummary(event)}
-                                    disabled={this.props.selectionSummaryVisible} 
-                                    className="btn btn-secondary bookingButton">Summary</button>
-                                <input 
-                                    onClick={this.bookingHandler} 
-                                    disabled={!this.props.selectionBookable || this.props.selectionActiveSeats.length === 0}
-
-                                    type="submit" 
-                                    className="btn btn-secondary bookingButton" 
-                                    value="Book!"></input>
-                            </div>
-                        </form>
-                    </React.Fragment>) : null}
-
-                {this.props.selectionSummaryVisible ? summary : null}
-            </React.Fragment>
+    if (selectionActiveSeats.length === 0) {
+        summary = (
+            <div> Please choose your seats! </div>
+        );
+    } else if (selectionBooked) {
+        summary = (
+            <div> Your seats are sucessfully booked! </div>
+        );
+    } else if (!selectionBooked && (selectionName && selectionSurname && selectionEmail && selectionPhone) && selectionActiveSeats.length !== 0) {
+        summary = (
+            <div>
+                <strong>Details of your booking</strong><br />
+                Seats: {selectionActiveSeats.join(', ')} <br />
+                Name: {selectionName} <br />
+                Surname: {selectionSurname} <br />
+                E-mail: {selectionEmail} <br />
+                Phone number: {selectionPhone}
+            </div>
+        );
+    } else {
+        summary = (
+            <div> Please fill the form correctly! </div>
         );
     };
+
+    return (
+        <React.Fragment>
+            <div id="selection" className="selection">
+                <div id="screen" className="screen">SCREEN</div>
+                <div id="seatsContainer" className="seatsContainer">
+                    {seats}
+                </div>
+            </div>
+
+            {!selectionBooked ? (
+                <React.Fragment>
+                    <form className="bookingForm">
+                        <div id="detail" className="detail">
+                            <input id="name" type="text" placeholder="name" onChange={e => updateName(e.target.value)} required />
+                            <input id="surname" type="text" placeholder="surname" onChange={e => updateSurname(e.target.value)} required />
+                            <input id="email" type="email" placeholder="e-mail" onChange={e => updateEmail(e.target.value)} required />
+                            <input id="phone" type="tel" placeholder="phone" onChange={e => updatePhone(e.target.value)}  required />
+                        </div>
+                        <div className="buttonsContainer">
+                            <button 
+                                onClick={(event) => showSummary(event)}
+                                disabled={selectionSummaryVisible} 
+                                className="btn btn-secondary bookingButton">Summary</button>
+                            <input 
+                                onClick={() => bookingHandler()} 
+                                disabled={!selectionBookable || selectionActiveSeats.length === 0}
+
+                                type="submit" 
+                                className="btn btn-secondary bookingButton" 
+                                value="Book!"></input>
+                        </div>
+                    </form>
+                </React.Fragment>) : null}
+
+            {selectionSummaryVisible ? summary : null}
+        </React.Fragment>
+    );
 };
 
-const mapStateToProps = state => {
-    return {
-        selectionError: state.error,
-        selectionDay: state.activeDay,
-        selectionHour: state.activeHour,
-        selectionTitle: state.activeTitle,
-        selectionActiveSeats: state.activeSeats,
-        selectionReservedSeats: state.reservedSeats,
-        selectionName: state.reservationName,
-        selectionSurname: state.reservationSurname,
-        selectionEmail: state.reservationEmail,
-        selectionPhone: state.reservationPhone,
-        selectionSummaryVisible: state.summaryVisible,
-        selectionBooked: state.booked,
-        selectionBookable: state.bookable
-    };
-};
-
-const mapDispatchToProps = dispatch => {
-    return {
-        hideModal: () => dispatch({type: 'HIDE_MODAL'}),
-		setError: () => dispatch({type: 'ERROR'}),
-        toggleActivatedSeat: (seat) => dispatch({type: 'TOGGLE_ACTIVATED_SEAT', seat: seat}),
-        updateName: (name) => dispatch({type: 'UPDATE_NAME', name: name}),
-        updateSurname: (surname) => dispatch({type: 'UPDATE_SURNAME', surname: surname}),
-        updatePhone: (phone) => dispatch({type: 'UPDATE_PHONE', phone: phone}),
-        updateEmail: (email) => dispatch({type: 'UPDATE_EMAIL', email: email}),
-        reserveSeats: (seats) => dispatch({type: 'RESERVE_SEATS', seats: seats}),
-        showSummary: (e) => dispatch({type: 'SHOW_SUMMARY', e: e}),
-        setBookable: () => dispatch({type: 'SET_BOOKABLE'}),
-        unSetBookable: () => dispatch({type: 'UNSET_BOOKABLE'}),
-        setReservedSeats: (data) => dispatch({type: 'SET_RESERVED_SEATS', data: data})
-    };
-};
-
-export default connect(mapStateToProps,mapDispatchToProps)(SeatsSelection);
+export default SeatsSelection;
