@@ -18,8 +18,7 @@ const initialState = {
         contactName: '',
         contactEmail: '',
         contactPhone: '',
-        contactMessage: '',
-        messageSent: false
+        contactMessage: ''
 };
 
 const reducer = (state = initialState, action) => {
@@ -150,11 +149,6 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 contactMessage: action.message
-            }
-        case 'SEND_MESSAGE':
-            return {
-                ...state,
-                messageSent: true
             }
     }
     return state;

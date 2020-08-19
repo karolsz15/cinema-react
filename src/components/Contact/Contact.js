@@ -1,31 +1,65 @@
-import React from 'react';
+import React, { useState, useCallback } from 'react';
 import axios from 'axios';
-import {connect} from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
-const contact = props => {
+const Contact = () => {
 
-    let messageObject = {
-        name: props.contactName,
-        email: props.contactEmail,
-        phone: props.contactPhone,
-        message: props.contactMessage
+    //local state for displaying message sent notification
+    const [headerMessage, setHeaderMessage] = useState(
+        <React.Fragment>
+            <h3 class="head">CONTACT</h3>
+            <p>feel free to ask questions about reservations and the cinema</p>
+        </React.Fragment>
+    );
+
+    //map state to consts
+    const contactName = useSelector(state => state.contactName);
+    const contactEmail = useSelector(state => state.contactEmail);
+    const contactPhone = useSelector(state => state.contactPhone);
+    const contactMessage = useSelector(state => state.contactMessage);
+
+    //map dispatch to consts
+    const dispatch = useDispatch();
+    const updateContactName = useCallback( (name) => dispatch({type: 'UPDATE_CONTACT_NAME', name: name}) , [dispatch] );
+    const updateContactEmail = useCallback( (email) => dispatch({type: 'UPDATE_CONTACT_EMAIL', email: email}) , [dispatch] );
+    const updateContactPhone = useCallback( (phone) => dispatch({type: 'UPDATE_CONTACT_PHONE', phone: phone}) , [dispatch] );
+    const updateMessage = useCallback( (message) => dispatch({type: 'UPDATE_MESSAGE', message: message}) , [dispatch] );
+
+    const messageObject = {
+        name: contactName,
+        email: contactEmail,
+        phone: contactPhone,
+        message: contactMessage
     };
 
-    const sendMessage = (e) => {
-        e.preventDefault();
+    const clearContactForm = () => {
+        document.getElementById('name').style.display = 'none';
+        document.getElementById('email').style.display = 'none';
+        document.getElementById('phone').style.display = 'none';
+        document.getElementById('message').style.display = 'none';
+        document.getElementById('submit').style.display = 'none';
+        setHeaderMessage(
+            <React.Fragment>
+                <h3 class="head">SENT!</h3>
+                <p>your message has been sent succefully!</p>
+            </React.Fragment>
+        );
+    };
+
+    const sendMessageHandler = event => {
+        event.preventDefault();
         axios.post('https://karol-cinema.firebaseio.com/messages.json', messageObject)
         .then( response => {
           console.log(response.data);
-          this.props.sendMessage();
+          clearContactForm();
         })
         .catch( error => {
             console.log(error);
         });
-    }
+    };
 
     return (
         <div class="main">
-
             <div class="contact-content">
                 <div class="logo">
                     <a href="/"><img src="images/logo4.png" alt="" /></a>
@@ -33,21 +67,19 @@ const contact = props => {
                 </div>
                 <div class="clearfix"></div>
             </div>
-
             <div class="contact-content">
                 <div class="main-contact">
-                    <h3 class="head">CONTACT</h3>
-                    <p>feel free to ask questions about reservations and the cinema</p>
+                    {headerMessage}
                     <div class="contact_info">
                         <form>
                             <div class="col-md-6 contact-left">
-                                <input type="text" placeholder="Name" onChange={e => props.updateContactName(e.target.value)} required/>
-                                <input type="text" placeholder="E-mail" onChange={e => props.updateContactEmail(e.target.value)} required/>
-                                <input type="text" placeholder="Phone" onChange={e => props.updateContactPhone(e.target.value)} required/>
+                                <input id="name" type="text" placeholder="Name" onChange={e => updateContactName(e.target.value)} required />
+                                <input id="email" type="text" placeholder="E-mail" onChange={e => updateContactEmail(e.target.value)} required />
+                                <input id="phone" type="text" placeholder="Phone" onChange={e => updateContactPhone(e.target.value)} required />
                             </div>
                             <div class="col-md-6 contact-right">
-                                <textarea placeholder="Message"onChange={e => props.updateMessage(e.target.value)}></textarea>
-                                <input type="submit" value="SEND" onClick={(e) => sendMessage(e)}/>
+                                <textarea id="message" placeholder="Message" onChange={e => updateMessage(e.target.value)}></textarea>
+                                <input id="submit" type="submit" value="SEND" onClick={e => sendMessageHandler(e)} />
                             </div>
                             <div class="clearfix"></div>
                         </form>
@@ -71,23 +103,4 @@ const contact = props => {
     );
 };
 
-const mapStateToProps = state => {
-    return {
-        contactName: state.contactName,
-        contactSurname: state.contactSurname,
-        contactEmail: state.contactEmail,
-        contactMessage: state.contactMessage,
-    };
-};
-
-const mapDispatchToProps = dispatch => {
-    return {
-        updateContactName: (name) => dispatch({type: 'UPDATE_CONTACT_NAME', name: name}),
-        updateContactEmail: (email) => dispatch({type: 'UPDATE_CONTACT_EMAIL', email: email}),
-        updateContactPhone: (phone) => dispatch({type: 'UPDATE_CONTACT_PHONE', phone: phone}),
-        updateMessage: (message) => dispatch({type: 'UPDATE_MESSAGE', message: message}),
-        sendMessage: (message) => dispatch({type: 'SEND_MESSAGE', message: message})
-    };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(contact);
+export default Contact;
