@@ -1,43 +1,31 @@
-import React, {Component} from 'react';
+import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 
 import MovieModal from '../../UI/MovieModal/MovieModal';
 
-class SingleMovie extends Component {
+const SingleMovie = props => {
 
-    state = {
-        modalVisible: false
-    }
+    const [modalVisible, setModalVisible] = useState(false);
 
-    showModal =() => {
-        this.setState({modalVisible: true})
-    };
+    return (
+        <React.Fragment>
+            
+            <MovieModal 
+                show={modalVisible} 
+                onHide={() => setModalVisible(false)} 
+                title={props.title} 
+                trailer={props.trailer} 
+            />
 
-    hideModal = () => {
-        this.setState({modalVisible: false})
-    }
+            <div className="content-grid">
+                <div className="play-icon"><img className="trailerPoster" src={props.poster} alt="movie poster" /></div>
+                <div className="trailerDescription">{props.summary}</div>
+                <a onClick={() => setModalVisible(true)} className="button play-icon" href="#trailer">Watch trailer</a>
+                <a className="button play-icon" href="/booking">Book now</a>
+            </div>
 
-    render() {
-        return (
-            <React.Fragment>
-
-                <MovieModal 
-                    show={this.state.modalVisible} 
-                    onHide={this.hideModal} 
-                    title={this.props.title} 
-                    trailer={this.props.trailer} 
-                />
-
-                <div className="content-grid">
-                    <div className="play-icon"><img className="trailerPoster" src={this.props.poster} alt="movie poster" /></div>
-                    <div className="trailerDescription">{this.props.summary}</div>
-                    <a onClick={this.showModal} className="button play-icon" href="#trailer">Watch trailer</a>
-                    <a className="button play-icon" href="/booking">Book now</a>
-                </div>
-
-            </React.Fragment>
-        );
-    }
+        </React.Fragment>
+    );
 };
 
 SingleMovie.propTypes = {
