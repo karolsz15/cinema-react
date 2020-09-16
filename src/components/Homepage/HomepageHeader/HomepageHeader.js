@@ -16,7 +16,7 @@ const HomepageHeader = props => {
                     </div>
                     <div className="header-info">
                         <h1>{title}</h1>
-                        <p className="age">{props.cast}</p>
+                        <p className="age">{cast}</p>
                         <p className="review reviewgo">Genre: {genres} </p>
                         <p className="review">Release: {release} </p>
                         <p className="special"> {summary} </p>

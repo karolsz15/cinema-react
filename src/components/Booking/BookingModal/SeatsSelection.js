@@ -41,7 +41,7 @@ const SeatsSelection = () => {
             }
         })
         .catch(error => setError);
-    }, [setReservedSeats, setError]);
+    }, [setReservedSeats, setError, selectionDay, selectionHour]);
         
     const bookingHandler = () => {
         let allReservedSeats = [...selectionReservedSeats, ...selectionActiveSeats];
@@ -145,7 +145,6 @@ const SeatsSelection = () => {
                         </div>
                     </form>
                 </React.Fragment>) : null}
-
             {selectionSummaryVisible ? summary : null}
         </React.Fragment>
     );

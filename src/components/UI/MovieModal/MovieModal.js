@@ -16,13 +16,13 @@ const MovieModal = props => {
     >
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">
-          {props.title}
+          {title}
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <iframe 
-          src={props.trailer} 
-          title={props.title} 
+          src={trailer} 
+          title={title} 
           width="560" 
           height="315" 
           frameBorder="0" 
@@ -30,7 +30,7 @@ const MovieModal = props => {
         </iframe>
       </Modal.Body>
       <Modal.Footer>
-        <Button onClick={props.onHide}>Close</Button>
+        <Button onClick={onHide}>Close</Button>
       </Modal.Footer>
     </Modal>
   );

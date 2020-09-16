@@ -109,6 +109,7 @@ const bookingReducer = (state = initialState, action) => {
                 ...state,
                 reservedSeats: action.data
             }
+        // no default
     }
     return state;
 };

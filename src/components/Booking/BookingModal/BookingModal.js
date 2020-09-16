@@ -8,10 +8,6 @@ import PropTypes from 'prop-types';
 const bookingModal = props => {
 
     const {title, day, hour, onHide} = props;
-
-    String.prototype.Capitalize = function() {
-        return this.charAt(0).toUpperCase() + this.slice(1);
-    }
     
     return (
         <Modal
@@ -21,8 +17,8 @@ const bookingModal = props => {
             centered
             >
                 <Modal.Header closeButton>
-                    <Modal.Title id="contained-modal-title-vcenter">
-                        '{title}' on {day.Capitalize()} at {hour}
+                    <Modal.Title id="contained-modal-title-vcenter" style={{textTransform: 'capitalize'}}>
+                        '{title}' on {day} at {hour}
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>

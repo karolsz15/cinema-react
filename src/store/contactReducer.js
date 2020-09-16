@@ -27,6 +27,7 @@ const contactReducer = (state = initialState, action) => {
                 ...state,
                 contactMessage: action.message
             }
+        // no default
     }
     return state;
 };

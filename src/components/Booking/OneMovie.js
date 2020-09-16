@@ -11,7 +11,7 @@ const oneMovie = props => {
                 <img src={poster} alt="..." style={{margin: '.5em'}}></img>
                 <div className="media-body">
                     <h5 style={{margin: '.5em'}}>{title}</h5>
-                    {props.summary}
+                    {summary}
                     <div>
                         <button style={{margin: '.5em'}} onClick={clicked1} className="btn btn-secondary">{hour1}</button>
                         <button style={{margin: '.5em'}} onClick={clicked2} className="btn btn-secondary">{hour2}</button>

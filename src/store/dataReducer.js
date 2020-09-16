@@ -15,6 +15,7 @@ const dataReducer = (state = initialState, action) => {
                 ...state,
                 error: true
             }
+        // no default
     }
     return state;
 };
