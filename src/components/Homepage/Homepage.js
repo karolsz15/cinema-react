@@ -18,8 +18,8 @@ const Homepage = () => {
     const [modalVisible, setModalVisible] = useState(false);
 
     //map state to consts
-    const HPerror = useSelector(state => state.error);
-    const HPmovies = useSelector(state => state.movies);
+    const HPerror = useSelector(state => state.dataReducer.error);
+    const HPmovies = useSelector(state => state.dataReducer.movies);
 
     //map dispatch to consts
 	const dispatch = useDispatch();

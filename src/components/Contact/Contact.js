@@ -13,10 +13,10 @@ const Contact = () => {
     );
 
     //map state to consts
-    const contactName = useSelector(state => state.contactName);
-    const contactEmail = useSelector(state => state.contactEmail);
-    const contactPhone = useSelector(state => state.contactPhone);
-    const contactMessage = useSelector(state => state.contactMessage);
+    const contactName = useSelector(state => state.contactReducer.contactName);
+    const contactEmail = useSelector(state => state.contactReducer.contactEmail);
+    const contactPhone = useSelector(state => state.contactReducer.contactPhone);
+    const contactMessage = useSelector(state => state.contactReducer.contactMessage);
 
     //map dispatch to consts
     const dispatch = useDispatch();

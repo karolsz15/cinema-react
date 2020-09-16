@@ -9,8 +9,8 @@ import { useSelector, useDispatch } from 'react-redux';
 const Trailers = () => {
 
     //map state to consts
-    const trailersError = useSelector(state => state.error);
-    const trailersMovies = useSelector(state => state.movies);
+    const trailersError = useSelector(state => state.dataReducer.error);
+    const trailersMovies = useSelector(state => state.dataReducer.movies);
 
     //map dispatch to consts
     const dispatch = useDispatch();

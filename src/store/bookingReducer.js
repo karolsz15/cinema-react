@@ -1,27 +1,27 @@
 const initialState = {
-        error: false,
-        movies: null,
-    	reservations: null,
-		activeDay: ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"][new Date().getDay()],
-		activeHour: null,
-        activeTitle: null,
-        activeSeats: [],
-        reservedSeats: [],
-        reservationName: null,
-        reservationSurname: null,
-        reservationEmail: null,
-        reservationPhone: null,
-        summaryVisible: false,
-        booked: false,
-        bookable: false,
-        contactName: '',
-        contactEmail: '',
-        contactPhone: '',
-        contactMessage: ''
+    reservations: null,
+    activeDay: ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"][new Date().getDay()],
+    activeHour: null,
+    activeTitle: null,
+    activeSeats: [],
+    reservedSeats: [],
+    reservationName: null,
+    reservationSurname: null,
+    reservationEmail: null,
+    reservationPhone: null,
+    summaryVisible: false,
+    booked: false,
+    bookable: false,
+    modalVisible: false
 };
 
-const reducer = (state = initialState, action) => {
+const bookingReducer = (state = initialState, action) => {
     switch (action.type) {
+        case 'SET_RESERVATIONS':
+            return {
+                ...state,
+                reservations: action.data
+            }
         case 'HIDE_MODAL':
             return {
                 ...state,
@@ -35,21 +35,6 @@ const reducer = (state = initialState, action) => {
                 summaryVisible: false,
                 booked: false,
                 bookable: false
-            }
-        case 'SET_MOVIES':
-            return {
-                ...state,
-                movies: action.data
-            }
-        case 'SET_RESERVATIONS':
-            return {
-                ...state,
-                reservations: action.data
-            }
-        case 'ERROR':
-            return {
-                ...state,
-                error: true
             }
         case 'SHOW_BOOKING_MODAL':
             return {
@@ -124,28 +109,8 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 reservedSeats: action.data
             }
-        case 'UPDATE_CONTACT_NAME':
-            return {
-                ...state,
-                contactName: action.name
-            }
-        case 'UPDATE_CONTACT_EMAIL':
-            return {
-                ...state,
-                contactEmail: action.email
-            }
-        case 'UPDATE_CONTACT_PHONE':
-            return {
-                ...state,
-                contactPhone: action.phone
-            }
-        case 'UPDATE_MESSAGE':
-            return {
-                ...state,
-                contactMessage: action.message
-            }
     }
     return state;
-}
+};
 
-export default reducer;
+export default bookingReducer;

@@ -5,17 +5,17 @@ import { useSelector, useDispatch} from 'react-redux';
 const SeatsSelection = () => {
 
     //map state to consts
-    const selectionDay = useSelector(state => state.activeDay);
-    const selectionHour = useSelector(state => state.activeHour);
-    const selectionActiveSeats = useSelector(state => state.activeSeats);
-    const selectionReservedSeats = useSelector(state => state.reservedSeats);
-    const selectionName = useSelector(state => state.reservationName);
-    const selectionSurname = useSelector(state => state.reservationSurname);
-    const selectionEmail = useSelector(state => state.reservationEmail);
-    const selectionPhone = useSelector(state => state.reservationPhone);
-    const selectionSummaryVisible = useSelector(state => state.summaryVisible);
-    const selectionBooked = useSelector(state => state.booked);
-    const selectionBookable = useSelector(state => state.bookable);
+    const selectionDay = useSelector(state => state.bookingReducer.activeDay);
+    const selectionHour = useSelector(state => state.bookingReducer.activeHour);
+    const selectionActiveSeats = useSelector(state => state.bookingReducer.activeSeats);
+    const selectionReservedSeats = useSelector(state => state.bookingReducer.reservedSeats);
+    const selectionName = useSelector(state => state.bookingReducer.reservationName);
+    const selectionSurname = useSelector(state => state.bookingReducer.reservationSurname);
+    const selectionEmail = useSelector(state => state.bookingReducer.reservationEmail);
+    const selectionPhone = useSelector(state => state.bookingReducer.reservationPhone);
+    const selectionSummaryVisible = useSelector(state => state.bookingReducer.summaryVisible);
+    const selectionBooked = useSelector(state => state.bookingReducer.booked);
+    const selectionBookable = useSelector(state => state.bookingReducer.bookable);
 
     //map dispatch to consts
     const dispatch = useDispatch();

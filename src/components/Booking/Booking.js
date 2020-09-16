@@ -11,12 +11,12 @@ import BookingSelection from './BookingSelection/BookingSelection';
 const Booking = () => {
 
 	//map state to consts
-	const bookingModalVisible = useSelector(state => state.modalVisible);
-	const bookingMovies = useSelector(state => state.movies);
-	const bookingReservations = useSelector(state => state.reservations);
-	const bookingActiveDay = useSelector(state => state.activeDay);
-	const bookingActiveHour = useSelector(state => state.activeHour);
-	const bookingActiveTitle = useSelector(state => state.activeTitle);
+	const bookingModalVisible = useSelector(state => state.bookingReducer.modalVisible);
+	const bookingMovies = useSelector(state => state.dataReducer.movies);
+	const bookingReservations = useSelector(state => state.bookingReducer.reservations);
+	const bookingActiveDay = useSelector(state => state.bookingReducer.activeDay);
+	const bookingActiveHour = useSelector(state => state.bookingReducer.activeHour);
+	const bookingActiveTitle = useSelector(state => state.bookingReducer.activeTitle);
 
 	//map dispatch to consts
 	const dispatch = useDispatch();
