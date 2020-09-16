@@ -3,8 +3,11 @@ import React from 'react';
 import Modal from "react-bootstrap/Modal";
 import Button from 'react-bootstrap/Button';
 import SeatsSelection from './SeatsSelection';
+import PropTypes from 'prop-types';
 
 const bookingModal = props => {
+
+    const {title, day, hour, onHide} = props;
 
     String.prototype.Capitalize = function() {
         return this.charAt(0).toUpperCase() + this.slice(1);
@@ -19,19 +22,26 @@ const bookingModal = props => {
             >
                 <Modal.Header closeButton>
                     <Modal.Title id="contained-modal-title-vcenter">
-                        '{props.title}' on {props.day.Capitalize()} at {props.hour}
+                        '{title}' on {day.Capitalize()} at {hour}
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <main>
-                       <SeatsSelection day={props.day} hour={props.hour} title={props.title} />
+                       <SeatsSelection day={day} hour={hour} title={title} />
                     </main>
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button onClick={props.onHide}>Close</Button>
+                    <Button onClick={onHide}>Close</Button>
                 </Modal.Footer>
             </Modal>
     );
+};
+
+bookingModal.propTypes = {
+    title: PropTypes.string,
+    day: PropTypes.string.isRequired,
+    hour: PropTypes.string,
+    onHide: PropTypes.func.isRequired
 };
 
 export default bookingModal;

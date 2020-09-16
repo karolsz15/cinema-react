@@ -4,6 +4,8 @@ import { format, add } from 'date-fns';
 
 const bookingSelection = props => {
 
+    const {changed} = props;
+
     const fullDate = new Date();
     const dayOfMonth = format(fullDate, 'dd');
     const dayOfWeek = format(fullDate, 'cccc');
@@ -14,7 +16,7 @@ const bookingSelection = props => {
     }
 
     return (
-        <select onChange={props.changed} defaultValue={dayOfWeek} className="custom-select custom-select-lg mb-4" id="day" name="daySelection">
+        <select onChange={changed} defaultValue={dayOfWeek} className="custom-select custom-select-lg mb-4" id="day" name="daySelection">
             
             {/* default value - current day */}
             <option value={dayOfWeek.unCapitalize()}>

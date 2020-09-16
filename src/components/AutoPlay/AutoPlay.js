@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 
 const AutoPlay = props => {
 
+  const {postersArray} = props;
+
   const settings = {
     dots: false,
     infinite: true,
@@ -15,7 +17,7 @@ const AutoPlay = props => {
     cssEase: "linear"
   };
     
-  const posters = props.postersArray.map(el => (
+  const posters = postersArray.map(el => (
     <div key={el}>
       <img src={el} alt="movie poster" className="sliderImage" />
     </div>
