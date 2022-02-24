@@ -1,11 +1,13 @@
-import React from "react";
-import classes from "./Spinner.module.css";
+import React from 'react';
+import classes from './Spinner.module.css';
 
-const Spinner = () => (
+function Spinner() {
+  return (
     <div className={classes.Lds}>
-      <div></div>
-      <div></div>
+      <div />
+      <div />
     </div>
-);
+  );
+}
 
 export default Spinner;

@@ -1,11 +1,13 @@
 import React from 'react';
-import CinemaContainer from './containers/CinemaContainer';
 import { BrowserRouter } from 'react-router-dom';
+import CinemaContainer from './containers/CinemaContainer';
 
-const App = () => (  
+function App() {
+  return (
     <BrowserRouter>
-        <CinemaContainer />
+      <CinemaContainer />
     </BrowserRouter>
   );
+}
 
 export default App;

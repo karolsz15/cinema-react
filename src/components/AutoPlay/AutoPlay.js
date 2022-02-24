@@ -1,10 +1,9 @@
-import React from "react";
-import Slider from "react-slick";
+import React from 'react';
+import Slider from 'react-slick';
 import PropTypes from 'prop-types';
 
-const AutoPlay = props => {
-
-  const {postersArray} = props;
+function AutoPlay(props) {
+  const { postersArray } = props;
 
   const settings = {
     dots: false,
@@ -14,26 +13,24 @@ const AutoPlay = props => {
     autoplay: true,
     speed: 2000,
     autoplaySpeed: 2000,
-    cssEase: "linear"
+    cssEase: 'linear',
   };
-    
-  const posters = postersArray.map(el => (
+
+  const posters = postersArray.map((el) => (
     <div key={el}>
       <img src={el} alt="movie poster" className="sliderImage" />
     </div>
   ));
 
   return (
-    <div className="sliderContainer" style={{padding: '1em'}}>
-      <Slider {...settings}>
-        {posters}
-      </Slider>
+    <div className="sliderContainer" style={{ padding: '1em' }}>
+      <Slider {...settings}>{posters}</Slider>
     </div>
   );
-};
+}
 
 AutoPlay.propTypes = {
-  postersArray: PropTypes.arrayOf(PropTypes.string)
-}
+  postersArray: PropTypes.arrayOf(PropTypes.string),
+};
 
 export default AutoPlay;
