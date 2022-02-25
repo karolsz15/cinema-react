@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const OneMovie = ({ poster, title, summary, clicked1, clicked2, hour1, hour2 }) => {
-  return (
+const OneMovie = ({ poster, title, summary, clicked1, clicked2, hour1, hour2 }) => (
     <>
       <div className="booking_object">
         <img src={poster} alt="..." style={{ margin: '.5em' }} />
@@ -22,7 +21,6 @@ const OneMovie = ({ poster, title, summary, clicked1, clicked2, hour1, hour2 }) 
       <hr />
     </>
   );
-};
 
 OneMovie.propTypes = {
   poster: PropTypes.string,

@@ -7,7 +7,8 @@ import Contact from '../components/Contact/Contact';
 import Booking from '../components/Booking/Booking';
 import Error from '../components/Error/Error';
 
-const CinemaContainer = () => (
+function CinemaContainer() {
+  return (
     <div className="full">
       <Menu />
       <Switch>
@@ -19,5 +20,6 @@ const CinemaContainer = () => (
       </Switch>
     </div>
   );
+}
 
 export default CinemaContainer;

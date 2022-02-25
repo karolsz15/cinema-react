@@ -12,7 +12,7 @@ import MovieModal from '../UI/MovieModal/MovieModal';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
-const Homepage = () => {
+function Homepage() {
   // local state to show and hide trailers modal
   const [modalVisible, setModalVisible] = useState(false);
 

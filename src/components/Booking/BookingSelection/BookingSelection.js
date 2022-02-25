@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { format, add } from 'date-fns';
 
 const BookingSelection = ({ changed }) => {
-
   const fullDate = new Date();
   const dayOfMonth = format(fullDate, 'dd');
   const dayOfWeek = format(fullDate, 'cccc');
@@ -38,7 +37,7 @@ const BookingSelection = ({ changed }) => {
       ))}
     </select>
   );
-};
+}
 
 BookingSelection.propTypes = {
   changed: PropTypes.func,

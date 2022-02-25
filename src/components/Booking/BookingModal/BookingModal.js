@@ -1,5 +1,4 @@
 import React from 'react';
-
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import PropTypes from 'prop-types';
@@ -24,7 +23,7 @@ const BookingModal = props => {
       </Modal.Footer>
     </Modal>
   );
-};
+}
 
 BookingModal.propTypes = {
   title: PropTypes.string,
