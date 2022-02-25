@@ -2,8 +2,7 @@ import React from 'react';
 import Slider from 'react-slick';
 import PropTypes from 'prop-types';
 
-function AutoPlay(props) {
-  const { postersArray } = props;
+const AutoPlay = ({ postersArray }) => {
 
   const settings = {
     dots: false,

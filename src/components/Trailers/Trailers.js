@@ -1,12 +1,11 @@
 import React, { useEffect, useCallback } from 'react';
-
 import axios from 'axios';
 import _ from 'lodash';
 import { useSelector, useDispatch } from 'react-redux';
 import Spinner from '../UI/Spinner/Spinner';
 import SingleMovie from './SingleMovie/SingleMovie';
 
-function Trailers() {
+const Trailers = () => {
   // map state to consts
   const trailersError = useSelector((state) => state.dataReducer.error);
   const trailersMovies = useSelector((state) => state.dataReducer.movies);

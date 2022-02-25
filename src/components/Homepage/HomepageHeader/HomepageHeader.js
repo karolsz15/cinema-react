@@ -2,9 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-function HomepageHeader(props) {
-  const { bigImage, title, cast, genres, release, summary, trailerClicked } = props;
-  return (
+const HomepageHeader = ({ bigImage, title, cast, genres, release, summary, trailerClicked }) => (
     <div className="header" style={{ background: `no-repeat top url(${bigImage})` }}>
       <div className="top-header">
         <div className="logo">
@@ -34,7 +32,6 @@ function HomepageHeader(props) {
       </div>
     </div>
   );
-}
 
 HomepageHeader.propTypes = {
   bigImage: PropTypes.string,

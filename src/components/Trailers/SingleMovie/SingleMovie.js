@@ -2,8 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import MovieModal from '../../UI/MovieModal/MovieModal';
 
-function SingleMovie(props) {
-  const { title, trailer, poster, summary } = props;
+const SingleMovie = ({ title, trailer, poster, summary }) => {
   const [modalVisible, setModalVisible] = useState(false);
   return (
     <>
@@ -27,7 +26,7 @@ function SingleMovie(props) {
       </div>
     </>
   );
-}
+};
 
 SingleMovie.propTypes = {
   poster: PropTypes.string,

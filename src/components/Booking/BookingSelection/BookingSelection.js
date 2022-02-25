@@ -2,8 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { format, add } from 'date-fns';
 
-const BookingSelection = (props) => {
-  const { changed } = props;
+const BookingSelection = ({ changed }) => {
 
   const fullDate = new Date();
   const dayOfMonth = format(fullDate, 'dd');

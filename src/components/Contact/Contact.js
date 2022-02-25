@@ -2,7 +2,7 @@ import React, { useState, useCallback } from 'react';
 import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
 
-function Contact() {
+const Contact = () => {
   // local state for displaying message sent notification
   const [headerMessage, setHeaderMessage] = useState(
     <>

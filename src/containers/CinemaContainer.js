@@ -1,6 +1,5 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-
 import Homepage from '../components/Homepage/Homepage';
 import Menu from '../components/Menu/Menu';
 import Trailers from '../components/Trailers/Trailers';
@@ -8,8 +7,7 @@ import Contact from '../components/Contact/Contact';
 import Booking from '../components/Booking/Booking';
 import Error from '../components/Error/Error';
 
-function CinemaContainer() {
-  return (
+const CinemaContainer = () => (
     <div className="full">
       <Menu />
       <Switch>
@@ -21,6 +19,5 @@ function CinemaContainer() {
       </Switch>
     </div>
   );
-}
 
 export default CinemaContainer;

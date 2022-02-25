@@ -1,9 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const OneMovie = (props) => {
-  const { poster, title, summary, clicked1, clicked2, hour1, hour2 } = props;
-
+const OneMovie = ({ poster, title, summary, clicked1, clicked2, hour1, hour2 }) => {
   return (
     <>
       <div className="booking_object">

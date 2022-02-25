@@ -2,7 +2,7 @@ import React, { useEffect, useCallback } from 'react';
 import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
 
-function SeatsSelection() {
+const SeatsSelection = () => {
   // map state to consts
   const selectionDay = useSelector((state) => state.bookingReducer.activeDay);
   const selectionHour = useSelector((state) => state.bookingReducer.activeHour);

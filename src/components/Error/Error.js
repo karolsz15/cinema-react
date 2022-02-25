@@ -1,7 +1,6 @@
 import React from 'react';
 
-function Error() {
-  return (
+const Error = () => (
     <div className="main">
       <div className="contact-content">
         <div className="logo">
@@ -24,6 +23,5 @@ function Error() {
       </div>
     </div>
   );
-}
 
 export default Error;
