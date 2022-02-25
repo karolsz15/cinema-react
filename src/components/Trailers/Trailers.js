@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import Spinner from '../UI/Spinner/Spinner';
 import SingleMovie from './SingleMovie/SingleMovie';
 
-const Trailers = () => {
+function Trailers() {
   // map state to consts
   const trailersError = useSelector((state) => state.dataReducer.error);
   const trailersMovies = useSelector((state) => state.dataReducer.movies);

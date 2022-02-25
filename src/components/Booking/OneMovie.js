@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const OneMovie = ({ poster, title, summary, clicked1, clicked2, hour1, hour2 }) => {
+function OneMovie({ poster, title, summary, clicked1, clicked2, hour1, hour2 }) {
   return (
     <>
       <div className="booking_object">
@@ -22,7 +22,7 @@ const OneMovie = ({ poster, title, summary, clicked1, clicked2, hour1, hour2 }) 
       <hr />
     </>
   );
-};
+}
 
 OneMovie.propTypes = {
   poster: PropTypes.string,

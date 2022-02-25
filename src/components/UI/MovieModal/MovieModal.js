@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 
-const MovieModal = props => {
+function MovieModal(props) {
   const { title, trailer, onHide } = props;
   return (
     <Modal {...props} size="lg" aria-labelledby="contained-modal-title-vcenter" centered>

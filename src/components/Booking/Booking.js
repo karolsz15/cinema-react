@@ -8,7 +8,7 @@ import OneMovie from './OneMovie';
 import Spinner from '../UI/Spinner/Spinner';
 import BookingSelection from './BookingSelection/BookingSelection';
 
-const Booking = () => {
+function Booking() {
   // map state to consts
   const bookingModalVisible = useSelector((state) => state.bookingReducer.modalVisible);
   const bookingMovies = useSelector((state) => state.dataReducer.movies);
