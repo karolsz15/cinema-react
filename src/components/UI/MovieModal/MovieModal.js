@@ -3,7 +3,9 @@ import PropTypes from 'prop-types';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 
-const MovieModal = ({ title, trailer, onHide }) => (
+const MovieModal = props => {
+  const { title, trailer, onHide } = props;
+  return (
     <Modal {...props} size="lg" aria-labelledby="contained-modal-title-vcenter" centered>
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">{title}</Modal.Title>
@@ -23,7 +25,8 @@ const MovieModal = ({ title, trailer, onHide }) => (
         <Button onClick={onHide}>Close</Button>
       </Modal.Footer>
     </Modal>
-);
+  );
+}
 
 MovieModal.propTypes = {
   title: PropTypes.string,
