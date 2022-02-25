@@ -4,7 +4,7 @@ import Button from 'react-bootstrap/Button';
 import PropTypes from 'prop-types';
 import SeatsSelection from './SeatsSelection';
 
-const BookingModal = props => {
+function BookingModal(props) {
   const { title, day, hour, onHide } = props;
   return (
     <Modal {...props} size="lg" aria-labelledby="contained-modal-title-vcenter" centered>

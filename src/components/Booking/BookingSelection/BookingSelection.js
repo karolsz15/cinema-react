@@ -37,7 +37,7 @@ const BookingSelection = ({ changed }) => {
       ))}
     </select>
   );
-}
+};
 
 BookingSelection.propTypes = {
   changed: PropTypes.func,
