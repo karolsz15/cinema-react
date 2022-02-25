@@ -1,0 +1,48 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`OneMovie component should render the OneMovie correctly 1`] = `
+<Fragment>
+  <div
+    className="booking_object"
+  >
+    <img
+      alt="..."
+      style={
+        Object {
+          "margin": ".5em",
+        }
+      }
+    />
+    <div
+      className="media-body"
+    >
+      <h5
+        style={
+          Object {
+            "margin": ".5em",
+          }
+        }
+      />
+      <div>
+        <button
+          className="btn btn-secondary"
+          style={
+            Object {
+              "margin": ".5em",
+            }
+          }
+        />
+        <button
+          className="btn btn-secondary"
+          style={
+            Object {
+              "margin": ".5em",
+            }
+          }
+        />
+      </div>
+    </div>
+  </div>
+  <hr />
+</Fragment>
+`;

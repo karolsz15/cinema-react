@@ -32,7 +32,7 @@ function MovieModal(props) {
 MovieModal.propTypes = {
   title: PropTypes.string,
   trailer: PropTypes.string,
-  onHide: PropTypes.func.isRequired,
+  onHide: PropTypes.func,
 };
 
 export default MovieModal;

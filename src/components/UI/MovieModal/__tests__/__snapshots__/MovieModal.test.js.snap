@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MovieModal component should render the MovieModal correctly 1`] = `
+<Bootstrap(Modal)
+  aria-labelledby="contained-modal-title-vcenter"
+  centered={true}
+  size="lg"
+>
+  <ModalHeader
+    closeButton={true}
+    closeLabel="Close"
+  >
+    <ModalTitle
+      id="contained-modal-title-vcenter"
+    />
+  </ModalHeader>
+  <ModalBody>
+    <iframe
+      allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+      allowFullScreen={true}
+      frameBorder="0"
+      height="315"
+      width="560"
+    />
+  </ModalBody>
+  <ModalFooter>
+    <Button
+      active={false}
+      disabled={false}
+      type="button"
+      variant="primary"
+    >
+      Close
+    </Button>
+  </ModalFooter>
+</Bootstrap(Modal)>
+`;

@@ -1,0 +1,80 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BookingSelection component should render the BookingSelection correctly 1`] = `
+<select
+  className="custom-select custom-select-lg mb-4"
+  defaultValue="Friday"
+  id="day"
+  name="daySelection"
+>
+  <option
+    value="friday"
+  >
+    Friday
+     
+    25
+    .
+    02
+  </option>
+  <option
+    key="Saturday"
+    value="saturday"
+  >
+    Saturday
+     
+    26
+    .
+    02
+  </option>
+  <option
+    key="Sunday"
+    value="sunday"
+  >
+    Sunday
+     
+    27
+    .
+    02
+  </option>
+  <option
+    key="Monday"
+    value="monday"
+  >
+    Monday
+     
+    28
+    .
+    02
+  </option>
+  <option
+    key="Tuesday"
+    value="tuesday"
+  >
+    Tuesday
+     
+    01
+    .
+    03
+  </option>
+  <option
+    key="Wednesday"
+    value="wednesday"
+  >
+    Wednesday
+     
+    02
+    .
+    03
+  </option>
+  <option
+    key="Thursday"
+    value="thursday"
+  >
+    Thursday
+     
+    03
+    .
+    03
+  </option>
+</select>
+`;

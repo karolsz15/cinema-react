@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AutoPlay component should render the AutoPlay correctly 1`] = `
+<div
+  className="sliderContainer"
+  style={
+    Object {
+      "padding": "1em",
+    }
+  }
+>
+  <Slider
+    autoplay={true}
+    autoplaySpeed={2000}
+    cssEase="linear"
+    dots={false}
+    infinite={true}
+    slidesToScroll={1}
+    slidesToShow={4}
+    speed={2000}
+  />
+</div>
+`;

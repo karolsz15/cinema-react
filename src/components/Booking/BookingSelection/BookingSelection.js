@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { format, add } from 'date-fns';
 
-const bookingSelection = (props) => {
+const BookingSelection = (props) => {
   const { changed } = props;
 
   const fullDate = new Date();
@@ -41,8 +41,8 @@ const bookingSelection = (props) => {
   );
 };
 
-bookingSelection.propTypes = {
+BookingSelection.propTypes = {
   changed: PropTypes.func,
 };
 
-export default bookingSelection;
+export default BookingSelection;

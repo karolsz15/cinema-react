@@ -30,7 +30,9 @@ function AutoPlay(props) {
 }
 
 AutoPlay.propTypes = {
-  postersArray: PropTypes.arrayOf(PropTypes.string),
+  postersArray: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
+
+AutoPlay.defaultProps = { postersArray: [] };
 
 export default AutoPlay;

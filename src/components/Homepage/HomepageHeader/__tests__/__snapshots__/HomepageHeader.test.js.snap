@@ -1,0 +1,82 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HomepageHeader component should render the HomepageHeader correctly 1`] = `
+<div
+  className="header"
+  style={
+    Object {
+      "background": "no-repeat top url(undefined)",
+    }
+  }
+>
+  <div
+    className="top-header"
+  >
+    <div
+      className="logo"
+    >
+      <a
+        href="/"
+      >
+        <img
+          alt=""
+          src="images/logo4.png"
+        />
+      </a>
+      <p>
+        Ticket booking app
+      </p>
+    </div>
+    <div
+      className="clearfix"
+    />
+  </div>
+  <div
+    className="header-info"
+  >
+    <h1 />
+    <p
+      className="age"
+    />
+    <p
+      className="review reviewgo"
+    >
+      Genre: 
+       
+    </p>
+    <p
+      className="review"
+    >
+      Release: 
+       
+    </p>
+    <p
+      className="special"
+    >
+       
+       
+    </p>
+    <div
+      className="headerButtons"
+    >
+      <div
+        className="videoButton"
+      >
+        <i
+          className="video1"
+        />
+        TRAILER
+      </div>
+      <Link
+        className="bookButton"
+        to="/booking"
+      >
+        <i
+          className="book1"
+        />
+        TICKET
+      </Link>
+    </div>
+  </div>
+</div>
+`;

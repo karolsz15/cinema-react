@@ -1,0 +1,72 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Menu component should render the Menu correctly 1`] = `
+<div
+  className="menu"
+>
+  <ul>
+    <li>
+      <NavLink
+        exact={true}
+        to="/"
+      >
+        <div
+          className="home"
+        >
+          <i
+            className="home"
+          />
+        </div>
+      </NavLink>
+    </li>
+    <li>
+      <NavLink
+        to="/trailers"
+      >
+        <div
+          className="video"
+        >
+          <i
+            className="videos"
+          />
+          <i
+            className="videos1"
+          />
+        </div>
+      </NavLink>
+    </li>
+    <li>
+      <NavLink
+        to="/booking"
+      >
+        <div
+          className="bk"
+        >
+          <i
+            className="booking"
+          />
+          <i
+            className="booking1"
+          />
+        </div>
+      </NavLink>
+    </li>
+    <li>
+      <NavLink
+        to="/contact"
+      >
+        <div
+          className="cnt"
+        >
+          <i
+            className="contact"
+          />
+          <i
+            className="contact1"
+          />
+        </div>
+      </NavLink>
+    </li>
+  </ul>
+</div>
+`;

@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BookingModal component should render the BookingModal correctly 1`] = `
+<Bootstrap(Modal)
+  aria-labelledby="contained-modal-title-vcenter"
+  centered={true}
+  size="lg"
+>
+  <ModalHeader
+    closeButton={true}
+    closeLabel="Close"
+  >
+    <ModalTitle
+      id="contained-modal-title-vcenter"
+      style={
+        Object {
+          "textTransform": "capitalize",
+        }
+      }
+    >
+      '
+      ' on 
+       at 
+    </ModalTitle>
+  </ModalHeader>
+  <ModalBody>
+    <main>
+      <SeatsSelection />
+    </main>
+  </ModalBody>
+  <ModalFooter>
+    <Button
+      active={false}
+      disabled={false}
+      type="button"
+      variant="primary"
+    >
+      Close
+    </Button>
+  </ModalFooter>
+</Bootstrap(Modal)>
+`;

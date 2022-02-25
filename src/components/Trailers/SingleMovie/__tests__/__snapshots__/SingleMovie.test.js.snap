@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SingleMovie component should render the SingleMovie correctly 1`] = `
+<Fragment>
+  <MovieModal
+    onHide={[Function]}
+    show={false}
+  />
+  <div
+    className="content-grid"
+  >
+    <div
+      className="play-icon"
+    >
+      <img
+        alt="movie poster"
+        className="trailerPoster"
+      />
+    </div>
+    <div
+      className="trailerDescription"
+    />
+    <a
+      className="button play-icon"
+      href="#trailer"
+      onClick={[Function]}
+    >
+      Watch trailer
+    </a>
+    <a
+      className="button play-icon"
+      href="/booking"
+    >
+      Book now
+    </a>
+  </div>
+</Fragment>
+`;

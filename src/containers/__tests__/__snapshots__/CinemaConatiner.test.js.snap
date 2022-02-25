@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CinemaContainer component should render the CinemaContainer correctly 1`] = `
+<div
+  className="full"
+>
+  <Menu />
+  <Switch>
+    <Route
+      component={[Function]}
+      exact={true}
+      path="/"
+    />
+    <Route
+      component={[Function]}
+      path="/trailers"
+    />
+    <Route
+      component={[Function]}
+      path="/booking"
+    />
+    <Route
+      component={[Function]}
+      path="/contact"
+    />
+    <Route
+      component={[Function]}
+    />
+  </Switch>
+</div>
+`;

@@ -5,7 +5,7 @@ import Button from 'react-bootstrap/Button';
 import PropTypes from 'prop-types';
 import SeatsSelection from './SeatsSelection';
 
-const bookingModal = (props) => {
+const BookingModal = (props) => {
   const { title, day, hour, onHide } = props;
 
   return (
@@ -27,11 +27,11 @@ const bookingModal = (props) => {
   );
 };
 
-bookingModal.propTypes = {
+BookingModal.propTypes = {
   title: PropTypes.string,
-  day: PropTypes.string.isRequired,
+  day: PropTypes.string,
   hour: PropTypes.string,
-  onHide: PropTypes.func.isRequired,
+  onHide: PropTypes.func,
 };
 
-export default bookingModal;
+export default BookingModal;

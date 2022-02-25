@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Error component should render the Error correctly 1`] = `
+<div
+  className="main"
+>
+  <div
+    className="contact-content"
+  >
+    <div
+      className="logo"
+    >
+      <a
+        href="/"
+      >
+        <img
+          alt=""
+          src="images/logo4.png"
+        />
+      </a>
+      <p>
+        Ticket booking app
+      </p>
+    </div>
+    <div
+      className="clearfix"
+    />
+  </div>
+  <div
+    className="contact-content"
+  >
+    <div
+      className="main-contact"
+    >
+      <img
+        alt="Error message page not found"
+        className="errorImg"
+        src="https://firebasestorage.googleapis.com/v0/b/karol-cinema.appspot.com/o/error404.jpg?alt=media&token=cbb825e6-bc0c-408f-a317-1552486bd90e"
+      />
+    </div>
+  </div>
+</div>
+`;

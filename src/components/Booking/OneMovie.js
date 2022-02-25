@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const oneMovie = (props) => {
+const OneMovie = (props) => {
   const { poster, title, summary, clicked1, clicked2, hour1, hour2 } = props;
 
   return (
@@ -26,7 +26,7 @@ const oneMovie = (props) => {
   );
 };
 
-oneMovie.propTypes = {
+OneMovie.propTypes = {
   poster: PropTypes.string,
   title: PropTypes.string,
   summary: PropTypes.string,
@@ -36,4 +36,4 @@ oneMovie.propTypes = {
   hour2: PropTypes.string,
 };
 
-export default oneMovie;
+export default OneMovie;
