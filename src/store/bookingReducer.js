@@ -1,3 +1,5 @@
+import * as TYPES from './types';
+
 const initialState = {
   reservations: null,
   activeDay: ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'][
@@ -19,12 +21,12 @@ const initialState = {
 
 const bookingReducer = (state = initialState, action) => {
   switch (action.type) {
-    case 'SET_RESERVATIONS':
+    case TYPES.SET_RESERVATIONS:
       return {
         ...state,
         reservations: action.data,
       };
-    case 'HIDE_MODAL':
+    case TYPES.HIDE_MODAL:
       return {
         ...state,
         modalVisible: false,
@@ -38,19 +40,19 @@ const bookingReducer = (state = initialState, action) => {
         booked: false,
         bookable: false,
       };
-    case 'SHOW_BOOKING_MODAL':
+    case TYPES.SHOW_BOOKING_MODAL:
       return {
         ...state,
         modalVisible: true,
         activeHour: action.hour,
         activeTitle: action.title,
       };
-    case 'CHANGE_ACTIVE_DAY':
+    case TYPES.CHANGE_ACTIVE_DAY:
       return {
         ...state,
         activeDay: action.day,
       };
-    case 'TOGGLE_ACTIVATED_SEAT':
+    case TYPES.TOGGLE_ACTIVATED_SEAT:
       let newActiveSeats = [...state.activeSeats];
       if (!state.booked) {
         if (state.activeSeats.includes(action.seat)) {
@@ -63,50 +65,50 @@ const bookingReducer = (state = initialState, action) => {
         ...state,
         activeSeats: newActiveSeats,
       };
-    case 'UPDATE_NAME':
+    case TYPES.UPDATE_NAME:
       return {
         ...state,
         reservationName: action.name,
       };
-    case 'UPDATE_SURNAME':
+    case TYPES.UPDATE_SURNAME:
       return {
         ...state,
         reservationSurname: action.surname,
       };
-    case 'UPDATE_PHONE':
+    case TYPES.UPDATE_PHONE:
       return {
         ...state,
         reservationPhone: action.phone,
         bookable: true,
       };
-    case 'UPDATE_EMAIL':
+    case TYPES.UPDATE_EMAIL:
       return {
         ...state,
         reservationEmail: action.email,
       };
-    case 'SHOW_SUMMARY':
+    case TYPES.SHOW_SUMMARY:
       action.e.preventDefault();
       return {
         ...state,
         summaryVisible: true,
       };
-    case 'RESERVE_SEATS':
+    case TYPES.RESERVE_SEATS:
       return {
         ...state,
         reservedSeats: action.seats,
         booked: true,
       };
-    case 'SET_BOOKABLE':
+    case TYPES.SET_BOOKABLE:
       return {
         ...state,
         bookable: true,
       };
-    case 'UNSET_BOOKABLE':
+    case TYPES.UNSET_BOOKABLE:
       return {
         ...state,
         bookable: false,
       };
-    case 'SET_RESERVED_SEATS':
+    case TYPES.SET_RESERVED_SEATS:
       return {
         ...state,
         reservedSeats: action.data,

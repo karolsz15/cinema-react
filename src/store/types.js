@@ -1,0 +1,23 @@
+// bookingReducer
+export const SET_RESERVATIONS = 'SET_RESERVATIONS';
+export const HIDE_MODAL = 'HIDE_MODAL';
+export const SHOW_BOOKING_MODAL = 'SHOW_BOOKING_MODAL';
+export const CHANGE_ACTIVE_DAY = 'CHANGE_ACTIVE_DAY';
+export const TOGGLE_ACTIVATED_SEAT = 'TOGGLE_ACTIVATED_SEAT';
+export const UPDATE_NAME = 'UPDATE_NAME';
+export const UPDATE_SURNAME = 'UPDATE_SURNAME';
+export const UPDATE_PHONE = 'UPDATE_PHONE';
+export const UPDATE_EMAIL = 'UPDATE_EMAIL';
+export const SHOW_SUMMARY = 'SHOW_SUMMARY';
+export const RESERVE_SEATS = 'RESERVE_SEATS';
+export const SET_BOOKABLE = 'SET_BOOKABLE';
+export const UNSET_BOOKABLE = 'UNSET_BOOKABLE';
+export const SET_RESERVED_SEATS = 'SET_RESERVED_SEATS';
+// contactReducer
+export const UPDATE_CONTACT_NAME = 'UPDATE_CONTACT_NAME';
+export const UPDATE_CONTACT_EMAIL = 'UPDATE_CONTACT_EMAIL';
+export const UPDATE_CONTACT_PHONE = 'UPDATE_CONTACT_PHONE';
+export const UPDATE_MESSAGE = 'UPDATE_MESSAGE';
+// dataReducer
+export const SET_MOVIES = 'SET_MOVIES';
+export const ERROR = 'ERROR';

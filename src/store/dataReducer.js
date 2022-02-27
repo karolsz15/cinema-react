@@ -1,3 +1,5 @@
+import * as TYPES from './types';
+
 const initialState = {
   error: false,
   movies: null,
@@ -5,12 +7,12 @@ const initialState = {
 
 const dataReducer = (state = initialState, action) => {
   switch (action.type) {
-    case 'SET_MOVIES':
+    case TYPES.SET_MOVIES:
       return {
         ...state,
         movies: action.data,
       };
-    case 'ERROR':
+    case TYPES.ERROR:
       return {
         ...state,
         error: true,

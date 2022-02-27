@@ -1,3 +1,5 @@
+import * as TYPES from './types';
+
 const initialState = {
   contactName: '',
   contactEmail: '',
@@ -7,22 +9,22 @@ const initialState = {
 
 const contactReducer = (state = initialState, action) => {
   switch (action.type) {
-    case 'UPDATE_CONTACT_NAME':
+    case TYPES.UPDATE_CONTACT_NAME:
       return {
         ...state,
         contactName: action.name,
       };
-    case 'UPDATE_CONTACT_EMAIL':
+    case TYPES.UPDATE_CONTACT_EMAIL:
       return {
         ...state,
         contactEmail: action.email,
       };
-    case 'UPDATE_CONTACT_PHONE':
+    case TYPES.UPDATE_CONTACT_PHONE:
       return {
         ...state,
         contactPhone: action.phone,
       };
-    case 'UPDATE_MESSAGE':
+    case TYPES.UPDATE_MESSAGE:
       return {
         ...state,
         contactMessage: action.message,
